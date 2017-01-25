@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Numbluk</title><description>I tell stories about things that interest me.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Wed, 25 Jan 2017 21:38:21 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>How to Daemonize Rake Tasks on Ubuntu Through SSH</title><description>&lt;h2 id="daemonsandrake"&gt;Daemons and Rake&lt;/h2&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Numbluk</title><description>I tell stories about things that interest me.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Wed, 25 Jan 2017 22:01:00 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>How to Daemonize Rake Tasks on Ubuntu Through SSH</title><description>&lt;h2 id="daemonsandrake"&gt;Daemons and Rake&lt;/h2&gt;
 
 &lt;p&gt;At some point in your web development journey you may find yourself wanting to execute something far away from you and your terminal (think remote server). More than likely, the first thing that will enter your mind is to execute the following:&lt;/p&gt;
 
@@ -146,7 +146,7 @@ done
 
 &lt;p&gt;&lt;strong&gt;Bad&lt;/strong&gt;: &lt;/p&gt;
 
-&lt;pre&gt;&lt;code class="language-s"&gt;$ ssh numbluk@ip ls -alh ~/
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ ssh numbluk@ip ls -alh ~/
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;Good&lt;/strong&gt;:&lt;/p&gt;
