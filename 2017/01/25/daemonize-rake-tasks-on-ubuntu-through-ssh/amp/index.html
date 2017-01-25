@@ -1,7 +1,8 @@
+
 <head>
     <meta charset="utf-8">
 
-    <title>Welcome to Ghost</title>
+    <title>How to Daemonize Rake Tasks on Ubuntu Through SSH</title>
     <meta name="description" content="">
 
     <meta name="HandheldFriendly" content="True">
@@ -12,23 +13,27 @@
     <link rel="canonical" href="../index.html">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
-    <meta property="og:site_name" content="Go Outside">
+    <meta property="og:site_name" content="Numbluk">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Welcome to Ghost">
-    <meta property="og:description" content="You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &amp;lt;your blog URL&amp;gt;/ghost/. When you arrive, you can select this post from a list">
-    <meta property="og:url" content="http://localhost:2368/2017/01/15/welcome-to-ghost/">
-    <meta property="article:published_time" content="2017-01-15T19:05:24.000Z">
-    <meta property="article:modified_time" content="2017-01-15T19:05:24.000Z">
-    <meta property="article:tag" content="Getting Started">
+    <meta property="og:title" content="How to Daemonize Rake Tasks on Ubuntu Through SSH">
+    <meta property="og:description" content="Daemons and Rake At some point in your web development journey you may find yourself wanting to execute something far away from you and your terminal (think remote server). More than likely, the first thing that will enter your mind is to execute the following: $ my_rake_task Easy right?">
+    <meta property="og:url" content="http://localhost:2368/2017/01/25/daemonize-rake-tasks-on-ubuntu-through-ssh/">
+    <meta property="article:published_time" content="2017-01-25T07:48:09.000Z">
+    <meta property="article:modified_time" content="2017-01-25T08:00:09.000Z">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Ruby">
+    <meta property="article:tag" content="Rake">
+    <meta property="article:tag" content="Rails">
+    <meta property="article:tag" content="Daemons">
     
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Welcome to Ghost">
-    <meta name="twitter:description" content="You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &amp;lt;your blog URL&amp;gt;/ghost/. When you arrive, you can select this post from a list">
-    <meta name="twitter:url" content="http://localhost:2368/2017/01/15/welcome-to-ghost/">
+    <meta name="twitter:title" content="How to Daemonize Rake Tasks on Ubuntu Through SSH">
+    <meta name="twitter:description" content="Daemons and Rake At some point in your web development journey you may find yourself wanting to execute something far away from you and your terminal (think remote server). More than likely, the first thing that will enter your mind is to execute the following: $ my_rake_task Easy right?">
+    <meta name="twitter:url" content="http://localhost:2368/2017/01/25/daemonize-rake-tasks-on-ubuntu-through-ssh/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="Lukas Nimmo">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="Getting Started">
+    <meta name="twitter:data2" content="Linux, Ruby, Rake, Rails, Daemons">
     
     <script type="application/ld+json">
 {
@@ -36,7 +41,7 @@
     "@type": "Article",
     "publisher": {
         "@type": "Organization",
-        "name": "Go Outside",
+        "name": "Numbluk",
         "logo": "http://localhost:2368/ghost/img/ghosticon.jpg"
     },
     "author": {
@@ -49,14 +54,15 @@
             "height": 250
         },
         "url": "http://localhost:2368/author/lukas/",
-        "sameAs": []
+        "sameAs": [],
+        "description": "I enjoy writing software and I constantly wish I was in the mountains."
     },
-    "headline": "Welcome to Ghost",
-    "url": "http://localhost:2368/2017/01/15/welcome-to-ghost/",
-    "datePublished": "2017-01-15T19:05:24.000Z",
-    "dateModified": "2017-01-15T19:05:24.000Z",
-    "keywords": "Getting Started",
-    "description": "You&#x27;re live! Nice. We&#x27;ve put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &amp;lt;your blog URL&amp;gt;/ghost/. When you arrive, you can select this post from a list",
+    "headline": "How to Daemonize Rake Tasks on Ubuntu Through SSH",
+    "url": "http://localhost:2368/2017/01/25/daemonize-rake-tasks-on-ubuntu-through-ssh/",
+    "datePublished": "2017-01-25T07:48:09.000Z",
+    "dateModified": "2017-01-25T08:00:09.000Z",
+    "keywords": "Linux, Ruby, Rake, Rails, Daemons",
+    "description": "Daemons and Rake At some point in your web development journey you may find yourself wanting to execute something far away from you and your terminal (think remote server). More than likely, the first thing that will enter your mind is to execute the following: $ my_rake_task Easy right?",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2368"
@@ -65,7 +71,7 @@
     </script>
 
     <meta name="generator" content="Ghost 0.11">
-    <link rel="alternate" type="application/rss+xml" title="Go Outside" href="../../../../../rss/index.html">
+    <link rel="alternate" type="application/rss+xml" title="Numbluk" href="../../../../../rss/index.html">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
     <style amp-custom>
@@ -841,7 +847,7 @@
 <body class="amp-template">
     <header class="main-header">
         <nav class="blog-title">
-            <a href="../../../../../">Go Outside</a>
+            <a href="../../../../../">Numbluk</a>
         </nav>
     </header>
 
@@ -849,87 +855,206 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Welcome to Ghost</h1>
+                <h1 class="post-title">How to Daemonize Rake Tasks on Ubuntu Through SSH</h1>
                 <section class="post-meta">
                     <p class="author">by <a href="../../../../../author/lukas/">Lukas Nimmo</a></p>
-                    <time class="post-date" datetime="2017-01-15">2017-01-15</time>
+                    <time class="post-date" datetime="2017-01-25">2017-01-25</time>
                 </section>
             </header>
             <section class="post-content">
 
-                <p>You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at <code>&lt;your blog URL&gt;/ghost/</code>. When you arrive, you can select this post from a list on the left and see a preview of it on the right. Click the little pencil icon at the top of the preview to edit this post and read the next section!</p>
+                <h2 id="daemonsandrake">Daemons and Rake</h2>
 
-<h2 id="gettingstarted">Getting Started</h2>
+<p>At some point in your web development journey you may find yourself wanting to execute something far away from you and your terminal (think remote server). More than likely, the first thing that will enter your mind is to execute the following:</p>
 
-<p>Ghost uses something called Markdown for writing. Essentially, it's a shorthand way to manage your post formatting as you write!</p>
-
-<p>Writing in Markdown is really easy. In the left hand panel of Ghost, you simply write as you normally would. Where appropriate, you can use <em>shortcuts</em> to <strong>style</strong> your content. For example, a list:</p>
-
-<ul>
-<li>Item number one</li>
-<li>Item number two
-<ul><li>A nested item</li></ul></li>
-<li>A final item</li>
-</ul>
-
-<p>or with numbers!</p>
-
-<ol>
-<li>Remember to buy some milk  </li>
-<li>Drink the milk  </li>
-<li>Tweet that I remembered to buy the milk, and drank it</li>
-</ol>
-
-<h3 id="links">Links</h3>
-
-<p>Want to link to a source? No problem. If you paste in a URL, like <a href="http://ghost.org">http://ghost.org</a> - it'll automatically be linked up. But if you want to customise your anchor text, you can do that too! Here's a link to <a href="http://ghost.org">the Ghost website</a>. Neat.</p>
-
-<h3 id="whataboutimages">What about Images?</h3>
-
-<p>Images work too! Already know the URL of the image you want to include in your article? Simply paste it in like this to make it show up:</p>
-
-<p><amp-img src="https://ghost.org/images/ghost.png" alt="The Ghost Logo" width="800" height="400" layout="responsive"></amp-img></p>
-
-<p>Not sure which image you want to use yet? That's ok too. Leave yourself a descriptive placeholder and keep writing. Come back later and drag and drop the image in to upload:</p>
-
-<h3 id="quoting">Quoting</h3>
-
-<p>Sometimes a link isn't enough, you want to quote someone on what they've said. Perhaps you've started using a new blogging platform and feel the sudden urge to share their slogan? A quote might be just the way to do it!</p>
-
-<blockquote>
-  <p>Ghost - Just a blogging platform</p>
-</blockquote>
-
-<h3 id="workingwithcode">Working with Code</h3>
-
-<p>Got a streak of geek? We've got you covered there, too. You can write inline <code>&lt;code&gt;</code> blocks really easily with back ticks. Want to show off something more comprehensive? 4 spaces of indentation gets you there.</p>
-
-<pre><code>.awesome-thing {
-    display: block;
-    width: 100%;
-}
+<pre><code class="language-sh">$ my_rake_task
 </code></pre>
 
-<h3 id="readyforabreak">Ready for a Break?</h3>
+<p>Easy right?</p>
 
-<p>Throw 3 or more dashes down on any new line and you've got yourself a fancy new divider. Aw yeah.</p>
+<p>The problem is that once you quit your ssh connection, in other words once your remote terminal dies (developers have to sleep too), so does the process; they are "attached." </p>
 
-<hr>
+<p>Next, you may think, "Well, if I can't see it then it's obviously running without me needing to be there" and you'll execute something like this:</p>
 
-<h3 id="advancedusage">Advanced Usage</h3>
+<pre><code class="language-sh">$ my_rake_task &amp;
+</code></pre>
 
-<p>There's one fantastic secret about Markdown. If you want, you can write plain old HTML and it'll still work! Very flexible.</p>
+<p>The process you create is just a fork of your terminal's, so once again, as soon as you exit, so does the forked process. </p>
 
-<p></p>
+<p>What you could use is a daemon.</p>
 
-<p>That should be enough to get you started. Have fun - and let us know what you think :)</p>
+<h2 id="startstopdaemon"><code>start-stop-daemon</code></h2>
+
+<p>There is a RubyGem called <a href="https://github.com/thuehlinger/daemons">Daemons</a> which can daemonize processes within Ruby. While this may be an excellent option if a piece of Ruby code needs to be momentarily daemonized, I found the syntax to be a little confusing and did not want to add an abstraction of complexity on top of an already relatively complex subject. Also, executing something as simple as a rake task in a Ruby script requires jumping through a few hoops (again, simplicity is the goal here). For these reasons I went with <code>start-stop-daemon</code>.</p>
+
+<p><code>start-stop-daemon</code> is an excellent tool provided by many Linux distributions to make it "easier" to control daemons. <code>start-stop-daemon</code> requires quite a few arguments and options which are necessary to get your daemon up and running. Here is an example:</p>
+
+<pre><code class="language-sh">$ start-stop-daemon --start -m --pidfile /path/to/pidfile.pid -u $USER -d /path/to/working/dir -b --startas /path/to/script
+</code></pre>
+
+<p>Rather long, isn't it? </p>
+
+<p>This might appear to be just-another-Linux-command-with-10-*nixillion-options-I'll-never-use-except-that-one-time-when-I-really-need-it, but this is, in fact, quite terse for what it does.</p>
+
+<p>Let's go through some of the options and arguments:</p>
+
+<ul>
+<li><p><code>--start</code>: The easiest and clearest of them all. It kicks off the daemon.</p></li>
+<li><p><code>--pidfile=PATH</code>: This is the location of the pidfile which Linux relies on to store the PID once the daemonized process begins. 
+Specifying this path when trying to kill the process will also provide the PID that needs to be killed.</p></li>
+<li><p><code>--m</code>: Used in tandem with the <code>--pidfile=PATH</code> option. It will create a file, if your program does not do it already, at the specified path and store the PID there.</p></li>
+<li><p><code>-u USER</code>: Specify a user that the process will be owned by.</p></li>
+<li><p><code>-d PATH</code>: <code>start-stop-daemon</code> will change to this directory before it executes the process. This is especially useful if oftentimes you will need to execute the process in a given directory. If this option is not provided, <code>start-stop-daemon</code> will run in the root directory.</p></li>
+<li><p><code>b</code>: Or background. If your program does not detach by itself-most Ruby programs do not-then use this option.</p></li>
+<li><p><code>--startas</code>: This is the <strong>executable</strong> that will run as the daemonized process. Remember to chmod your file before executing <code>start-stop-daemon</code>.</p></li>
+</ul>
+
+<p>Note: <code>start-stop-daemon</code> does <strong>nothing</strong> to monitor the process.</p>
+
+<p>If you need more options, check out the man pages <a href="http://man7.org/linux/man-pages/man8/start-stop-daemon.8.html">here</a>, but this is enough to get going.</p>
+
+<h2 id="theprocesshydra">The Process Hydra</h2>
+
+<p>Here is an example script of the executable that may want to be run:</p>
+
+<pre><code class="language-bash">#!/bin/bash
+# Location: ~/awesome_task
+# Executes a task that is definitely awesome
+
+rake run_my:definitely_awesome_task  
+</code></pre>
+
+<p>And <strong><em>this</em></strong> is also the process that has its process ID stored in the path option given to <code>--pidfile</code>. </p>
+
+<p>Catch that?</p>
+
+<p>Let's look a little closer.</p>
+
+<p>Suppose we are quite done with this process (as it's been running for 8 hours) and decide to kill it.</p>
+
+<p>First we need the process:</p>
+
+<pre><code class="language-sh">$ cat /path/to/pidfile.pid
+=&gt; 9384
+</code></pre>
+
+<p>Then we try to kill it off:</p>
+
+<pre><code class="language-sh">$ kill 9384
+</code></pre>
+
+<p>All done right? Not so fast! Let's make a quick check:</p>
+
+<pre><code class="language-sh">$ ps aux | grep awesome_task
+...
+$USER 9385 10.0 38.3 304958 128399 ?      S1     08:00   8:01 ruby /path/to/bin/rake run_my:definitely_awesome_task
+...
+</code></pre>
+
+<p>How can our rake task still exist??</p>
+
+<p>There are actually two processes at play here: </p>
+
+<ol>
+<li>The bash script  </li>
+<li><em>AND</em> the rake task.</li>
+</ol>
+
+<p>The rake task is executed and ran as another process whose parent process is the bash script. This means that <em>the rake task can continue running even if the bash script is killed off</em>. </p>
+
+<p>However, this also means that if the rake task is killed, the bash script will execute the rest of its script (of which, in this example, there is nothing else) and exit. In other words, there is a chance that <em>killing off the child process very well could end the parent process</em>.</p>
+
+<h2 id="givingdaemonslife">Giving Daemons Life</h2>
+
+<p>There are many services out there that monitor daemons and make sure they are alive. However, if all that is required is that a task be run over and over (which was my use-case) then the following may be all you need:</p>
+
+<pre><code class="language-bash">#!/bin/bash
+
+while true  
+do  
+    rake another:definitely_awesome_task
+done  
+</code></pre>
+
+<p>Unless the server crashes or some reason the process is randomly killed off then this should last for quite some time. Indefinitely, in fact.</p>
+
+<p>Order matters in death. Remember: <strong><em>parents die first.</em></strong></p>
+
+<p>If you want to kill off both processes, make sure to identify both processes and kill the parent first. Killing the parent first gives you the guarantee that no other process will be spawned from the rest of the execution of the script. While this may not always be the case, an infinite loop always carries the chance of executing something faster than you can ensure its death.</p>
+
+<p>Now that the daemons are setup to be run, let's hop over the wire.</p>
+
+<h2 id="possiblesshproblems">Possible SSH Problems</h2>
+
+<p>There are several problems you may encounter if your code executes commands over ssh. Even if all you do is execute something as simple as:</p>
+
+<pre><code class="language-sh">$ ssh numbluk@ip ~/bash_script_with_crazy_simple_task
+</code></pre>
+
+<p>I still recommend that you read the rest of the way through.</p>
+
+<h4 id="strangeparsing">Strange Parsing</h4>
+
+<p>SSH has a peculiar parsing syntax which means that sometimes it will parse things in unexpected ways. To get around this there are two steps you can follow to ensure your results are consistent with what to expect from a local shell:</p>
+
+<ul>
+<li>Prefer constructing your argument as a string first if your rake task relies on making a command over ssh</li>
+<li>Always quote your commands</li>
+</ul>
+
+<p><strong>Bad</strong>: </p>
+
+<pre><code class="language-s">$ ssh numbluk@ip ls -alh ~/
+</code></pre>
+
+<p><strong>Good</strong>:</p>
+
+<pre><code class="language-sh">$ ssh numbluk@ip "ls -alh ~/"
+</code></pre>
+
+<h4 id="redirectiontonowhere">Redirection to Nowhere</h4>
+
+<p>One-time ssh commands are executed remotely, however, the output is redirected to your local shell. This means that if you rely on the output of the remotely executed command that the output must be stored in a variable if it is to be used again. </p>
+
+<p>Always expect unexpected redirection when dealing with ssh. My recommendation is that a test should always be made locally first and then progress to making the same command over ssh.</p>
+
+<h4 id="noteveryonesenvironment">Not Everyone's Environment</h4>
+
+<p>If your rake task relies on environment variables at all during its execution, then you may run into a problem with ssh. </p>
+
+<p>This problem is almost a phantom as a rake task may very well execute, but it will not execute the correct variables.</p>
+
+<p>To get around this, do the following:</p>
+
+<pre><code class="language-sh">$ ssh numbluk@ip
+</code></pre>
+
+<p>Open <code>/etc/ssh/sshd_config</code> and edit or add</p>
+
+<pre><code>...
+PermitUserEnvironment yes  
+...
+</code></pre>
+
+<p>Next, you must specify what the ssh'd user's environment will be. To permit everything in the current ssh environment:</p>
+
+<pre><code class="language-sh">$ env &gt;&gt; ~/.ssh/environment
+</code></pre>
+
+<p>And that should do it!</p>
+
+<h2 id="inmemoriam">In Memoriam</h2>
+
+<p>I want to give a big thanks to <a href="https://pdxwolfy.wordpress.com/">Pete Hanson</a>'s Linux know-how; he was an immeasurable help throughout this drawn-out process.</p>
+
+<p>Also, thanks to <a href="http://www.michaelrmentele.com/">Michael Mentele</a> for being a superb rubber duck.</p>
 
             </section>
 
         </article>
     </main>
     <footer class="site-footer clearfix">
-        <section class="copyright"><a href="../../../../../">Go Outside</a> © 2017</section>
+        <section class="copyright"><a href="../../../../../">Numbluk</a> © 2017</section>
         <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
     </footer>
 </body>

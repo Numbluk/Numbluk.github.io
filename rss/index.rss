@@ -1,66 +1,192 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Go Outside</title><description>Programming and storytelling.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 16 Jan 2017 04:36:27 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Welcome to Ghost</title><description>&lt;p&gt;You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &lt;code&gt;&amp;lt;your blog URL&amp;gt;/ghost/&lt;/code&gt;. When you arrive, you can select this post from a list&lt;/p&gt;</description><link>http://localhost:2368/2017/01/15/welcome-to-ghost/</link><guid isPermaLink="false">b6e29611-8dd4-4589-a9cf-70c1a536fbf1</guid><category>Getting Started</category><dc:creator>Lukas Nimmo</dc:creator><pubDate>Sun, 15 Jan 2017 19:05:24 GMT</pubDate><content:encoded>&lt;p&gt;You're live! Nice. We've put together a little post to introduce you to the Ghost editor and get you started. You can manage your content by signing in to the admin area at &lt;code&gt;&amp;lt;your blog URL&amp;gt;/ghost/&lt;/code&gt;. When you arrive, you can select this post from a list on the left and see a preview of it on the right. Click the little pencil icon at the top of the preview to edit this post and read the next section!&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Numbluk</title><description>I tell stories about things that interest me.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Wed, 25 Jan 2017 21:38:21 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>How to Daemonize Rake Tasks on Ubuntu Through SSH</title><description>&lt;h2 id="daemonsandrake"&gt;Daemons and Rake&lt;/h2&gt;
 
-&lt;h2 id="gettingstarted"&gt;Getting Started&lt;/h2&gt;
+&lt;p&gt;At some point in your web development journey you may find yourself wanting to execute something far away from you and your terminal (think remote server). More than likely, the first thing that will enter your mind is to execute the following:&lt;/p&gt;
 
-&lt;p&gt;Ghost uses something called Markdown for writing. Essentially, it's a shorthand way to manage your post formatting as you write!&lt;/p&gt;
-
-&lt;p&gt;Writing in Markdown is really easy. In the left hand panel of Ghost, you simply write as you normally would. Where appropriate, you can use &lt;em&gt;shortcuts&lt;/em&gt; to &lt;strong&gt;style&lt;/strong&gt; your content. For example, a list:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Item number one&lt;/li&gt;
-&lt;li&gt;Item number two
-&lt;ul&gt;&lt;li&gt;A nested item&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;A final item&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;or with numbers!&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Remember to buy some milk  &lt;/li&gt;
-&lt;li&gt;Drink the milk  &lt;/li&gt;
-&lt;li&gt;Tweet that I remembered to buy the milk, and drank it&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id="links"&gt;Links&lt;/h3&gt;
-
-&lt;p&gt;Want to link to a source? No problem. If you paste in a URL, like &lt;a href="http://ghost.org"&gt;http://ghost.org&lt;/a&gt; - it'll automatically be linked up. But if you want to customise your anchor text, you can do that too! Here's a link to &lt;a href="http://ghost.org"&gt;the Ghost website&lt;/a&gt;. Neat.&lt;/p&gt;
-
-&lt;h3 id="whataboutimages"&gt;What about Images?&lt;/h3&gt;
-
-&lt;p&gt;Images work too! Already know the URL of the image you want to include in your article? Simply paste it in like this to make it show up:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="https://ghost.org/images/ghost.png" alt="The Ghost Logo"&gt;&lt;/p&gt;
-
-&lt;p&gt;Not sure which image you want to use yet? That's ok too. Leave yourself a descriptive placeholder and keep writing. Come back later and drag and drop the image in to upload:&lt;/p&gt;
-
-&lt;h3 id="quoting"&gt;Quoting&lt;/h3&gt;
-
-&lt;p&gt;Sometimes a link isn't enough, you want to quote someone on what they've said. Perhaps you've started using a new blogging platform and feel the sudden urge to share their slogan? A quote might be just the way to do it!&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Ghost - Just a blogging platform&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id="workingwithcode"&gt;Working with Code&lt;/h3&gt;
-
-&lt;p&gt;Got a streak of geek? We've got you covered there, too. You can write inline &lt;code&gt;&amp;lt;code&amp;gt;&lt;/code&gt; blocks really easily with back ticks. Want to show off something more comprehensive? 4 spaces of indentation gets you there.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.awesome-thing {
-    display: block;
-    width: 100%;
-}
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ my_rake_task
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id="readyforabreak"&gt;Ready for a Break?&lt;/h3&gt;
+&lt;p&gt;Easy right?&lt;/p&gt;</description><link>http://localhost:2368/2017/01/25/daemonize-rake-tasks-on-ubuntu-through-ssh/</link><guid isPermaLink="false">6ed96604-220b-44f3-a64e-034de32cd84f</guid><category>Linux</category><category>Ruby</category><category>Rake</category><category>Rails</category><category>Daemons</category><dc:creator>Lukas Nimmo</dc:creator><pubDate>Wed, 25 Jan 2017 07:48:09 GMT</pubDate><content:encoded>&lt;h2 id="daemonsandrake"&gt;Daemons and Rake&lt;/h2&gt;
 
-&lt;p&gt;Throw 3 or more dashes down on any new line and you've got yourself a fancy new divider. Aw yeah.&lt;/p&gt;
+&lt;p&gt;At some point in your web development journey you may find yourself wanting to execute something far away from you and your terminal (think remote server). More than likely, the first thing that will enter your mind is to execute the following:&lt;/p&gt;
 
-&lt;hr&gt;
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ my_rake_task
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id="advancedusage"&gt;Advanced Usage&lt;/h3&gt;
+&lt;p&gt;Easy right?&lt;/p&gt;
 
-&lt;p&gt;There's one fantastic secret about Markdown. If you want, you can write plain old HTML and it'll still work! Very flexible.&lt;/p&gt;
+&lt;p&gt;The problem is that once you quit your ssh connection, in other words once your remote terminal dies (developers have to sleep too), so does the process; they are "attached." &lt;/p&gt;
 
-&lt;p&gt;&lt;input type="text" placeholder="I'm an input field!"&gt;&lt;/p&gt;
+&lt;p&gt;Next, you may think, "Well, if I can't see it then it's obviously running without me needing to be there" and you'll execute something like this:&lt;/p&gt;
 
-&lt;p&gt;That should be enough to get you started. Have fun - and let us know what you think :)&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ my_rake_task &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The process you create is just a fork of your terminal's, so once again, as soon as you exit, so does the forked process. &lt;/p&gt;
+
+&lt;p&gt;What you could use is a daemon.&lt;/p&gt;
+
+&lt;h2 id="startstopdaemon"&gt;&lt;code&gt;start-stop-daemon&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;There is a RubyGem called &lt;a href="https://github.com/thuehlinger/daemons"&gt;Daemons&lt;/a&gt; which can daemonize processes within Ruby. While this may be an excellent option if a piece of Ruby code needs to be momentarily daemonized, I found the syntax to be a little confusing and did not want to add an abstraction of complexity on top of an already relatively complex subject. Also, executing something as simple as a rake task in a Ruby script requires jumping through a few hoops (again, simplicity is the goal here). For these reasons I went with &lt;code&gt;start-stop-daemon&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;start-stop-daemon&lt;/code&gt; is an excellent tool provided by many Linux distributions to make it "easier" to control daemons. &lt;code&gt;start-stop-daemon&lt;/code&gt; requires quite a few arguments and options which are necessary to get your daemon up and running. Here is an example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ start-stop-daemon --start -m --pidfile /path/to/pidfile.pid -u $USER -d /path/to/working/dir -b --startas /path/to/script
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Rather long, isn't it? &lt;/p&gt;
+
+&lt;p&gt;This might appear to be just-another-Linux-command-with-10-*nixillion-options-I'll-never-use-except-that-one-time-when-I-really-need-it, but this is, in fact, quite terse for what it does.&lt;/p&gt;
+
+&lt;p&gt;Let's go through some of the options and arguments:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;--start&lt;/code&gt;: The easiest and clearest of them all. It kicks off the daemon.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;--pidfile=PATH&lt;/code&gt;: This is the location of the pidfile which Linux relies on to store the PID once the daemonized process begins. 
+Specifying this path when trying to kill the process will also provide the PID that needs to be killed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;--m&lt;/code&gt;: Used in tandem with the &lt;code&gt;--pidfile=PATH&lt;/code&gt; option. It will create a file, if your program does not do it already, at the specified path and store the PID there.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-u USER&lt;/code&gt;: Specify a user that the process will be owned by.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;-d PATH&lt;/code&gt;: &lt;code&gt;start-stop-daemon&lt;/code&gt; will change to this directory before it executes the process. This is especially useful if oftentimes you will need to execute the process in a given directory. If this option is not provided, &lt;code&gt;start-stop-daemon&lt;/code&gt; will run in the root directory.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;b&lt;/code&gt;: Or background. If your program does not detach by itself-most Ruby programs do not-then use this option.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;--startas&lt;/code&gt;: This is the &lt;strong&gt;executable&lt;/strong&gt; that will run as the daemonized process. Remember to chmod your file before executing &lt;code&gt;start-stop-daemon&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note: &lt;code&gt;start-stop-daemon&lt;/code&gt; does &lt;strong&gt;nothing&lt;/strong&gt; to monitor the process.&lt;/p&gt;
+
+&lt;p&gt;If you need more options, check out the man pages &lt;a href="http://man7.org/linux/man-pages/man8/start-stop-daemon.8.html"&gt;here&lt;/a&gt;, but this is enough to get going.&lt;/p&gt;
+
+&lt;h2 id="theprocesshydra"&gt;The Process Hydra&lt;/h2&gt;
+
+&lt;p&gt;Here is an example script of the executable that may want to be run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;#!/bin/bash
+# Location: ~/awesome_task
+# Executes a task that is definitely awesome
+
+rake run_my:definitely_awesome_task  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And &lt;strong&gt;&lt;em&gt;this&lt;/em&gt;&lt;/strong&gt; is also the process that has its process ID stored in the path option given to &lt;code&gt;--pidfile&lt;/code&gt;. &lt;/p&gt;
+
+&lt;p&gt;Catch that?&lt;/p&gt;
+
+&lt;p&gt;Let's look a little closer.&lt;/p&gt;
+
+&lt;p&gt;Suppose we are quite done with this process (as it's been running for 8 hours) and decide to kill it.&lt;/p&gt;
+
+&lt;p&gt;First we need the process:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ cat /path/to/pidfile.pid
+=&amp;gt; 9384
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then we try to kill it off:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ kill 9384
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All done right? Not so fast! Let's make a quick check:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ ps aux | grep awesome_task
+...
+$USER 9385 10.0 38.3 304958 128399 ?      S1     08:00   8:01 ruby /path/to/bin/rake run_my:definitely_awesome_task
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;How can our rake task still exist??&lt;/p&gt;
+
+&lt;p&gt;There are actually two processes at play here: &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The bash script  &lt;/li&gt;
+&lt;li&gt;&lt;em&gt;AND&lt;/em&gt; the rake task.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The rake task is executed and ran as another process whose parent process is the bash script. This means that &lt;em&gt;the rake task can continue running even if the bash script is killed off&lt;/em&gt;. &lt;/p&gt;
+
+&lt;p&gt;However, this also means that if the rake task is killed, the bash script will execute the rest of its script (of which, in this example, there is nothing else) and exit. In other words, there is a chance that &lt;em&gt;killing off the child process very well could end the parent process&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id="givingdaemonslife"&gt;Giving Daemons Life&lt;/h2&gt;
+
+&lt;p&gt;There are many services out there that monitor daemons and make sure they are alive. However, if all that is required is that a task be run over and over (which was my use-case) then the following may be all you need:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-bash"&gt;#!/bin/bash
+
+while true  
+do  
+    rake another:definitely_awesome_task
+done  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Unless the server crashes or some reason the process is randomly killed off then this should last for quite some time. Indefinitely, in fact.&lt;/p&gt;
+
+&lt;p&gt;Order matters in death. Remember: &lt;strong&gt;&lt;em&gt;parents die first.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want to kill off both processes, make sure to identify both processes and kill the parent first. Killing the parent first gives you the guarantee that no other process will be spawned from the rest of the execution of the script. While this may not always be the case, an infinite loop always carries the chance of executing something faster than you can ensure its death.&lt;/p&gt;
+
+&lt;p&gt;Now that the daemons are setup to be run, let's hop over the wire.&lt;/p&gt;
+
+&lt;h2 id="possiblesshproblems"&gt;Possible SSH Problems&lt;/h2&gt;
+
+&lt;p&gt;There are several problems you may encounter if your code executes commands over ssh. Even if all you do is execute something as simple as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ ssh numbluk@ip ~/bash_script_with_crazy_simple_task
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I still recommend that you read the rest of the way through.&lt;/p&gt;
+
+&lt;h4 id="strangeparsing"&gt;Strange Parsing&lt;/h4&gt;
+
+&lt;p&gt;SSH has a peculiar parsing syntax which means that sometimes it will parse things in unexpected ways. To get around this there are two steps you can follow to ensure your results are consistent with what to expect from a local shell:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Prefer constructing your argument as a string first if your rake task relies on making a command over ssh&lt;/li&gt;
+&lt;li&gt;Always quote your commands&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Bad&lt;/strong&gt;: &lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-s"&gt;$ ssh numbluk@ip ls -alh ~/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Good&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ ssh numbluk@ip "ls -alh ~/"
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id="redirectiontonowhere"&gt;Redirection to Nowhere&lt;/h4&gt;
+
+&lt;p&gt;One-time ssh commands are executed remotely, however, the output is redirected to your local shell. This means that if you rely on the output of the remotely executed command that the output must be stored in a variable if it is to be used again. &lt;/p&gt;
+
+&lt;p&gt;Always expect unexpected redirection when dealing with ssh. My recommendation is that a test should always be made locally first and then progress to making the same command over ssh.&lt;/p&gt;
+
+&lt;h4 id="noteveryonesenvironment"&gt;Not Everyone's Environment&lt;/h4&gt;
+
+&lt;p&gt;If your rake task relies on environment variables at all during its execution, then you may run into a problem with ssh. &lt;/p&gt;
+
+&lt;p&gt;This problem is almost a phantom as a rake task may very well execute, but it will not execute the correct variables.&lt;/p&gt;
+
+&lt;p&gt;To get around this, do the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ ssh numbluk@ip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Open &lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt; and edit or add&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+PermitUserEnvironment yes  
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, you must specify what the ssh'd user's environment will be. To permit everything in the current ssh environment:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-sh"&gt;$ env &amp;gt;&amp;gt; ~/.ssh/environment
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that should do it!&lt;/p&gt;
+
+&lt;h2 id="inmemoriam"&gt;In Memoriam&lt;/h2&gt;
+
+&lt;p&gt;I want to give a big thanks to &lt;a href="https://pdxwolfy.wordpress.com/"&gt;Pete Hanson&lt;/a&gt;'s Linux know-how; he was an immeasurable help throughout this drawn-out process.&lt;/p&gt;
+
+&lt;p&gt;Also, thanks to &lt;a href="http://www.michaelrmentele.com/"&gt;Michael Mentele&lt;/a&gt; for being a superb rubber duck.&lt;/p&gt;</content:encoded></item></channel></rss>
