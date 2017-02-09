@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Lukas Nimmo</title><description>I tell stories about things that interest me.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Thu, 09 Feb 2017 23:01:15 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</title><description>&lt;p&gt;&lt;a href="http://www.opensourcewatch.io"&gt; &lt;br&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Lukas Nimmo</title><description>I tell stories about things that interest me.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Thu, 09 Feb 2017 23:34:27 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</title><description>&lt;p&gt;&lt;a href="http://www.opensourcewatch.io"&gt; &lt;br&gt;
   &lt;img src="http://localhost:2368/content/images/2017/02/logo-opensourcewatch__green.png" alt="opensourcewatch logo" id="osw_logo"&gt;
 &lt;/a&gt;&lt;/p&gt;
 
@@ -6,7 +6,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;How it All Began&lt;/li&gt;
-&lt;li&gt;THe Problem of Shared State&lt;/li&gt;
+&lt;li&gt;The Problem of Shared State&lt;/li&gt;
 &lt;li&gt;The More the Merrier! Or So We Thought&lt;/li&gt;
 &lt;li&gt;Growing Pains&lt;/li&gt;
 &lt;li&gt;Making Requests Count&lt;/li&gt;
@@ -24,7 +24,7 @@ Open Source Watch started as a collaborative idea between &lt;a href="http://get
 
 &lt;ul&gt;
 &lt;li&gt;How it All Began&lt;/li&gt;
-&lt;li&gt;THe Problem of Shared State&lt;/li&gt;
+&lt;li&gt;The Problem of Shared State&lt;/li&gt;
 &lt;li&gt;The More the Merrier! Or So We Thought&lt;/li&gt;
 &lt;li&gt;Growing Pains&lt;/li&gt;
 &lt;li&gt;Making Requests Count&lt;/li&gt;
@@ -235,27 +235,19 @@ done
 
 &lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/20_thinking_1-1.png" alt=""&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;Well, our server activity hasn't increased, in fact it has decreased, so we can eliminate the scraper servers right off the bat.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;Well, our server activity hasn't increased, in fact it has decreased, so we can eliminate the scraper servers right off the bat.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/20_thinking_2-4.png" alt=""&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;Our request activity has decreased, so it can't be anything to do with Github.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;Our request activity has decreased, so it can't be anything to do with Github.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/21_thinking_2-1.png" alt=""&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;The only difference is the number of records that are being retrieved. Now that our responses are often rich with new data that needs to be stored, is it possible the DB server is being overwhelmed? No, the CPU usage is high, but far from being overwhelmed.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;The only difference is the number of records that are being retrieved. Now that our responses are often rich with new data that needs to be stored, is it possible the DB server is being overwhelmed? No, the CPU usage is high, but far from being overwhelmed.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/22_thinking_3-1.png" alt=""&gt;&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;All that remains is something to do with Postgres or the connections to Postgres.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;All that remains is something to do with Postgres or the connections to Postgres.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/23_thinking_4-1.png" alt=""&gt;&lt;/p&gt;
 
