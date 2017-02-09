@@ -1,0 +1,982 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=4caf425bd0">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="Lukas Nimmo">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month">
+    <meta property="og:description" content="Table of Contents How it All Began THe Problem of Shared State The More the Merrier! Or So We Thought Growing Pains Making Requests Count In the End How it all began FIXME: Make sure this is attractive Open Source Watch started as a collaborative idea between Michael Mentele and">
+    <meta property="og:url" content="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/">
+    <meta property="article:published_time" content="2017-02-09T22:54:29.000Z">
+    <meta property="article:modified_time" content="2017-02-09T23:00:39.000Z">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month">
+    <meta name="twitter:description" content="Table of Contents How it All Began THe Problem of Shared State The More the Merrier! Or So We Thought Growing Pains Making Requests Count In the End How it all began FIXME: Make sure this is attractive Open Source Watch started as a collaborative idea between Michael Mentele and">
+    <meta name="twitter:url" content="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Lukas Nimmo">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Lukas Nimmo",
+        "logo": "http://localhost:2368/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Lukas Nimmo",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/fd080461b35c3dcb5911e38d5f58c5af?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2368/author/lukas/",
+        "sameAs": [],
+        "description": "I enjoy writing software and I constantly wish I was in the mountains."
+    },
+    "headline": "How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month",
+    "url": "http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/",
+    "datePublished": "2017-02-09T22:54:29.000Z",
+    "dateModified": "2017-02-09T23:00:39.000Z",
+    "description": "Table of Contents How it All Began THe Problem of Shared State The More the Merrier! Or So We Thought Growing Pains Making Requests Count In the End How it all began FIXME: Make sure this is attractive Open Source Watch started as a collaborative idea between Michael Mentele and",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.11">
+    <link rel="alternate" type="application/rss+xml" title="Lukas Nimmo" href="../../../../rss/index.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+            <li class="nav-home" role="presentation"><a href="../../../../">Home</a></li>
+    </ul>
+        <a class="subscribe-button icon-feed" href="../../../../rss/index.rss">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">Menu</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-02-09">09 February 2017</time> 
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p><a href="http://www.opensourcewatch.io"> <br>
+  <img src="../../../../content/images/2017/02/logo-opensourcewatch__green.png" alt="opensourcewatch logo" id="osw_logo">
+</a></p>
+
+<h2 id="tableofcontents">Table of Contents</h2>
+
+<ul>
+<li>How it All Began</li>
+<li>THe Problem of Shared State</li>
+<li>The More the Merrier! Or So We Thought</li>
+<li>Growing Pains</li>
+<li>Making Requests Count</li>
+<li>In the End</li>
+</ul>
+
+<h2 id="howitallbegan">How it all began</h2>
+
+<p><strong>FIXME: Make sure this is attractive</strong>
+Open Source Watch started as a collaborative idea between <a href="http://getmichaelonboard.com">Michael Mentele</a> and I. What began as an attempt to measure the impact of projects and developers within the Ruby ecosystem eventually branched out to do the same, but on a much larger scale: we wanted to gauge the activity of open-source projects on Github.</p>
+
+<p>That meant we had to hone in on the questions we wanted to answer. Eventually we settled with the following:</p>
+
+<ol>
+<li>What are the most active repositories?  </li>
+<li>Who are the most active users?  </li>
+<li>What issues are most active?  </li>
+<li>Which users talk the most?</li>
+</ol>
+
+<p>Here is the current state of Open Source Watch: <br>
+<img src="../../../../content/images/2017/02/osw_home_full.png" alt=""></p>
+
+<p>As you can see from the homepage, the front-end is a very small piece of the overall project.</p>
+
+<p><img src="../../../../content/images/2017/02/overview_glacier.png" alt=""></p>
+
+<p>In fact, the front-end is so small that the rest of the conversation will only mention it as it pertains to the back-end. What does the back-end look like? Well, let's see.</p>
+
+<h3 id="overview">Overview</h3>
+
+<p>Here is a high-level look at our data acquisition process:</p>
+
+<p><img src="../../../../content/images/2017/02/system_overview--1-.png" alt=""></p>
+
+<p>Four times a day we scrape the top 100,000 repositories on Github using 3 servers (represented by the dispatcher objects) which are coordinated by a Redis queue. In total, roughly 1.2 million requests per day are made to Github (don't worry, we won't be overwhelming them anytime soon).</p>
+
+<h2 id="inthebeginning">In the Beginning</h2>
+
+<p>We began by retrieving the top 100,000 repositories using Github's Search API and reverse sorting by the star count and decremented by one star each time to ensure we grabbed all repositories at each star count. As an aside, Github's Search API can be flimsy and inaccurate with holes in the data it returns if the API request is not specific enough (this is why we decremented the star count by one each time instead of relying on Github's last page of data to decide the next request). </p>
+
+<p>Scraping the top Repositories was a one-time job where the data was stored in a PostgreSQL database. Now all we had to do was pull all of the repositories into memory and begin scraping!</p>
+
+<p><img src="../../../../content/images/2017/02/iteration_0.png" alt=""></p>
+
+<p>Or not. The problem we ran into was speed. We believe that developers should be able to see updated information from when they begin their work in the morning to when they finish at the end of the day. For that reason we selected 8 hours as our goal window.</p>
+
+<p>This meant one server was not going to be enough-in fact it would take roughly 36 hours and that's to answer just one of the questions within one time range. Solution? Scale up!</p>
+
+<p><img src="../../../../content/images/2017/02/iteration_1-1.png" alt=""></p>
+
+<p>More scrapers means the faster we can go and we calculated that with 6 processes we can get within the 8 hour window.</p>
+
+<h2 id="theproblemofsharedstate">The Problem of Shared State</h2>
+
+<p>Right now our scraper keeps the list of repos internally as a circular queue. We shift from the front and immediately push that repository to the back like so:</p>
+
+<p><img src="../../../../content/images/2017/02/current_state_of_scraper.jpg" alt=""></p>
+
+<p>With this data structure we can always ensure that we are getting the oldest repository with little cost.</p>
+
+<p>Our problem is that we need to add scrapers. However, at this point in time they will not be working off the same queue; each has its own list and is working through it independently:</p>
+
+<p><img src="../../../../content/images/2017/02/shared_state.png" alt=""></p>
+
+<p>What we want is for our scrapers to be working off the same list, so we need to extract and centralize this queue state:</p>
+
+<p><img src="../../../../content/images/2017/02/non_shared_state.png" alt=""></p>
+
+<p>Not only will this allow every scraper to interact with the oldest piece of data, but it means we do not have to manually oversee coordination.</p>
+
+<h3 id="coordinationoptions">Coordination Options</h3>
+
+<p>But how do we implement this? Two options occurred to us: using the database or using Redis.</p>
+
+<p>First, we could use the current database as a pseudo-queue by timestamping the last time a repository was scraped and then making sure we retrieved the row with the oldest updated_at column. However, this means that every time we want the next repository, we have to do a scan to find the oldest timestamp. This is awfully slow:</p>
+
+<p><img src="../../../../content/images/2017/02/10_db_coord_opt_before_idx-1.jpg" alt=""></p>
+
+<p>What if we indexed that column? It's definitely faster and clocks in at O(log(n)):</p>
+
+<p><img src="../../../../content/images/2017/02/11_db_coord_opt_after_idx.jpg" alt=""></p>
+
+<p>What we didn't like is that the more data we decided to track meant the slower it would become and one thing we especially liked about the previous queue was the O(1) complexity.</p>
+
+<p>This led us to think of another option...</p>
+
+<p>Secondly, there's Redis. Often used as a shared queue for workers, Redis allows us to implement the circular queue without any search necessary. Here is an example benchmark to get an idea of its throughput:</p>
+
+<p><img src="../../../../content/images/2017/02/12_redis_benchmark.jpg" alt=""></p>
+
+<p>Since we use the queue data structure, the operation is always O(1). On top of that, we our system is now more orthogonal as the concerns of storage and coordination are separate.</p>
+
+<h3 id="collaboration">Collaboration</h3>
+
+<p>Here is the how collaboration is implemented with Redis:</p>
+
+<p><img src="../../../../content/images/2017/02/13_obj_collab.png" alt=""></p>
+
+<p>There is a queue object that is a layer on top of Redis which manages the queue. The dispatcher, the interface between the scrapers and the queue, then requests the next repository from the queue object. The queue object shifts a repository from the from the front of the Redis queue, copies it, and immediately pushes it to the back of the queue. The dispatcher gets a clone and passes the data from the queue to its collaborating scraper agents.</p>
+
+<h3 id="scaleuporscaleout">Scale Up or Scale Out?</h3>
+
+<p>Now that the scrapers could successfully coordinate with the Redis queue, the next question was whether to scale up or scale out. </p>
+
+<p>There are several problems associated with this process: <br>
+- Fear of being blacklisted by Github. If we scaled up, would we be making so many requests to Github that our IP would eventually be banned? We did not want to have to deal with IP shuffling or other solutions; we wanted to get on with our project.
+- Discovery: Github throttles on consistent hits to the same repository (such as commit pagination). <em>However</em>, they do not do so if the penetration depth is low (not pagination through an entire history of commits).
+- Scaling up concurrent processes = diminishing returns. Our processes are memory hogs, but it doesn't matter as more than two processes give diminishing returns:</p>
+
+<p><img src="../../../../content/images/2017/02/14_concurrent_diminishing_returns.png" alt=""></p>
+
+<ul>
+<li>Servers are cheap; our time is not. Tuning the scrapers to get the most of out of them meant we had to consider the point at which the amount of time spent was detrimental to the project as a whole vs going with our original conclusion of two processes on every server and just spinning up more servers.</li>
+</ul>
+
+<h2 id="themorethemerrierorsowethought">The More the Merrier! Or So We Thought</h2>
+
+<p>Going back to our system overview:</p>
+
+<p><img src="../../../../content/images/2017/02/15_more_the_merrier.png" alt=""></p>
+
+<p>We now have many servers with multiple processes sharing a single queue on Redis. Everything is great!</p>
+
+<p>Or is it? </p>
+
+<h3 id="moreserversmoreheadaches">More Servers, More Headaches</h3>
+
+<p><img src="../../../../content/images/2017/02/16_dilbert.jpg" alt=""></p>
+
+<p>Currently, we have six processes and all of them must be micromanaged which involves having a terminal open for each individual process. Why? The SSH connection must remain open on our local machine to run the scraper process. Overall, this meant the procedure of monitoring them was <em>extremely</em> time consuming.</p>
+
+<p>A normal day might look like the following: wake up, check on the processes from the night before, and-*Gasp!*-the scrapers all crashed in the middle of the night! Losing this valuable time meant we lost hundreds of thousands of requests.  We would then debug and redeploy with no guarantee that we wouldn't run into some other edge-case. Much of this had to do with handling brittle data and while this whole affair of running into errors time and time again helped create a more robust system, we still needed a way to cover the unexpected .</p>
+
+<p>On top of all of this was an additional cost of cognitive load:</p>
+
+<pre><code class="language-ruby">every.10.seconds do  
+  train_of_thought.derail
+
+  if scraper.down?
+    train_of_thought.crash
+    scraper.debug
+    scraper.start
+    dev.pray
+  end
+end  
+</code></pre>
+
+<p>Babysitting the scrapers required that there constantly be something knocking at the back of our mind. This grew especially tiresome whenever we needed full concentration to focus on something important; not a very efficient use of time at all.</p>
+
+<h3 id="howcanwestopmicromanagingourscrapers">How can we stop micromanaging our scrapers?</h3>
+
+<p>It was mentioned above that in order to keep the scrapers running, a connection had to remain alive between our local machines and the remote ones. Why? Running a scraper first requires an SSH connection and second that the scraper process be left open in that same session. That is the very opposite of what we want; we want to be able to close the SSH connection and the scraper process remain active. However, the current execution would not allow this as the scraper process is attached to the SSH session. In Linux, everything is a process and the scraper process is a child process of our SSH session. Therefore if the ssh session dies, so too does the scraper process.</p>
+
+<p>We need to detach from the SSH session and move the scraper to a background process. When a process is forked and then exits, it becomes an orphan. Any orphan processes are then gathered up by the init process, the "grandfather" of all other processes.</p>
+
+<p>Enter daemons. Daemons are background processes that are in no way attached to a terminal and because they aren't attached to a terminal, we can close the SSH connection and it will still run. One of the downsides of this is the necessity of thorough logging: no longer will the SSH connection be active, which means that even if the daemon's output was printed to STDOUT, there would be no way to see it.</p>
+
+<h3 id="bindingdaemonstoourwill">Binding Daemons to Our Will</h3>
+
+<p>But how do we ensure the daemons are always running? We first considered Monit, but it was much, much more than we needed and the time required to familiarize ourselves with it just wasn't worth it.</p>
+
+<p>In the end, a simple Bash script was settled on:</p>
+
+<pre><code class="language-sh">while true  
+do  
+  rake ScraperDispatcher:scrape_commits
+done  
+</code></pre>
+
+<p>Each scraper process is run as a Rake task wrapped within an infinite Bash loop. In the case that the Rake task crashes, it immediately begins again. The only way this loop will every be interrupted is if our server crashes or the bash process is killed.</p>
+
+<p>We initiate this entire management process with a CLI application.</p>
+
+<h3 id="thepowerofdaemons">The Power of Daemons</h3>
+
+<p>Below, you can see the status call of the CLI app we've written to remotely manage our daemons:</p>
+
+<p><img src="../../../../content/images/2017/02/17_the_power_of_daemons.jpg" alt=""></p>
+
+<p>From our one console, with a few keyboard strokes, we can check on all of our scrapers. Centralized control makes deployment simple, monitoring a joy (if that's a thing), and restarting painless. No longer do the processes have to be micromanaged.</p>
+
+<h2 id="growingpainssystembottlenecks">Growing Pains - System Bottlenecks</h2>
+
+<p>We've been acquiring data during the 7 days that we've been working on the project and the database has reached a few hundred-thousand records. </p>
+
+<h3 id="morequestionsmoredata">More Questions, More Data</h3>
+
+<p>We want to answer questions related to the past 30 and 90 days. We could wait 83 days, but we are programmers; we can do better. The next phase involved scraping the last 90 days of data as a one-time job. Our estimate was that it would take roughly 3 days with our 6 processes.</p>
+
+<h3 id="moredatamoreproblems">More data, More Problems</h3>
+
+<p>We tweaked our scrapers to grab historical data related over the past 90 days. As we quickly found out, more data meant new problems:</p>
+
+<p><img src="../../../../content/images/2017/02/18_more_data_more_problems.jpg" alt=""></p>
+
+<p>Only scraping daily data brought in around 25,000 new records a day, but we were now getting hundreds of thousands to millions of records a day. Our request capacity quickly plummeted to 30% of what we expected. </p>
+
+<p>We've been downshifted...</p>
+
+<p><img src="../../../../content/images/2017/02/19_downshifted.jpg" alt=""></p>
+
+<p>At 30% capacity, it will take 10 days to retrieve all the data needed. That's far too long.</p>
+
+<h3 id="puttingonourthinkingcaps">Putting on Our Thinking Caps</h3>
+
+<p>Our scrapers are waiting on something in the system. What should be considered?</p>
+
+<p><img src="../../../../content/images/2017/02/20_thinking_1-1.png" alt=""></p>
+
+<ol>
+<li>Well, our server activity hasn't increased, in fact it has decreased, so we can eliminate the scraper servers right off the bat.</li>
+</ol>
+
+<p><img src="../../../../content/images/2017/02/20_thinking_2-4.png" alt=""></p>
+
+<ol>
+<li>Our request activity has decreased, so it can't be anything to do with Github.</li>
+</ol>
+
+<p><img src="../../../../content/images/2017/02/21_thinking_2-1.png" alt=""></p>
+
+<ol>
+<li>The only difference is the number of records that are being retrieved. Now that our responses are often rich with new data that needs to be stored, is it possible the DB server is being overwhelmed? No, the CPU usage is high, but far from being overwhelmed.</li>
+</ol>
+
+<p><img src="../../../../content/images/2017/02/22_thinking_3-1.png" alt=""></p>
+
+<ol>
+<li>All that remains is something to do with Postgres or the connections to Postgres.</li>
+</ol>
+
+<p><img src="../../../../content/images/2017/02/23_thinking_4-1.png" alt=""></p>
+
+<h3 id="ispostgresitselfbeingoverwhelmed">Is Postgres Itself being Overwhelmed?</h3>
+
+<p>With 6 processes, we are writing to the database more often. Is it possible that Postgres can't handle writes from all six servers at once?</p>
+
+<p>Here is a benchmark of the insertion speed into Postgres:</p>
+
+<p><img src="../../../../content/images/2017/02/24_pg_insertion_benchmark-1.jpg" alt=""></p>
+
+<p>PG Insertion Capacity <br>
+= (60 / .000202) insertions / min <br>
+= <strong>297,029</strong> insertions / min</p>
+
+<p>Current AVG Rate of Insertions = 2000 insertions / min</p>
+
+<p>With the current rate &lt; 1% of capacity, insertions are not the problem. We will have to keep sleuthing...</p>
+
+<h3 id="isitslowreads">Is it Slow Reads?</h3>
+
+<p>If the problem isn't insertions, what about reads? Here is an example of attempting to find an issue if it exists, else make a new one:</p>
+
+<pre><code class="language-ruby">issue = Issue.find_or_create_by(  
+  repository_id: built_issue['repository_id'],
+  issue_number: built_issue['issue_number']
+) do |i|
+  i.name = built_issue['name']
+  ...
+end  
+issues &lt;&lt; issue  
+</code></pre>
+
+<p>This is necessary as there is a need to associate issues with their respective comments:</p>
+
+<pre><code class="language-ruby"># Get all the comments for each issue
+issues.each do |issue|  
+  ...
+  raw_comments.each do |raw_comment|
+    ...
+    comment_hash['issue_id'] = issue.id
+    @comments_cache &lt;&lt; IssueComment.new(comment_hash)
+  end
+end  
+</code></pre>
+
+<p>We began to benchmark our queries and we noticed that when a search is made for each issue, it is done on two non-indexed columns. This sequential scan is O(n) because we need to scan two columns of arbitrary size. If we index these columns together, the complexity can be reduced to O(log(n)). </p>
+
+<p>Here is before indexing:</p>
+
+<p><img src="../../../../content/images/2017/02/25_indexing_benchmark_before.jpg" alt=""></p>
+
+<p>and after indexing:</p>
+
+<p><img src="../../../../content/images/2017/02/26_indexing_benchmarks_after.png" alt=""></p>
+
+<p>Before, it took a whopping 341 ms just to look up an issue in the table with a sequential scan.</p>
+
+<p>After, it does a heap scan which significantly impacted the lookup time. From then on we knew to keep a close eye on other similar situations as in this case the index made a 2700X difference.</p>
+
+<h3 id="gainingspeed">Gaining Speed...</h3>
+
+<p><img src="../../../../content/images/2017/02/27_gaining_speed.png" alt=""></p>
+
+<p>We picked up a great deal of speed with the index. At this moment in time, the system was running around 60% capacity. While this was much better, it was still slow...</p>
+
+<h3 id="isitaggregatelatencymanyqueriesoverthewire">Is it Aggregate Latency (many queries over the wire)?</h3>
+
+<p>Our queries are now fast enough, but are too many being made? Again, it required looking through our code and thinking about how it was interacting with the database. Eventually, this caught our eye:</p>
+
+<pre><code class="language-ruby"># Get all the comments for each issue
+issues.each do |issue|  
+  ...
+  raw_comments = @github_doc.doc.css("div.timeline-comment-wrapper")
+  raw_comments.each do |raw_comment|
+    comment_hash = build_comment(raw_comment)
+    comment_hash['issue_id'] = issue.id
+    @comments_cache &lt;&lt; IssueComment.create(comment_hash)
+  end
+  ...
+</code></pre>
+
+<p>A query was being made for each and every issue comment that was created. What if, instead, we cached records in memory and replaced many separate queries with one bulk import?</p>
+
+<h3 id="aggregatelatencybegone">Aggregate Latency Begone!</h3>
+
+<p>Instead of immediately attempting to create an issue comment, a new IssueComment model instance is added to an array so that the above code now looks like this:</p>
+
+<pre><code class="language-ruby"># Get all the comments for each issue
+issues.each do |issue|  
+  ...
+  raw_comments = @github_doc.doc.css("div.timeline-comment-wrapper")
+  ...
+  raw_comments.each do |raw_comment|
+    comment_hash = build_commnet(raw_comment)
+    comment_hash['issue_id'] = issue.id
+    @comments_cache &lt;&lt; IssueComment.new(comment_hash)
+  end
+  ...
+</code></pre>
+
+<p>And whenever the array cache reaches above 30 records, a batch insert is made on all records in the cache:</p>
+
+<pre><code class="language-ruby"># Continuing from above...
+  ...
+  if @comments_cache.count &gt; 30
+    IssueComment.import(@comments_cache)
+    @comments_cache.clear
+  end
+end  
+</code></pre>
+
+<p>Why 30? It just so happens that is the maximum number of issues on a page.</p>
+
+<p>Here is a visualization:</p>
+
+<p><strong>Many Queries</strong></p>
+
+<p><img src="../../../../content/images/2017/02/28_many_pings.png" alt=""></p>
+
+<p><strong>Single Query</strong></p>
+
+<p><img src="../../../../content/images/2017/02/29_single_ping.png" alt=""></p>
+
+<p>This is just a visualization. The latency between the scraper server and database server is extremely fast, less than a millisecond, but if latency exists for every single query, and a large number of them are made, then the latency starts to add up. In this case, it meant around 30 less round trips to for each bulk import.</p>
+
+<h3 id="vrrrr">Vrrrr...</h3>
+
+<p><img src="../../../../content/images/2017/02/30_vrrr.png" alt=""></p>
+
+<p>At this point, we are somewhere near 80% capacity, but we didn't give up the pursuit of optimization quite yet...</p>
+
+<h3 id="behindtheormcurtain">Behind the ORM Curtain</h3>
+
+<p>Say we have the following validation:</p>
+
+<pre><code class="language-ruby">class IssueComment &lt; ActiveRecord::Base  
+  ...
+  validates :github_created_at, uniqueness: { scope: [:issue_id] }
+end  
+</code></pre>
+
+<p>Behind the scenes, ActiveRecord sends another query over the wire <strong>every time we attempt to create a record</strong>:</p>
+
+<p><img src="../../../../content/images/2017/02/31_orm_curtain_extra_query.png" alt=""></p>
+
+<p>Above, we spoke of reducing total queries from around 30 to 1, but in reality they were being reduced from around 60 to 31. All the validation queries were being fired separately, one-by-one behind the scenes for each insertion.</p>
+
+<p>If the validation is pushed down to the database as a constraint, the no longer will an extra query be made for a creation attempt...</p>
+
+<h3 id="pushingvalidationstothedatabase">Pushing Validations to the Database</h3>
+
+<p>Here is a snapshot of what the constraint now looks like:</p>
+
+<p><img src="../../../../content/images/2017/02/32_orm_curtain_db_layer_validation.png" alt=""></p>
+
+<p>And here is a creation attempt:</p>
+
+<p><img src="../../../../content/images/2017/02/33_orm_curtain_no_ar_validation.png" alt=""></p>
+
+<p>As you can see, no more extra queries! We have successfully reduced the number of queries from around 60 to 1!</p>
+
+<h3 id="vrroom">Vrr-OOM!</h3>
+
+<p><img src="../../../../content/images/2017/02/34_vrroooom.png" alt=""></p>
+
+<p>At this point, we are now back to the capacity that we had originally anticipated. You'll notice that 5th gear was never reached! That is not a mistake. Our acquisition could still be further tuned, but we'll get to that later.</p>
+
+<h2 id="exploringthedata">Exploring the Data</h2>
+
+<p>After all of that hard work, how about we take a look at some of the data we've collected? by going back back to the webpage:</p>
+
+<p><img src="../../../../content/images/2017/02/35_explore_data.png" alt=""></p>
+
+<p>Initially, it took about a minute to load. That is about as fast as this stone turtle:</p>
+
+<p><img src="../../../../content/images/2017/02/36_stone_turtle.jpg" alt=""></p>
+
+<p>No one wants to see OSW that bad!</p>
+
+<p>Here is a sample query of what is required to display the webpage:</p>
+
+<pre><code class="language-sql">SELECT users.*, count(users.id) AS hit_count  
+FROM "users" INNER JOIN issue_comments  
+  ON issue_comments.user_id = users.id
+WHERE ("issue_comments"."github_created_at"  
+  BETWEEN (CURRENT_DATE - INTERVAL '0 day' + TIME '00:00:00')
+  AND (CURRENT_DATE + TIME '23:59:59.99') )
+GROUP BY users.id ORDER BY hit_count desc;  
+</code></pre>
+
+<h3 id="puttingourthinkingcapsbackon">Putting our Thinking Caps Back On...</h3>
+
+<p>Here is an analysis of the query above:</p>
+
+<p><img src="../../../../content/images/2017/02/37_front_end_execution_time.png" alt=""></p>
+
+<p>The query takes almost 13 seconds (remember, this is 1 out of 16 total queries that need to be made). It's slow. Very slow. And there is no way around that.</p>
+
+<p>But why is it slow?</p>
+
+<p>Well, we have to join a couple tables that have millions of rows:</p>
+
+<p><img src="../../../../content/images/2017/02/38_front_end_merge_join.png" alt=""></p>
+
+<p>Then we do some aggregating:</p>
+
+<p><img src="../../../../content/images/2017/02/39_front_end_aggregate.png" alt=""></p>
+
+<p>Can we optimize our query? There is no obvious solution there.  </p>
+
+<p>Can we denormalize and remove the costly join? Yes. If we did that we would could potentially cut the query time in half, or 25 seconds. That still would not be enough. We need ALL queries together to take less than 100 ms so that the webpage load times do make a negative impact on the user's experience.</p>
+
+<p>We need orders of magnitude difference in speed! </p>
+
+<h3 id="canwecachethequery">Can we Cache the Query?</h3>
+
+<p>Looking at the query again:</p>
+
+<pre><code class="language-sql">SELECT users.*, count(users.id) AS hit_count  
+FROM "users" INNER JOIN issue_comments  
+  ON issue_comments.user_id = users.id
+WHERE ("issue_comments"."github_created_at"  
+  BETWEEN (CURRENT_DATE - INTERVAL '0 day' + TIME '00:00:00')
+  AND (CURRENT_DATE + TIME '23:59:59.99') )
+GROUP BY users.id ORDER BY hit_count desc;  
+</code></pre>
+
+<p>There is no interpolation of user input; the queries that we make on the webpage never change and because they never change, we can run them in advance and cache them.</p>
+
+<p>Taking a big-picture look at the system, is it okay for our data to be stale? Yes. We scrape the top 100,000 repositories every 6 hours, so we already have a 6 hour margin of error. Keeping our queries perfectly in sync with our database doesn't add any meaningful business value.</p>
+
+<p>With these criteria considered, we can go ahead with the caching.</p>
+
+<h3 id="lazilyloadedtablecachingcustomtables">Lazily Loaded Table Caching - Custom Tables?</h3>
+
+<p>Lazily loaded caching is required because our system is heavily geared towards write operations. </p>
+
+<p>One option for lazily loaded caching included the following: <br>
+1. Build a lazily refreshed custom table <br>
+2. But then functions would need to be created to update timestamps with: <br>
+- insertion
+- update
+- delete
+3. Finally, we would need to specify a function to handle actually updating stale rows</p>
+
+<p><strong>OR</strong></p>
+
+<p>We could use Postgres' built-in materialized views and refresh periodically with a cron job which looks like this:</p>
+
+<pre><code class="language-ruby">every 5.minutes do  
+  rake 'refresh_matviews'
+end  
+</code></pre>
+
+<h3 id="thematerializedviewimpact">The Materialized View Impact</h3>
+
+<p>Depending on the database solution, there will be different ways to create views and cache queries. For those of you familiar with Postgres, all that is needed is a built-in keyword to tell PG to cache the query results:</p>
+
+<pre><code class="language-sql"># Cache view/query
+CREATE MATERIALIZED VIEW my_cached_query AS [SQL query goes here];  
+</code></pre>
+
+<p>That query can then be queried as if it were a table:</p>
+
+<pre><code class="language-sql"># Query like a normal table
+SELECT * FROM my_cached_query;  
+</code></pre>
+
+<p>The query will need to be refreshed periodically (in our case we did this with a cron job):</p>
+
+<pre><code class="language-sql"># Refresh the view
+REFRESH MATERIALIZED VIEW my_cached_query;  
+</code></pre>
+
+<p>Disclaimer: materialized views are only useful for static SQL queries that can be allowed to have stale data. We qualified this by only updating the matviews every ten minutes.</p>
+
+<p>The impact of using materialized views is huge...</p>
+
+<h4 id="queriesare5000timesfaster">Queries are 5,000 times faster!</h4>
+
+<p>That is almost as fast as the round trip to our server and back! Awesome!</p>
+
+<h3 id="untilweaddedthatn1query">Until We Added that N+1 Query...</h3>
+
+<p>One of the questions we try to answer involves displaying a repository for each active issue we were displaying:</p>
+
+<pre><code class="language-erb">&lt;% @issues.each_with_index do |issue| %&gt;  
+&lt;tr&gt;  
+  &lt;td&gt;
+    &lt;%= link_to issue.repository_name, issue.repository_url %&gt;
+    ...
+</code></pre>
+
+<p>For each issue, there is an additional query made for the associated repository. Here is what it looks like at the database level:</p>
+
+<p><img src="../../../../content/images/2017/02/40_n_plus_one_before.png" alt=""></p>
+
+<p>To fix it, a join was added so that the repository information needed already lived on the cached query:</p>
+
+<pre><code class="language-sql">SELECT tmp.*, repositories.name  
+  AS repository_name, repositories.url
+  AS repository_url
+FROM (  
+  ...
+) as tmp
+INNER JOIN repositories ON repositories.id = tmp.repository;  
+</code></pre>
+
+<p>Now when the server-side rendering looks like this at the database level:</p>
+
+<p><img src="../../../../content/images/2017/02/41_n_plus_one_after.png" alt=""></p>
+
+<p>No more N+1!</p>
+
+<h3 id="impactofserversiderenderingperformancetuning">Impact of Server-Side Rendering Performance Tuning</h3>
+
+<p>After all of this, it helped us achieve the following:</p>
+
+<p><strong>50+ s query times <em>* to *</em>200 ms</strong></p>
+
+<p>and with four queries per page...</p>
+
+<p><strong>50 ms query time per page</strong></p>
+
+<p>Huge improvement!</p>
+
+<h2 id="makingrequestscount">Making Requests Count</h2>
+
+<p>If you remember, we were handling our repositories like this:</p>
+
+<p><img src="../../../../content/images/2017/02/42_obj_collab.png" alt=""></p>
+
+<p>It's a "stupid" circular queue, meaning all repositories are scraped at the same rate.</p>
+
+<h3 id="notallrepositoriesarecreatedequal">Not All Repositories are Created Equal</h3>
+
+<p>Treating all repositories the same in relation to scraping is rather unfortunate because the top 1% of repositories by commit activity are responsible for 42% of commits:</p>
+
+<p><img src="../../../../content/images/2017/02/43_not_all_repos.png" alt=""></p>
+
+<p>On top of that, the top 40% of repositories by activity account for 99% of the top 100,000!</p>
+
+<p>Maybe it's unfair, but more active repositories should be updated more often so as to reduce the latency between when the activity is pushed to Github and our webpage.</p>
+
+<h3 id="priorityqueue">Priority Queue?</h3>
+
+<p>Priority is key.</p>
+
+<p>Let's think about what is needed. Take a look at the following chart:</p>
+
+<p><img src="../../../../content/images/2017/02/44_repos_list.png" alt=""></p>
+
+<p>Say, for example, there is a list of repositories in Redis and the numbers above represent their activity rank where 10 is the most active.</p>
+
+<p>When the queue is first popped, the most active repository is popped and then maybe we put it somewhere in the middle:</p>
+
+<p><img src="../../../../content/images/2017/02/45_repos_10_insert.png" alt=""></p>
+
+<p>The next time the queue is popped, the second-most active repository is removed from the queue and placed further down the from the middle as it is less active than the previous repository and therefore needs to be scraped less:</p>
+
+<p><img src="../../../../content/images/2017/02/46_repos_other_insert.png" alt=""></p>
+
+<p>But how, exactly, will it be implemented?</p>
+
+<h3 id="failedpriorityqueueexperimentbinaryheap">Failed Priority Queue Experiment: Binary Heap</h3>
+
+<p>The first idea was to create a binary heap and maintain it as a priority queue. This was originally look at because priority queues are common use cases for binary heaps.</p>
+
+<p>What is a binary heap<sup id="fnref:1"><a href="index.html#fn:1" rel="footnote">1</a></sup>? Put simply, it is a balanced and complete tree:</p>
+
+<p><img src="../../../../content/images/2017/02/47_heap.png" alt=""></p>
+
+<p>It has a "heap property", meaning all nodes are greater than or equal to their respective children. In other words, the highest scored element will always be the root of the tree.</p>
+
+<p>The most promising feature is that a binary heap can easily be represented as an array. The representation works as follows: the children of an i-th element are always 2i and 2i + 1. This means it can be represented in Redis with ease:</p>
+
+<pre><code class="language-ruby"># Example of heap expressed as array
+[nil, 100, 19, 36, 17, 3, 25, 1, 2, 7]
+</code></pre>
+
+<p>Wait... can we resort to this so simply? No. A value is pushed by adding it to the end of the array and then bubbling it, or heapifying it, through the tree. That entails multiple requests or pulling down the entire state of the Redis queue for resorting.  Also, what happens when multiple scrapers are involved:</p>
+
+<p><img src="../../../../content/images/2017/02/48_redis_concurr_probs.png" alt=""></p>
+
+<p>If multiple scrapers are attempting to bubble values up through Redis, or dequeueing while other processes are enqueueing?</p>
+
+<p>Put simple: it won't work. We could no longer be certain the root value is the highest scored or that any other values are where they should be if any of the enqueueing or dequeueing is done in parallel.</p>
+
+<h3 id="failedpriorityqueueexperimentssortedsets">Failed Priority Queue Experiments: Sorted Sets</h3>
+
+<p>What else can we do? Well, Redis has a built-in data structure called a sorted set that holds key values where the key is the "score." As an added bonus, Redis implements something similar to the binary heap behind the scenes and is smart enough to handle the concurrency problem for us. Great!</p>
+
+<p>However, is Redis fast enough to re-sort 100,000 items faster than we can throw requests at it? Right, the  maximum number of requests with 6 processes is 14 requests per second. That means Redis has to resort 100,000 items 14 times a second in addition to creating a response. Even further, what if we double requests capacity down the line?</p>
+
+<p>Good question. We didn't benchmark it because there is a simpler, more important problem to consider. We have to score our values based on the priority level and then reduce the score based on the number of times they have been visited. An example calculation would like this:</p>
+
+<p>score = priority / (times_scraped + 1)</p>
+
+<p>If that is plotted for a few priority values it yields:</p>
+
+<p><img src="../../../../content/images/2017/02/49_decay_chart.png" alt=""></p>
+
+<p>One problem is that as time goes on, all scores approach zero which means that periodically we will have to shut everything down and reset the score. This additional process must be maintained and if for some reason it doesn't refresh the scores then the whole priority queue breaks. Not only that, if capacity is increased without updating the process it breaks. There is a high maintenance cost involved with resorting to this method without even being sure Redis will be fast enough. Not to mention, how do we tune the frequency distribution? This sounds more painful than it should be. </p>
+
+<p>What is really nice about a circular queue is that the oldest repository is always known and it is has the fastest possible enqueue and dequeue. Can we prioritize, but keep those advantages? Can we prioritize without scoring and sorting?</p>
+
+<h3 id="whatdowereallywant">What do we Really Want?</h3>
+
+<p>Let's go back to the ranked list of nodes:</p>
+
+<p><img src="../../../../content/images/2017/02/50_example_list.png" alt=""></p>
+
+<p>and let us lump this list into three priority levels like so:</p>
+
+<p><img src="../../../../content/images/2017/02/51_lumped_list.png" alt=""></p>
+
+<p>We are going to say say that the frequency ratio is 10:5:1. What we really need is to be able to control the frequency with which each priority level is scraped.</p>
+
+<p>For example, 3 would be scraped 10X by shifting the first node from the front and pushing it to the back of the subset of nodes with a priority of 3:</p>
+
+<p><img src="../../../../content/images/2017/02/52_10x.png" alt=""></p>
+
+<p>And do the same with priority level 2 and 1 with frequencies of 5x and 1x respectively:</p>
+
+<p><img src="../../../../content/images/2017/02/53_5x_and_1x.png" alt=""></p>
+
+<p>All of this led to the following...</p>
+
+<h3 id="staggeredroundrobinprioritizedqueueofqueues">Staggered Round-Robin Prioritized Queue-of-Queues!?</h3>
+
+<p>To prioritize and tune the scraping frequency we used a staggered round-robin prioritized queue-of-queues.  </p>
+
+<p>Or SRRPQQ for short.  </p>
+
+<p>We began by ordering our list of repositories by activity and then range mapping that ordered list into X number of "buckets" where each bucket will get its own Redis queue:</p>
+
+<p><img src="../../../../content/images/2017/02/54_range_mapping.png" alt=""></p>
+
+<p>Then when the dispatcher requests a repository, it will actually be interacting with a priority queue object which has a method to draw from each bucket at the frequency we need:</p>
+
+<p><img src="../../../../content/images/2017/02/55_.dispatch_freq.png" alt=""></p>
+
+<p>This may appear to be a lot to take in, but it really just is a smart priority queue that allows us to easily give more attention to more active repositories and thereby reducing latency between when something is pushed to Github and when that information shows up on our webpage.  </p>
+
+<p>How is this all implemented?  </p>
+
+<h4 id="thecodeenqueueing">The Code: Enqueueing</h4>
+
+<p>First, we calculate the size of each range:  </p>
+
+<pre><code class="language-ruby">def enqueue_prioritized_sub_queues(tracked_repos)  
+  bucket_size = (tracked_repos.count.to_f / PRIORITY_RANGE.length).ceil
+</code></pre>
+
+<p>Then we range map the sorted list of tracked repositories:</p>
+
+<pre><code class="language-ruby">  # Enqueue a sub queue for each priority level
+  index = 0
+  tracked_repos.in_groups_of(bucket_size, false) do |batch|
+</code></pre>
+
+<p>Then we create a stupid circular queue for each bucket and enqueue it into Redis:</p>
+
+<pre><code class="language-ruby">    priority = PRIORITY_RANGE[index]
+    queue_name = sub_queue_name(priority.to_s)
+    index += 1
+
+    sub_queue = CircularRedisQueue.new(batch, queue_name: queue_name)
+    sub_queue.enqueue_redis
+  end
+end  
+</code></pre>
+
+<h4 id="thecodetuninganddequeueing">The Code: Tuning and Dequeueing</h4>
+
+<p>We'll now assume there are 3 circular queues in Redis. We then tune the frequency distribution of scraping in the priority queue object with a reference to each queue we that looks resembles something likes this:</p>
+
+<pre><code class="language-ruby">[3, 2, 1] + [3, 2] + [3]
+</code></pre>
+
+<p>Which is generated from the following method:</p>
+
+<pre><code class="language-ruby">def skewed_distr_of_queues(queues)  
+  skewed_queue_distr = []
+  while queues.length &gt; 0
+    queues.each do |q|
+      skewed_queue_distr &lt;&lt; q
+    end
+    queues.pop
+  end
+  skewed_queue_distr
+end  
+</code></pre>
+
+<p>This above loop maps the number of references to the priority level e.g. 3 would be scraped 3 times, 2 two times, etc.  </p>
+
+<p>Now there is a circular queue of queues! To retrieve the next repository, we rely on the each circular queue object to know which repository to return:  </p>
+
+<pre><code class="language-ruby">def next  
+  # get leftmost queue and push to the end
+  queue = @queues.shift
+  @queues.push(queue)
+  # return the next repository
+  queue.next
+end  
+</code></pre>
+
+<h3 id="frequencydistributionofscraping">Frequency Distribution of Scraping</h3>
+
+<p>The code you saw previously gives us a distribution like this:  </p>
+
+<p><img src="../../../../content/images/2017/02/56_untuned_freq.png" alt=""></p>
+
+<p>If we tune it further by modifying the population of queue references we achieve a distribution that more closely matches the activity of repositories.</p>
+
+<p><img src="../../../../content/images/2017/02/57_tuned_freq.png" alt=""></p>
+
+<p>The Staggered Round-Robin Queue-of-Queues is simple, as fast as possible (zero sorting), and gives precise control over the scraping distribution. </p>
+
+<h2 id="thefutureandbeyond">The Future and Beyond</h2>
+
+<p>What does the future hold for OSW? Let's take a look...</p>
+
+<h3 id="reaching5thgear">Reaching 5th Gear</h3>
+
+<p>To start off, all top 100,000 repositories are scraped within a 5.5 hour time frame. We would like to push that to under an hour.  </p>
+
+<p>Right now, even though our queries are efficient enough, the scrapers still have to wait on them. Here is a diagram that represents the current state:</p>
+
+<p><img src="../../../../content/images/2017/02/58_sleepy_scraper.png" alt=""></p>
+
+<p>Instead of waiting on queries at all, we can maximize server resources if we git rid of the wait time altogether:</p>
+
+<p><img src="../../../../content/images/2017/02/59_bg_workers-1.png" alt=""></p>
+
+<p>Here we decouple the scrapers from the PG database by using background jobs to extract all record interaction into an asynchronous job that handles CRUD actions for the records. This way our scraper can be dedicated just to pulling data down as fast as possible. Altogether this should boost capacity to the maximum possible on each machine. </p>
+
+<p>The other benefit is that the scrapers will use less memory because they wont' need to know about the ORM. The extra memory that normally would have been loaded with each scraper can be used to for extra processes to ensure we are getting the most out of each server.   </p>
+
+<h3 id="forthefunofit">For the Fun of It</h3>
+
+<ul>
+<li>Commit/comment message sentiment analysis</li>
+<li>Tracking trending repositories</li>
+<li>Tracking the top 1 million repositories</li>
+</ul>
+
+<h2 id="intheend">In the End</h2>
+
+<p>We learned quite a few things over the course of this project, but there are a few we especially wanted to highlight:</p>
+
+<ol>
+<li><p>Questions drive acquisition and acquisition drives infrastructure. In other words: spend time on things that solve the problem at hand.</p></li>
+<li><p>Identifying bottlenecks and solving them are more often than not the highest leverage areas and have the biggest ROI on time invested.</p></li>
+<li><p>Teamwork is an amazing thing.</p></li>
+<li><p>Keep a journal! Daily journals are incredibly useful for reviewing your workflows, identifying project bottlenecks (human deficiencies), and realizing where you made made bad assumptions</p></li>
+<li><p>Brain synchronization. One of the greatest challenges of working with another person is getting <em>and staying</em> in sync. Once you have both established a common vision and are working on the same code base it is much easier to move forward. However, diverging ideas occur all the time where you talk about the same thing, but you both have very different mental images of what it looks like. Mockups, diagrams, and representational documentation of some kind are priceless when it comes to eliminating confusion over abstract concepts that are poorly represented verbally.</p></li>
+<li><p>Psychological safety is paramount. It's good for ideas to bump together; it gets rid of the chaff. Discussing decisions creates a kind of idea evolution where the idea grows, shrinks, and becomes something altogether you never would have guessed; it's better. Being detached from ideas helps with this process and always making sure that the idea is critiqued-not the person! This is something I believe Michael and I handled superbly and I couldn't be more thankful for it.  </p></li>
+</ol>
+
+<p>If you followed along to the bottom, thank you! </p>
+
+<p>Hiring? I'm <a href="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/link%20to%20resume">looking</a>!</p>
+
+<p><strong>And don't forget to visit <a href="http://opensourcewatch.io">Open Source Watch</a></strong>!</p>
+
+<div class="footnotes"><ol><li class="footnote" id="fn:1"><p>Check <a href="http://www.brianstorti.com/implementing-a-priority-queue-in-ruby/">here</a> for more <a href="index.html#fnref:1" title="return to article">↩</a></p></li></ol></div>
+        </section>
+
+        <footer class="post-footer">
+
+
+            <figure class="author-image">
+                <a class="img" href="../../../../author/lukas/" style="background-image: url(http://www.gravatar.com/avatar/fd080461b35c3dcb5911e38d5f58c5af?s&amp;)"><span class="hidden">Lukas Nimmo's Picture</span></a>
+            </figure>
+
+            <section class="author">
+                <h4><a href="../../../../author/lukas/">Lukas Nimmo</a></h4>
+
+                    <p>I enjoy writing software and I constantly wish I was in the mountains.</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">USA</span>
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=How%20We%20Became%20the%20Most%20Up-To-Date%20Monitor%20of%20Github%20Activity%20on%20the%20Web%20in%20One%20Month&amp;url=http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story prev no-cover" href="../../../01/25/daemonize-rake-tasks-on-ubuntu-through-ssh/">
+        <section class="post">
+            <h2>How to Daemonize Rake Tasks on Ubuntu Through SSH</h2>
+            <p>Daemons and Rake At some point in your web development journey you may find yourself wanting to execute something…</p>
+        </section>
+    </a>
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../../../../">Lukas Nimmo</a> © 2017</section>
+            <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=4caf425bd0"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=4caf425bd0"></script>
+
+</body>

@@ -1,0 +1,1674 @@
+
+<head>
+    <meta charset="utf-8">
+
+    <title>How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <link rel="shortcut icon" href="../../../../../favicon.ico">
+
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Lukas Nimmo">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month">
+    <meta property="og:description" content="Table of Contents How it All Began THe Problem of Shared State The More the Merrier! Or So We Thought Growing Pains Making Requests Count In the End How it all began FIXME: Make sure this is attractive Open Source Watch started as a collaborative idea between Michael Mentele and">
+    <meta property="og:url" content="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/">
+    <meta property="article:published_time" content="2017-02-09T22:54:29.000Z">
+    <meta property="article:modified_time" content="2017-02-09T23:00:39.000Z">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month">
+    <meta name="twitter:description" content="Table of Contents How it All Began THe Problem of Shared State The More the Merrier! Or So We Thought Growing Pains Making Requests Count In the End How it all began FIXME: Make sure this is attractive Open Source Watch started as a collaborative idea between Michael Mentele and">
+    <meta name="twitter:url" content="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Lukas Nimmo">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Lukas Nimmo",
+        "logo": "http://localhost:2368/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Lukas Nimmo",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/fd080461b35c3dcb5911e38d5f58c5af?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2368/author/lukas/",
+        "sameAs": [],
+        "description": "I enjoy writing software and I constantly wish I was in the mountains."
+    },
+    "headline": "How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month",
+    "url": "http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/",
+    "datePublished": "2017-02-09T22:54:29.000Z",
+    "dateModified": "2017-02-09T23:00:39.000Z",
+    "description": "Table of Contents How it All Began THe Problem of Shared State The More the Merrier! Or So We Thought Growing Pains Making Requests Count In the End How it all began FIXME: Make sure this is attractive Open Source Watch started as a collaborative idea between Michael Mentele and",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.11">
+    <link rel="alternate" type="application/rss+xml" title="Lukas Nimmo" href="../../../../../rss/index.html">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,600,400">
+    <style amp-custom>
+        /* ==========================================================================
+           Table of Contents
+           ========================================================================== */
+
+        /*
+
+            0. Normalize
+            1. General
+            2. Utilities
+            3. AMP Post
+            4. Footer
+
+        */
+
+        /* ==========================================================================
+           0. normalize.css v3.0.3 | MIT License | git.io/normalize | (minified)
+           ========================================================================== */
+
+        html {
+            font-family: sans-serif;
+
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            margin: 0;
+        }
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        main,
+        menu,
+        nav,
+        section,
+        summary {
+            display: block;
+        }
+        audio,
+        canvas,
+        progress,
+        video {
+            display: inline-block;
+            vertical-align: baseline;
+        }
+        audio:not([controls]) {
+            display: none;
+            height: 0;
+        }
+        [hidden],
+        template {
+            display: none;
+        }
+        a {
+            background-color: transparent;
+        }
+        a:active,
+        a:hover {
+            outline: 0;
+        }
+        abbr[title] {
+            border-bottom: 1px dotted;
+        }
+        b,
+        strong {
+            font-weight: bold;
+        }
+        dfn {
+            font-style: italic;
+        }
+        h1 {
+            margin: 0.67em 0;
+            font-size: 2em;
+        }
+        mark {
+            background: #ff0;
+            color: #000;
+        }
+        small {
+            font-size: 80%;
+        }
+        sub,
+        sup {
+            position: relative;
+            vertical-align: baseline;
+            font-size: 75%;
+            line-height: 0;
+        }
+        sup {
+            top: -0.5em;
+        }
+        sub {
+            bottom: -0.25em;
+        }
+        img {
+            border: 0;
+        }
+        amp-img {
+            border: 0;
+        }
+        svg:not(:root) {
+            overflow: hidden;
+        }
+        figure {
+            margin: 1em 40px;
+        }
+        hr {
+            box-sizing: content-box;
+            height: 0;
+        }
+        pre {
+            overflow: auto;
+        }
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: monospace, monospace;
+            font-size: 1em;
+        }
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            margin: 0;
+            color: inherit;
+            font: inherit;
+        }
+        button {
+            overflow: visible;
+        }
+        button,
+        select {
+            text-transform: none;
+        }
+        button,
+        html input[type="button"],
+        input[type="reset"],
+        input[type="submit"] {
+            cursor: pointer;
+
+            -webkit-appearance: button;
+        }
+        button[disabled],
+        html input[disabled] {
+            cursor: default;
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0;
+        }
+        input {
+            line-height: normal;
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            box-sizing: border-box;
+            padding: 0;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            height: auto;
+        }
+        input[type="search"] {
+            -webkit-appearance: textfield;
+        }
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+        fieldset {
+            margin: 0 2px;
+            padding: 0.35em 0.625em 0.75em;
+            border: 1px solid #c0c0c0;
+        }
+        legend {
+            padding: 0;
+            border: 0;
+        }
+        textarea {
+            overflow: auto;
+        }
+        optgroup {
+            font-weight: bold;
+        }
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+        td,
+        th {
+            padding: 0;
+        }
+
+
+        /* ==========================================================================
+           1. General - Setting up some base styles
+           ========================================================================== */
+
+        html {
+            max-height: 100%;
+            height: 100%;
+            font-size: 62.5%;
+
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        body {
+            max-height: 100%;
+            height: 100%;
+            color: #3a4145;
+            background: #f4f8fb;
+            letter-spacing: 0.01rem;
+            font-family: "Merriweather", serif;
+            font-size: 1.8rem;
+            line-height: 1.75em;
+            text-rendering: geometricPrecision;
+
+            -webkit-font-feature-settings: "kern" 1;
+            -moz-font-feature-settings: "kern" 1;
+            -o-font-feature-settings: "kern" 1;
+        }
+
+        ::-moz-selection {
+            background: #d6edff;
+        }
+
+        ::selection {
+            background: #d6edff;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0 0 0.3em 0;
+            color: #2e2e2e;
+            font-family: "Open Sans", sans-serif;
+            line-height: 1.15em;
+            text-rendering: geometricPrecision;
+
+            -webkit-font-feature-settings: "dlig" 1, "liga" 1, "lnum" 1, "kern" 1;
+            -moz-font-feature-settings: "dlig" 1, "liga" 1, "lnum" 1, "kern" 1;
+            -o-font-feature-settings: "dlig" 1, "liga" 1, "lnum" 1, "kern" 1;
+        }
+
+        h1 {
+            text-indent: -2px;
+            letter-spacing: -1px;
+            font-size: 2.6rem;
+        }
+
+        h2 {
+            letter-spacing: 0;
+            font-size: 2.4rem;
+        }
+
+        h3 {
+            letter-spacing: -0.6px;
+            font-size: 2.1rem;
+        }
+
+        h4 {
+            font-size: 1.9rem;
+        }
+
+        h5 {
+            font-size: 1.8rem;
+        }
+
+        h6 {
+            font-size: 1.8rem;
+        }
+
+        a {
+            color: #4a4a4a;
+        }
+
+        a:hover {
+            color: #111;
+        }
+
+        p,
+        ul,
+        ol,
+        dl {
+            margin: 0 0 2.5rem 0;
+            font-size: 1.5rem;
+            text-rendering: geometricPrecision;
+
+            -webkit-font-feature-settings: "liga" 1, "onum" 1, "kern" 1;
+            -moz-font-feature-settings: "liga" 1, "onum" 1, "kern" 1;
+            -o-font-feature-settings: "liga" 1, "onum" 1, "kern" 1;
+        }
+
+        ol,
+        ul {
+            padding-left: 2em;
+        }
+
+        ol ol,
+        ul ul,
+        ul ol,
+        ol ul {
+            margin: 0 0 0.4em 0;
+            padding-left: 2em;
+        }
+
+        dl dt {
+            float: left;
+            clear: left;
+            overflow: hidden;
+            margin-bottom: 1em;
+            width: 180px;
+            text-align: right;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-weight: 700;
+        }
+
+        dl dd {
+            margin-bottom: 1em;
+            margin-left: 200px;
+        }
+
+        li {
+            margin: 0.4em 0;
+        }
+
+        li li {
+            margin: 0;
+        }
+
+        hr {
+            display: block;
+            margin: 1.75em 0;
+            padding: 0;
+            height: 1px;
+            border: 0;
+            border-top: #efefef 1px solid;
+        }
+
+        blockquote {
+            box-sizing: border-box;
+            margin: 1.75em 0 1.75em 0;
+            padding: 0 0 0 1.75em;
+            border-left: #4a4a4a 0.4em solid;
+
+            -moz-box-sizing: border-box;
+        }
+
+        blockquote p {
+            margin: 0.8em 0;
+            font-style: italic;
+        }
+
+        blockquote small {
+            display: inline-block;
+            margin: 0.8em 0 0.8em 1.5em;
+            color: #ccc;
+            font-size: 0.9em;
+        }
+
+        blockquote small:before {
+            content: "\2014 \00A0";
+        }
+
+        blockquote cite {
+            font-weight: 700;
+        }
+
+        blockquote cite a {
+            font-weight: normal;
+        }
+
+        mark {
+            background-color: #fdffb6;
+        }
+
+        code,
+        tt {
+            padding: 1px 3px;
+            border: #e3edf3 1px solid;
+            background: #f7fafb;
+            border-radius: 2px;
+            white-space: pre-wrap;
+            font-family: Inconsolata, monospace, sans-serif;
+            font-size: 0.85em;
+            font-feature-settings: "liga" 0;
+
+            -webkit-font-feature-settings: "liga" 0;
+            -moz-font-feature-settings: "liga" 0;
+        }
+
+        pre {
+            overflow: auto;
+            box-sizing: border-box;
+            margin: 0 0 1.75em 0;
+            padding: 10px;
+            width: 100%;
+            border: #e3edf3 1px solid;
+            background: #f7fafb;
+            border-radius: 3px;
+            white-space: pre;
+            font-family: Inconsolata, monospace, sans-serif;
+            font-size: 0.9em;
+
+            -moz-box-sizing: border-box;
+        }
+
+        pre code,
+        pre tt {
+            padding: 0;
+            border: none;
+            background: transparent;
+            white-space: pre-wrap;
+            font-size: inherit;
+        }
+
+        kbd {
+            display: inline-block;
+            margin-bottom: 0.4em;
+            padding: 1px 8px;
+            border: #ccc 1px solid;
+            background: #f4f4f4;
+            border-radius: 4px;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2),
+            0 1px 0 0 #fff inset;
+            color: #666;
+            text-shadow: #fff 0 1px 0;
+            font-size: 0.9em;
+            font-weight: 700;
+        }
+
+        table {
+            box-sizing: border-box;
+            margin: 1.75em 0;
+            max-width: 100%;
+            width: 100%;
+            background-color: transparent;
+
+            -moz-box-sizing: border-box;
+        }
+
+        table th,
+        table td {
+            padding: 8px;
+            border-top: #efefef 1px solid;
+            vertical-align: top;
+            text-align: left;
+            line-height: 20px;
+        }
+
+        table th {
+            color: #000;
+        }
+
+        table caption + thead tr:first-child th,
+        table caption + thead tr:first-child td,
+        table colgroup + thead tr:first-child th,
+        table colgroup + thead tr:first-child td,
+        table thead:first-child tr:first-child th,
+        table thead:first-child tr:first-child td {
+            border-top: 0;
+        }
+
+        table tbody + tbody {
+            border-top: #efefef 2px solid;
+        }
+
+        table table table {
+            background-color: #fff;
+        }
+
+        table tbody > tr:nth-child(odd) > td,
+        table tbody > tr:nth-child(odd) > th {
+            background-color: #f6f6f6;
+        }
+
+        table.plain tbody > tr:nth-child(odd) > td,
+        table.plain tbody > tr:nth-child(odd) > th {
+            background: transparent;
+        }
+
+        iframe,
+        amp-iframe,
+        .fluid-width-video-wrapper {
+            display: block;
+            margin: 1.75em 0;
+        }
+
+        /* When a video is inside the fitvids wrapper, drop the
+        margin on the iframe, cause it breaks stuff. */
+        .fluid-width-video-wrapper iframe,
+        .fluid-width-video-wrapper amp-iframe {
+            margin: 0;
+        }
+
+        textarea,
+        select,
+        input {
+            margin: 0 0 5px 0;
+            padding: 6px 9px;
+            width: 260px;
+            outline: 0;
+            border: #e7eef2 1px solid;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: none;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.6rem;
+            line-height: 1.4em;
+            font-weight: 100;
+
+            -webkit-appearance: none;
+        }
+
+        textarea {
+            min-width: 250px;
+            min-height: 80px;
+            max-width: 340px;
+            width: 100%;
+            height: auto;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="search"]:focus,
+        input[type="tel"]:focus,
+        input[type="url"]:focus,
+        input[type="password"]:focus,
+        input[type="number"]:focus,
+        input[type="date"]:focus,
+        input[type="month"]:focus,
+        input[type="week"]:focus,
+        input[type="time"]:focus,
+        input[type="datetime"]:focus,
+        input[type="datetime-local"]:focus,
+        textarea:focus {
+            outline: none;
+            outline-width: 0;
+            border: #bbc7cc 1px solid;
+            background: #fff;
+        }
+
+        select {
+            width: 270px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        /* ==========================================================================
+           2. Utilities
+           ========================================================================== */
+
+        /* Clears shit */
+        .clearfix:before,
+        .clearfix:after {
+            content: " ";
+            display: table;
+        }
+        .clearfix:after {
+            clear: both;
+        }
+        .clearfix {
+            zoom: 1;
+        }
+
+        /* ==========================================================================
+           3. AMP Post
+           ========================================================================== */
+
+
+
+        .main-header {
+            position: relative;
+            display: table;
+            overflow: hidden;
+            box-sizing: border-box;
+            width: 100%;
+            height: 50px;
+            background: #5ba4e5 no-repeat center center;
+            background-size: cover;
+            text-align: left;
+
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        .content {
+            background: #fff;
+            padding-top: 15px;
+        }
+        .blog-title,
+        .content {
+            margin: auto;
+            max-width: 600px;
+        }
+
+        .blog-title a {
+            display: block;
+            padding-right: 16px;
+            padding-left: 16px;
+            height: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-family: "Open Sans", sans-serif;
+            font-size: 16px;
+            line-height: 50px;
+            font-weight: 600;
+        }
+
+        .post {
+            position: relative;
+            margin-top: 0;
+            margin-right: 16px;
+            margin-left: 16px;
+            padding-bottom: 0;
+            max-width: 100%;
+            border-bottom: #ebf2f6 1px solid;
+            word-wrap: break-word;
+            font-size: 0.95em;
+            line-height: 1.65em;
+        }
+
+        .post-header {
+            margin-bottom: 1rem;
+        }
+
+        .post-title {
+            margin-bottom: 0;
+        }
+
+        .post-title a {
+            text-decoration: none;
+        }
+
+        .post-meta {
+            display: block;
+            margin: 3px 0 0 0;
+            color: #9eabb3;
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.3rem;
+            line-height: 2.2rem;
+        }
+
+        .post-meta a {
+            color: #9eabb3;
+            text-decoration: none;
+        }
+
+        .post-meta a:hover {
+            text-decoration: underline;
+        }
+
+        .post-meta .author {
+            margin: 0;
+            font-size: 1.3rem;
+            line-height: 1.3em;
+        }
+
+        .post-date {
+            display: inline-block;
+            text-transform: uppercase;
+            white-space: nowrap;
+            font-size: 1.2rem;
+            line-height: 1.2em;
+        }
+
+        .post-image {
+            margin: 0;
+            padding-top: 3rem;
+            padding-bottom: 30px;
+            border-top: 1px #E8E8E8 solid;
+        }
+
+        /* Keep images centered, and allow images wider than the main
+           text column to break out. */
+        .post-content amp-img,
+        .post-content amp-anim {
+            /* Centers an image by (1) pushing its left edge to the
+               center of its container and (2) shifting the entire image
+               in the opposite direction by half its own width.
+               Works for images that are larger than their containers. */
+            position: relative;
+            left: 50%;
+            display: block;
+            padding: 0;
+            min-width: 0;
+            max-width: 112%; /* fallback when calc doesn't work */
+            width: calc(100% + 32px); /* expand with to image + margins */
+            height: auto;
+            transform: translateX(-50%);
+
+            -webkit-transform: translateX(-50%); /* for Safari and iOS */
+            -ms-transform: translateX(-50%); /* for IE9 */
+        }
+
+        .footnotes {
+            font-size: 1.3rem;
+            line-height: 1.6em;
+            font-style: italic;
+        }
+
+        .footnotes li {
+            margin: 0.6rem 0;
+        }
+
+        .footnotes p {
+            margin: 0;
+        }
+
+        .footnotes p a:last-child {
+            text-decoration: none;
+        }
+
+        /* ==========================================================================
+           4. Footer - The bottom the AMP Post
+           ========================================================================== */
+
+        .site-footer {
+            position: relative;
+            margin: 0 auto 20px auto;
+            padding: 1rem 15px;
+            max-width: 600px;
+            color: rgba(0,0,0,0.5);
+            font-family: "Open Sans", sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.75em;
+        }
+
+        .site-footer a {
+            color: rgba(0,0,0,0.5);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .site-footer a:hover {
+            border-bottom: #bbc7cc 1px solid;
+        }
+
+        .poweredby {
+            display: block;
+            float: right;
+            width: 45%;
+            text-align: right;
+        }
+
+        .copyright {
+            display: block;
+            float: left;
+            width: 45%;
+        }
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="main-header">
+        <nav class="blog-title">
+            <a href="../../../../../">Lukas Nimmo</a>
+        </nav>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</h1>
+                <section class="post-meta">
+                    <p class="author">by <a href="../../../../../author/lukas/">Lukas Nimmo</a></p>
+                    <time class="post-date" datetime="2017-02-09">2017-02-09</time>
+                </section>
+            </header>
+            <section class="post-content">
+
+                <p><a href="http://www.opensourcewatch.io"> <br>
+  <amp-img src="http://localhost:2368/content/images/2017/02/logo-opensourcewatch__green.png" alt="opensourcewatch logo" id="osw_logo" width="905" height="960" layout="responsive"></amp-img>
+</a></p>
+
+<h2 id="tableofcontents">Table of Contents</h2>
+
+<ul>
+<li>How it All Began</li>
+<li>THe Problem of Shared State</li>
+<li>The More the Merrier! Or So We Thought</li>
+<li>Growing Pains</li>
+<li>Making Requests Count</li>
+<li>In the End</li>
+</ul>
+
+<h2 id="howitallbegan">How it all began</h2>
+
+<p><strong>FIXME: Make sure this is attractive</strong>
+Open Source Watch started as a collaborative idea between <a href="http://getmichaelonboard.com">Michael Mentele</a> and I. What began as an attempt to measure the impact of projects and developers within the Ruby ecosystem eventually branched out to do the same, but on a much larger scale: we wanted to gauge the activity of open-source projects on Github.</p>
+
+<p>That meant we had to hone in on the questions we wanted to answer. Eventually we settled with the following:</p>
+
+<ol>
+<li>What are the most active repositories?  </li>
+<li>Who are the most active users?  </li>
+<li>What issues are most active?  </li>
+<li>Which users talk the most?</li>
+</ol>
+
+<p>Here is the current state of Open Source Watch: <br>
+<amp-img src="http://localhost:2368/content/images/2017/02/osw_home_full.png" alt width="930" height="990" layout="responsive"></amp-img></p>
+
+<p>As you can see from the homepage, the front-end is a very small piece of the overall project.</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/overview_glacier.png" alt width="960" height="540" layout="responsive"></amp-img></p>
+
+<p>In fact, the front-end is so small that the rest of the conversation will only mention it as it pertains to the back-end. What does the back-end look like? Well, let's see.</p>
+
+<h3 id="overview">Overview</h3>
+
+<p>Here is a high-level look at our data acquisition process:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/system_overview--1-.png" alt width="758" height="351" layout="responsive"></amp-img></p>
+
+<p>Four times a day we scrape the top 100,000 repositories on Github using 3 servers (represented by the dispatcher objects) which are coordinated by a Redis queue. In total, roughly 1.2 million requests per day are made to Github (don't worry, we won't be overwhelming them anytime soon).</p>
+
+<h2 id="inthebeginning">In the Beginning</h2>
+
+<p>We began by retrieving the top 100,000 repositories using Github's Search API and reverse sorting by the star count and decremented by one star each time to ensure we grabbed all repositories at each star count. As an aside, Github's Search API can be flimsy and inaccurate with holes in the data it returns if the API request is not specific enough (this is why we decremented the star count by one each time instead of relying on Github's last page of data to decide the next request). </p>
+
+<p>Scraping the top Repositories was a one-time job where the data was stored in a PostgreSQL database. Now all we had to do was pull all of the repositories into memory and begin scraping!</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/iteration_0.png" alt width="491" height="201" layout="responsive"></amp-img></p>
+
+<p>Or not. The problem we ran into was speed. We believe that developers should be able to see updated information from when they begin their work in the morning to when they finish at the end of the day. For that reason we selected 8 hours as our goal window.</p>
+
+<p>This meant one server was not going to be enough-in fact it would take roughly 36 hours and that's to answer just one of the questions within one time range. Solution? Scale up!</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/iteration_1-1.png" alt width="491" height="201" layout="responsive"></amp-img></p>
+
+<p>More scrapers means the faster we can go and we calculated that with 6 processes we can get within the 8 hour window.</p>
+
+<h2 id="theproblemofsharedstate">The Problem of Shared State</h2>
+
+<p>Right now our scraper keeps the list of repos internally as a circular queue. We shift from the front and immediately push that repository to the back like so:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/current_state_of_scraper.jpg" alt width="667" height="267" layout="responsive"></amp-img></p>
+
+<p>With this data structure we can always ensure that we are getting the oldest repository with little cost.</p>
+
+<p>Our problem is that we need to add scrapers. However, at this point in time they will not be working off the same queue; each has its own list and is working through it independently:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/shared_state.png" alt width="201" height="337" layout="fixed"></amp-img></p>
+
+<p>What we want is for our scrapers to be working off the same list, so we need to extract and centralize this queue state:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/non_shared_state.png" alt width="696" height="337" layout="responsive"></amp-img></p>
+
+<p>Not only will this allow every scraper to interact with the oldest piece of data, but it means we do not have to manually oversee coordination.</p>
+
+<h3 id="coordinationoptions">Coordination Options</h3>
+
+<p>But how do we implement this? Two options occurred to us: using the database or using Redis.</p>
+
+<p>First, we could use the current database as a pseudo-queue by timestamping the last time a repository was scraped and then making sure we retrieved the row with the oldest updated_at column. However, this means that every time we want the next repository, we have to do a scan to find the oldest timestamp. This is awfully slow:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/10_db_coord_opt_before_idx-1.jpg" alt width="793" height="149" layout="responsive"></amp-img></p>
+
+<p>What if we indexed that column? It's definitely faster and clocks in at O(log(n)):</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/11_db_coord_opt_after_idx.jpg" alt width="794" height="154" layout="responsive"></amp-img></p>
+
+<p>What we didn't like is that the more data we decided to track meant the slower it would become and one thing we especially liked about the previous queue was the O(1) complexity.</p>
+
+<p>This led us to think of another option...</p>
+
+<p>Secondly, there's Redis. Often used as a shared queue for workers, Redis allows us to implement the circular queue without any search necessary. Here is an example benchmark to get an idea of its throughput:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/12_redis_benchmark.jpg" alt width="866" height="67" layout="responsive"></amp-img></p>
+
+<p>Since we use the queue data structure, the operation is always O(1). On top of that, we our system is now more orthogonal as the concerns of storage and coordination are separate.</p>
+
+<h3 id="collaboration">Collaboration</h3>
+
+<p>Here is the how collaboration is implemented with Redis:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/13_obj_collab.png" alt width="1162" height="442" layout="responsive"></amp-img></p>
+
+<p>There is a queue object that is a layer on top of Redis which manages the queue. The dispatcher, the interface between the scrapers and the queue, then requests the next repository from the queue object. The queue object shifts a repository from the from the front of the Redis queue, copies it, and immediately pushes it to the back of the queue. The dispatcher gets a clone and passes the data from the queue to its collaborating scraper agents.</p>
+
+<h3 id="scaleuporscaleout">Scale Up or Scale Out?</h3>
+
+<p>Now that the scrapers could successfully coordinate with the Redis queue, the next question was whether to scale up or scale out. </p>
+
+<p>There are several problems associated with this process: <br>
+- Fear of being blacklisted by Github. If we scaled up, would we be making so many requests to Github that our IP would eventually be banned? We did not want to have to deal with IP shuffling or other solutions; we wanted to get on with our project.
+- Discovery: Github throttles on consistent hits to the same repository (such as commit pagination). <em>However</em>, they do not do so if the penetration depth is low (not pagination through an entire history of commits).
+- Scaling up concurrent processes = diminishing returns. Our processes are memory hogs, but it doesn't matter as more than two processes give diminishing returns:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/14_concurrent_diminishing_returns.png" alt width="766" height="280" layout="responsive"></amp-img></p>
+
+<ul>
+<li>Servers are cheap; our time is not. Tuning the scrapers to get the most of out of them meant we had to consider the point at which the amount of time spent was detrimental to the project as a whole vs going with our original conclusion of two processes on every server and just spinning up more servers.</li>
+</ul>
+
+<h2 id="themorethemerrierorsowethought">The More the Merrier! Or So We Thought</h2>
+
+<p>Going back to our system overview:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/15_more_the_merrier.png" alt width="758" height="351" layout="responsive"></amp-img></p>
+
+<p>We now have many servers with multiple processes sharing a single queue on Redis. Everything is great!</p>
+
+<p>Or is it? </p>
+
+<h3 id="moreserversmoreheadaches">More Servers, More Headaches</h3>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/16_dilbert.jpg" alt width="378" height="325" layout="responsive"></amp-img></p>
+
+<p>Currently, we have six processes and all of them must be micromanaged which involves having a terminal open for each individual process. Why? The SSH connection must remain open on our local machine to run the scraper process. Overall, this meant the procedure of monitoring them was <em>extremely</em> time consuming.</p>
+
+<p>A normal day might look like the following: wake up, check on the processes from the night before, and-*Gasp!*-the scrapers all crashed in the middle of the night! Losing this valuable time meant we lost hundreds of thousands of requests.  We would then debug and redeploy with no guarantee that we wouldn't run into some other edge-case. Much of this had to do with handling brittle data and while this whole affair of running into errors time and time again helped create a more robust system, we still needed a way to cover the unexpected .</p>
+
+<p>On top of all of this was an additional cost of cognitive load:</p>
+
+<pre><code class="language-ruby">every.10.seconds do  
+  train_of_thought.derail
+
+  if scraper.down?
+    train_of_thought.crash
+    scraper.debug
+    scraper.start
+    dev.pray
+  end
+end  
+</code></pre>
+
+<p>Babysitting the scrapers required that there constantly be something knocking at the back of our mind. This grew especially tiresome whenever we needed full concentration to focus on something important; not a very efficient use of time at all.</p>
+
+<h3 id="howcanwestopmicromanagingourscrapers">How can we stop micromanaging our scrapers?</h3>
+
+<p>It was mentioned above that in order to keep the scrapers running, a connection had to remain alive between our local machines and the remote ones. Why? Running a scraper first requires an SSH connection and second that the scraper process be left open in that same session. That is the very opposite of what we want; we want to be able to close the SSH connection and the scraper process remain active. However, the current execution would not allow this as the scraper process is attached to the SSH session. In Linux, everything is a process and the scraper process is a child process of our SSH session. Therefore if the ssh session dies, so too does the scraper process.</p>
+
+<p>We need to detach from the SSH session and move the scraper to a background process. When a process is forked and then exits, it becomes an orphan. Any orphan processes are then gathered up by the init process, the "grandfather" of all other processes.</p>
+
+<p>Enter daemons. Daemons are background processes that are in no way attached to a terminal and because they aren't attached to a terminal, we can close the SSH connection and it will still run. One of the downsides of this is the necessity of thorough logging: no longer will the SSH connection be active, which means that even if the daemon's output was printed to STDOUT, there would be no way to see it.</p>
+
+<h3 id="bindingdaemonstoourwill">Binding Daemons to Our Will</h3>
+
+<p>But how do we ensure the daemons are always running? We first considered Monit, but it was much, much more than we needed and the time required to familiarize ourselves with it just wasn't worth it.</p>
+
+<p>In the end, a simple Bash script was settled on:</p>
+
+<pre><code class="language-sh">while true  
+do  
+  rake ScraperDispatcher:scrape_commits
+done  
+</code></pre>
+
+<p>Each scraper process is run as a Rake task wrapped within an infinite Bash loop. In the case that the Rake task crashes, it immediately begins again. The only way this loop will every be interrupted is if our server crashes or the bash process is killed.</p>
+
+<p>We initiate this entire management process with a CLI application.</p>
+
+<h3 id="thepowerofdaemons">The Power of Daemons</h3>
+
+<p>Below, you can see the status call of the CLI app we've written to remotely manage our daemons:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/17_the_power_of_daemons.jpg" alt width="798" height="335" layout="responsive"></amp-img></p>
+
+<p>From our one console, with a few keyboard strokes, we can check on all of our scrapers. Centralized control makes deployment simple, monitoring a joy (if that's a thing), and restarting painless. No longer do the processes have to be micromanaged.</p>
+
+<h2 id="growingpainssystembottlenecks">Growing Pains - System Bottlenecks</h2>
+
+<p>We've been acquiring data during the 7 days that we've been working on the project and the database has reached a few hundred-thousand records. </p>
+
+<h3 id="morequestionsmoredata">More Questions, More Data</h3>
+
+<p>We want to answer questions related to the past 30 and 90 days. We could wait 83 days, but we are programmers; we can do better. The next phase involved scraping the last 90 days of data as a one-time job. Our estimate was that it would take roughly 3 days with our 6 processes.</p>
+
+<h3 id="moredatamoreproblems">More data, More Problems</h3>
+
+<p>We tweaked our scrapers to grab historical data related over the past 90 days. As we quickly found out, more data meant new problems:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/18_more_data_more_problems.jpg" alt width="472" height="304" layout="responsive"></amp-img></p>
+
+<p>Only scraping daily data brought in around 25,000 new records a day, but we were now getting hundreds of thousands to millions of records a day. Our request capacity quickly plummeted to 30% of what we expected. </p>
+
+<p>We've been downshifted...</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/19_downshifted.jpg" alt width="144" height="144" layout="fixed"></amp-img></p>
+
+<p>At 30% capacity, it will take 10 days to retrieve all the data needed. That's far too long.</p>
+
+<h3 id="puttingonourthinkingcaps">Putting on Our Thinking Caps</h3>
+
+<p>Our scrapers are waiting on something in the system. What should be considered?</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/20_thinking_1-1.png" alt width="857" height="175" layout="responsive"></amp-img></p>
+
+<ol>
+<li>Well, our server activity hasn't increased, in fact it has decreased, so we can eliminate the scraper servers right off the bat.</li>
+</ol>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/20_thinking_2-4.png" alt width="857" height="167" layout="responsive"></amp-img></p>
+
+<ol>
+<li>Our request activity has decreased, so it can't be anything to do with Github.</li>
+</ol>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/21_thinking_2-1.png" alt width="857" height="205" layout="responsive"></amp-img></p>
+
+<ol>
+<li>The only difference is the number of records that are being retrieved. Now that our responses are often rich with new data that needs to be stored, is it possible the DB server is being overwhelmed? No, the CPU usage is high, but far from being overwhelmed.</li>
+</ol>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/22_thinking_3-1.png" alt width="552" height="218" layout="responsive"></amp-img></p>
+
+<ol>
+<li>All that remains is something to do with Postgres or the connections to Postgres.</li>
+</ol>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/23_thinking_4-1.png" alt width="508" height="149" layout="responsive"></amp-img></p>
+
+<h3 id="ispostgresitselfbeingoverwhelmed">Is Postgres Itself being Overwhelmed?</h3>
+
+<p>With 6 processes, we are writing to the database more often. Is it possible that Postgres can't handle writes from all six servers at once?</p>
+
+<p>Here is a benchmark of the insertion speed into Postgres:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/24_pg_insertion_benchmark-1.jpg" alt width="1913" height="225" layout="responsive"></amp-img></p>
+
+<p>PG Insertion Capacity <br>
+= (60 / .000202) insertions / min <br>
+= <strong>297,029</strong> insertions / min</p>
+
+<p>Current AVG Rate of Insertions = 2000 insertions / min</p>
+
+<p>With the current rate &lt; 1% of capacity, insertions are not the problem. We will have to keep sleuthing...</p>
+
+<h3 id="isitslowreads">Is it Slow Reads?</h3>
+
+<p>If the problem isn't insertions, what about reads? Here is an example of attempting to find an issue if it exists, else make a new one:</p>
+
+<pre><code class="language-ruby">issue = Issue.find_or_create_by(  
+  repository_id: built_issue['repository_id'],
+  issue_number: built_issue['issue_number']
+) do |i|
+  i.name = built_issue['name']
+  ...
+end  
+issues &lt;&lt; issue  
+</code></pre>
+
+<p>This is necessary as there is a need to associate issues with their respective comments:</p>
+
+<pre><code class="language-ruby"># Get all the comments for each issue
+issues.each do |issue|  
+  ...
+  raw_comments.each do |raw_comment|
+    ...
+    comment_hash['issue_id'] = issue.id
+    @comments_cache &lt;&lt; IssueComment.new(comment_hash)
+  end
+end  
+</code></pre>
+
+<p>We began to benchmark our queries and we noticed that when a search is made for each issue, it is done on two non-indexed columns. This sequential scan is O(n) because we need to scan two columns of arbitrary size. If we index these columns together, the complexity can be reduced to O(log(n)). </p>
+
+<p>Here is before indexing:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/25_indexing_benchmark_before.jpg" alt width="1395" height="226" layout="responsive"></amp-img></p>
+
+<p>and after indexing:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/26_indexing_benchmarks_after.png" alt width="1915" height="344" layout="responsive"></amp-img></p>
+
+<p>Before, it took a whopping 341 ms just to look up an issue in the table with a sequential scan.</p>
+
+<p>After, it does a heap scan which significantly impacted the lookup time. From then on we knew to keep a close eye on other similar situations as in this case the index made a 2700X difference.</p>
+
+<h3 id="gainingspeed">Gaining Speed...</h3>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/27_gaining_speed.png" alt width="144" height="144" layout="fixed"></amp-img></p>
+
+<p>We picked up a great deal of speed with the index. At this moment in time, the system was running around 60% capacity. While this was much better, it was still slow...</p>
+
+<h3 id="isitaggregatelatencymanyqueriesoverthewire">Is it Aggregate Latency (many queries over the wire)?</h3>
+
+<p>Our queries are now fast enough, but are too many being made? Again, it required looking through our code and thinking about how it was interacting with the database. Eventually, this caught our eye:</p>
+
+<pre><code class="language-ruby"># Get all the comments for each issue
+issues.each do |issue|  
+  ...
+  raw_comments = @github_doc.doc.css("div.timeline-comment-wrapper")
+  raw_comments.each do |raw_comment|
+    comment_hash = build_comment(raw_comment)
+    comment_hash['issue_id'] = issue.id
+    @comments_cache &lt;&lt; IssueComment.create(comment_hash)
+  end
+  ...
+</code></pre>
+
+<p>A query was being made for each and every issue comment that was created. What if, instead, we cached records in memory and replaced many separate queries with one bulk import?</p>
+
+<h3 id="aggregatelatencybegone">Aggregate Latency Begone!</h3>
+
+<p>Instead of immediately attempting to create an issue comment, a new IssueComment model instance is added to an array so that the above code now looks like this:</p>
+
+<pre><code class="language-ruby"># Get all the comments for each issue
+issues.each do |issue|  
+  ...
+  raw_comments = @github_doc.doc.css("div.timeline-comment-wrapper")
+  ...
+  raw_comments.each do |raw_comment|
+    comment_hash = build_commnet(raw_comment)
+    comment_hash['issue_id'] = issue.id
+    @comments_cache &lt;&lt; IssueComment.new(comment_hash)
+  end
+  ...
+</code></pre>
+
+<p>And whenever the array cache reaches above 30 records, a batch insert is made on all records in the cache:</p>
+
+<pre><code class="language-ruby"># Continuing from above...
+  ...
+  if @comments_cache.count &gt; 30
+    IssueComment.import(@comments_cache)
+    @comments_cache.clear
+  end
+end  
+</code></pre>
+
+<p>Why 30? It just so happens that is the maximum number of issues on a page.</p>
+
+<p>Here is a visualization:</p>
+
+<p><strong>Many Queries</strong></p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/28_many_pings.png" alt width="646" height="261" layout="responsive"></amp-img></p>
+
+<p><strong>Single Query</strong></p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/29_single_ping.png" alt width="646" height="64" layout="responsive"></amp-img></p>
+
+<p>This is just a visualization. The latency between the scraper server and database server is extremely fast, less than a millisecond, but if latency exists for every single query, and a large number of them are made, then the latency starts to add up. In this case, it meant around 30 less round trips to for each bulk import.</p>
+
+<h3 id="vrrrr">Vrrrr...</h3>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/30_vrrr.png" alt width="144" height="144" layout="fixed"></amp-img></p>
+
+<p>At this point, we are somewhere near 80% capacity, but we didn't give up the pursuit of optimization quite yet...</p>
+
+<h3 id="behindtheormcurtain">Behind the ORM Curtain</h3>
+
+<p>Say we have the following validation:</p>
+
+<pre><code class="language-ruby">class IssueComment &lt; ActiveRecord::Base  
+  ...
+  validates :github_created_at, uniqueness: { scope: [:issue_id] }
+end  
+</code></pre>
+
+<p>Behind the scenes, ActiveRecord sends another query over the wire <strong>every time we attempt to create a record</strong>:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/31_orm_curtain_extra_query.png" alt width="1757" height="98" layout="responsive"></amp-img></p>
+
+<p>Above, we spoke of reducing total queries from around 30 to 1, but in reality they were being reduced from around 60 to 31. All the validation queries were being fired separately, one-by-one behind the scenes for each insertion.</p>
+
+<p>If the validation is pushed down to the database as a constraint, the no longer will an extra query be made for a creation attempt...</p>
+
+<h3 id="pushingvalidationstothedatabase">Pushing Validations to the Database</h3>
+
+<p>Here is a snapshot of what the constraint now looks like:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/32_orm_curtain_db_layer_validation.png" alt width="1087" height="122" layout="responsive"></amp-img></p>
+
+<p>And here is a creation attempt:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/33_orm_curtain_no_ar_validation.png" alt width="965" height="76" layout="responsive"></amp-img></p>
+
+<p>As you can see, no more extra queries! We have successfully reduced the number of queries from around 60 to 1!</p>
+
+<h3 id="vrroom">Vrr-OOM!</h3>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/34_vrroooom.png" alt width="180" height="180" layout="fixed"></amp-img></p>
+
+<p>At this point, we are now back to the capacity that we had originally anticipated. You'll notice that 5th gear was never reached! That is not a mistake. Our acquisition could still be further tuned, but we'll get to that later.</p>
+
+<h2 id="exploringthedata">Exploring the Data</h2>
+
+<p>After all of that hard work, how about we take a look at some of the data we've collected? by going back back to the webpage:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/35_explore_data.png" alt width="930" height="990" layout="responsive"></amp-img></p>
+
+<p>Initially, it took about a minute to load. That is about as fast as this stone turtle:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/36_stone_turtle.jpg" alt width="855" height="720" layout="responsive"></amp-img></p>
+
+<p>No one wants to see OSW that bad!</p>
+
+<p>Here is a sample query of what is required to display the webpage:</p>
+
+<pre><code class="language-sql">SELECT users.*, count(users.id) AS hit_count  
+FROM "users" INNER JOIN issue_comments  
+  ON issue_comments.user_id = users.id
+WHERE ("issue_comments"."github_created_at"  
+  BETWEEN (CURRENT_DATE - INTERVAL '0 day' + TIME '00:00:00')
+  AND (CURRENT_DATE + TIME '23:59:59.99') )
+GROUP BY users.id ORDER BY hit_count desc;  
+</code></pre>
+
+<h3 id="puttingourthinkingcapsbackon">Putting our Thinking Caps Back On...</h3>
+
+<p>Here is an analysis of the query above:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/37_front_end_execution_time.png" alt width="800" height="501" layout="responsive"></amp-img></p>
+
+<p>The query takes almost 13 seconds (remember, this is 1 out of 16 total queries that need to be made). It's slow. Very slow. And there is no way around that.</p>
+
+<p>But why is it slow?</p>
+
+<p>Well, we have to join a couple tables that have millions of rows:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/38_front_end_merge_join.png" alt width="800" height="501" layout="responsive"></amp-img></p>
+
+<p>Then we do some aggregating:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/39_front_end_aggregate.png" alt width="800" height="501" layout="responsive"></amp-img></p>
+
+<p>Can we optimize our query? There is no obvious solution there.  </p>
+
+<p>Can we denormalize and remove the costly join? Yes. If we did that we would could potentially cut the query time in half, or 25 seconds. That still would not be enough. We need ALL queries together to take less than 100 ms so that the webpage load times do make a negative impact on the user's experience.</p>
+
+<p>We need orders of magnitude difference in speed! </p>
+
+<h3 id="canwecachethequery">Can we Cache the Query?</h3>
+
+<p>Looking at the query again:</p>
+
+<pre><code class="language-sql">SELECT users.*, count(users.id) AS hit_count  
+FROM "users" INNER JOIN issue_comments  
+  ON issue_comments.user_id = users.id
+WHERE ("issue_comments"."github_created_at"  
+  BETWEEN (CURRENT_DATE - INTERVAL '0 day' + TIME '00:00:00')
+  AND (CURRENT_DATE + TIME '23:59:59.99') )
+GROUP BY users.id ORDER BY hit_count desc;  
+</code></pre>
+
+<p>There is no interpolation of user input; the queries that we make on the webpage never change and because they never change, we can run them in advance and cache them.</p>
+
+<p>Taking a big-picture look at the system, is it okay for our data to be stale? Yes. We scrape the top 100,000 repositories every 6 hours, so we already have a 6 hour margin of error. Keeping our queries perfectly in sync with our database doesn't add any meaningful business value.</p>
+
+<p>With these criteria considered, we can go ahead with the caching.</p>
+
+<h3 id="lazilyloadedtablecachingcustomtables">Lazily Loaded Table Caching - Custom Tables?</h3>
+
+<p>Lazily loaded caching is required because our system is heavily geared towards write operations. </p>
+
+<p>One option for lazily loaded caching included the following: <br>
+1. Build a lazily refreshed custom table <br>
+2. But then functions would need to be created to update timestamps with: <br>
+- insertion
+- update
+- delete
+3. Finally, we would need to specify a function to handle actually updating stale rows</p>
+
+<p><strong>OR</strong></p>
+
+<p>We could use Postgres' built-in materialized views and refresh periodically with a cron job which looks like this:</p>
+
+<pre><code class="language-ruby">every 5.minutes do  
+  rake 'refresh_matviews'
+end  
+</code></pre>
+
+<h3 id="thematerializedviewimpact">The Materialized View Impact</h3>
+
+<p>Depending on the database solution, there will be different ways to create views and cache queries. For those of you familiar with Postgres, all that is needed is a built-in keyword to tell PG to cache the query results:</p>
+
+<pre><code class="language-sql"># Cache view/query
+CREATE MATERIALIZED VIEW my_cached_query AS [SQL query goes here];  
+</code></pre>
+
+<p>That query can then be queried as if it were a table:</p>
+
+<pre><code class="language-sql"># Query like a normal table
+SELECT * FROM my_cached_query;  
+</code></pre>
+
+<p>The query will need to be refreshed periodically (in our case we did this with a cron job):</p>
+
+<pre><code class="language-sql"># Refresh the view
+REFRESH MATERIALIZED VIEW my_cached_query;  
+</code></pre>
+
+<p>Disclaimer: materialized views are only useful for static SQL queries that can be allowed to have stale data. We qualified this by only updating the matviews every ten minutes.</p>
+
+<p>The impact of using materialized views is huge...</p>
+
+<h4 id="queriesare5000timesfaster">Queries are 5,000 times faster!</h4>
+
+<p>That is almost as fast as the round trip to our server and back! Awesome!</p>
+
+<h3 id="untilweaddedthatn1query">Until We Added that N+1 Query...</h3>
+
+<p>One of the questions we try to answer involves displaying a repository for each active issue we were displaying:</p>
+
+<pre><code class="language-erb">&lt;% @issues.each_with_index do |issue| %&gt;  
+&lt;tr&gt;  
+  &lt;td&gt;
+    &lt;%= link_to issue.repository_name, issue.repository_url %&gt;
+    ...
+</code></pre>
+
+<p>For each issue, there is an additional query made for the associated repository. Here is what it looks like at the database level:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/40_n_plus_one_before.png" alt width="1021" height="162" layout="responsive"></amp-img></p>
+
+<p>To fix it, a join was added so that the repository information needed already lived on the cached query:</p>
+
+<pre><code class="language-sql">SELECT tmp.*, repositories.name  
+  AS repository_name, repositories.url
+  AS repository_url
+FROM (  
+  ...
+) as tmp
+INNER JOIN repositories ON repositories.id = tmp.repository;  
+</code></pre>
+
+<p>Now when the server-side rendering looks like this at the database level:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/41_n_plus_one_after.png" alt width="1016" height="29" layout="responsive"></amp-img></p>
+
+<p>No more N+1!</p>
+
+<h3 id="impactofserversiderenderingperformancetuning">Impact of Server-Side Rendering Performance Tuning</h3>
+
+<p>After all of this, it helped us achieve the following:</p>
+
+<p><strong>50+ s query times <em>* to *</em>200 ms</strong></p>
+
+<p>and with four queries per page...</p>
+
+<p><strong>50 ms query time per page</strong></p>
+
+<p>Huge improvement!</p>
+
+<h2 id="makingrequestscount">Making Requests Count</h2>
+
+<p>If you remember, we were handling our repositories like this:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/42_obj_collab.png" alt width="1162" height="442" layout="responsive"></amp-img></p>
+
+<p>It's a "stupid" circular queue, meaning all repositories are scraped at the same rate.</p>
+
+<h3 id="notallrepositoriesarecreatedequal">Not All Repositories are Created Equal</h3>
+
+<p>Treating all repositories the same in relation to scraping is rather unfortunate because the top 1% of repositories by commit activity are responsible for 42% of commits:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/43_not_all_repos.png" alt width="693" height="429" layout="responsive"></amp-img></p>
+
+<p>On top of that, the top 40% of repositories by activity account for 99% of the top 100,000!</p>
+
+<p>Maybe it's unfair, but more active repositories should be updated more often so as to reduce the latency between when the activity is pushed to Github and our webpage.</p>
+
+<h3 id="priorityqueue">Priority Queue?</h3>
+
+<p>Priority is key.</p>
+
+<p>Let's think about what is needed. Take a look at the following chart:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/44_repos_list.png" alt width="547" height="69" layout="responsive"></amp-img></p>
+
+<p>Say, for example, there is a list of repositories in Redis and the numbers above represent their activity rank where 10 is the most active.</p>
+
+<p>When the queue is first popped, the most active repository is popped and then maybe we put it somewhere in the middle:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/45_repos_10_insert.png" alt width="547" height="149" layout="responsive"></amp-img></p>
+
+<p>The next time the queue is popped, the second-most active repository is removed from the queue and placed further down the from the middle as it is less active than the previous repository and therefore needs to be scraped less:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/46_repos_other_insert.png" alt width="547" height="144" layout="responsive"></amp-img></p>
+
+<p>But how, exactly, will it be implemented?</p>
+
+<h3 id="failedpriorityqueueexperimentbinaryheap">Failed Priority Queue Experiment: Binary Heap</h3>
+
+<p>The first idea was to create a binary heap and maintain it as a priority queue. This was originally look at because priority queues are common use cases for binary heaps.</p>
+
+<p>What is a binary heap<sup id="fnref:1"><a href="../index.html#fn:1" rel="footnote">1</a></sup>? Put simply, it is a balanced and complete tree:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/47_heap.png" alt width="427" height="245" layout="responsive"></amp-img></p>
+
+<p>It has a "heap property", meaning all nodes are greater than or equal to their respective children. In other words, the highest scored element will always be the root of the tree.</p>
+
+<p>The most promising feature is that a binary heap can easily be represented as an array. The representation works as follows: the children of an i-th element are always 2i and 2i + 1. This means it can be represented in Redis with ease:</p>
+
+<pre><code class="language-ruby"># Example of heap expressed as array
+[nil, 100, 19, 36, 17, 3, 25, 1, 2, 7]
+</code></pre>
+
+<p>Wait... can we resort to this so simply? No. A value is pushed by adding it to the end of the array and then bubbling it, or heapifying it, through the tree. That entails multiple requests or pulling down the entire state of the Redis queue for resorting.  Also, what happens when multiple scrapers are involved:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/48_redis_concurr_probs.png" alt width="273" height="193" layout="fixed"></amp-img></p>
+
+<p>If multiple scrapers are attempting to bubble values up through Redis, or dequeueing while other processes are enqueueing?</p>
+
+<p>Put simple: it won't work. We could no longer be certain the root value is the highest scored or that any other values are where they should be if any of the enqueueing or dequeueing is done in parallel.</p>
+
+<h3 id="failedpriorityqueueexperimentssortedsets">Failed Priority Queue Experiments: Sorted Sets</h3>
+
+<p>What else can we do? Well, Redis has a built-in data structure called a sorted set that holds key values where the key is the "score." As an added bonus, Redis implements something similar to the binary heap behind the scenes and is smart enough to handle the concurrency problem for us. Great!</p>
+
+<p>However, is Redis fast enough to re-sort 100,000 items faster than we can throw requests at it? Right, the  maximum number of requests with 6 processes is 14 requests per second. That means Redis has to resort 100,000 items 14 times a second in addition to creating a response. Even further, what if we double requests capacity down the line?</p>
+
+<p>Good question. We didn't benchmark it because there is a simpler, more important problem to consider. We have to score our values based on the priority level and then reduce the score based on the number of times they have been visited. An example calculation would like this:</p>
+
+<p>score = priority / (times_scraped + 1)</p>
+
+<p>If that is plotted for a few priority values it yields:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/49_decay_chart.png" alt width="600" height="371" layout="responsive"></amp-img></p>
+
+<p>One problem is that as time goes on, all scores approach zero which means that periodically we will have to shut everything down and reset the score. This additional process must be maintained and if for some reason it doesn't refresh the scores then the whole priority queue breaks. Not only that, if capacity is increased without updating the process it breaks. There is a high maintenance cost involved with resorting to this method without even being sure Redis will be fast enough. Not to mention, how do we tune the frequency distribution? This sounds more painful than it should be. </p>
+
+<p>What is really nice about a circular queue is that the oldest repository is always known and it is has the fastest possible enqueue and dequeue. Can we prioritize, but keep those advantages? Can we prioritize without scoring and sorting?</p>
+
+<h3 id="whatdowereallywant">What do we Really Want?</h3>
+
+<p>Let's go back to the ranked list of nodes:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/50_example_list.png" alt width="492" height="61" layout="responsive"></amp-img></p>
+
+<p>and let us lump this list into three priority levels like so:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/51_lumped_list.png" alt width="492" height="61" layout="responsive"></amp-img></p>
+
+<p>We are going to say say that the frequency ratio is 10:5:1. What we really need is to be able to control the frequency with which each priority level is scraped.</p>
+
+<p>For example, 3 would be scraped 10X by shifting the first node from the front and pushing it to the back of the subset of nodes with a priority of 3:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/52_10x.png" alt width="202" height="213" layout="fixed"></amp-img></p>
+
+<p>And do the same with priority level 2 and 1 with frequencies of 5x and 1x respectively:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/53_5x_and_1x.png" alt width="390" height="218" layout="responsive"></amp-img></p>
+
+<p>All of this led to the following...</p>
+
+<h3 id="staggeredroundrobinprioritizedqueueofqueues">Staggered Round-Robin Prioritized Queue-of-Queues!?</h3>
+
+<p>To prioritize and tune the scraping frequency we used a staggered round-robin prioritized queue-of-queues.  </p>
+
+<p>Or SRRPQQ for short.  </p>
+
+<p>We began by ordering our list of repositories by activity and then range mapping that ordered list into X number of "buckets" where each bucket will get its own Redis queue:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/54_range_mapping.png" alt width="404" height="231" layout="responsive"></amp-img></p>
+
+<p>Then when the dispatcher requests a repository, it will actually be interacting with a priority queue object which has a method to draw from each bucket at the frequency we need:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/55_.dispatch_freq.png" alt width="802" height="622" layout="responsive"></amp-img></p>
+
+<p>This may appear to be a lot to take in, but it really just is a smart priority queue that allows us to easily give more attention to more active repositories and thereby reducing latency between when something is pushed to Github and when that information shows up on our webpage.  </p>
+
+<p>How is this all implemented?  </p>
+
+<h4 id="thecodeenqueueing">The Code: Enqueueing</h4>
+
+<p>First, we calculate the size of each range:  </p>
+
+<pre><code class="language-ruby">def enqueue_prioritized_sub_queues(tracked_repos)  
+  bucket_size = (tracked_repos.count.to_f / PRIORITY_RANGE.length).ceil
+</code></pre>
+
+<p>Then we range map the sorted list of tracked repositories:</p>
+
+<pre><code class="language-ruby">  # Enqueue a sub queue for each priority level
+  index = 0
+  tracked_repos.in_groups_of(bucket_size, false) do |batch|
+</code></pre>
+
+<p>Then we create a stupid circular queue for each bucket and enqueue it into Redis:</p>
+
+<pre><code class="language-ruby">    priority = PRIORITY_RANGE[index]
+    queue_name = sub_queue_name(priority.to_s)
+    index += 1
+
+    sub_queue = CircularRedisQueue.new(batch, queue_name: queue_name)
+    sub_queue.enqueue_redis
+  end
+end  
+</code></pre>
+
+<h4 id="thecodetuninganddequeueing">The Code: Tuning and Dequeueing</h4>
+
+<p>We'll now assume there are 3 circular queues in Redis. We then tune the frequency distribution of scraping in the priority queue object with a reference to each queue we that looks resembles something likes this:</p>
+
+<pre><code class="language-ruby">[3, 2, 1] + [3, 2] + [3]
+</code></pre>
+
+<p>Which is generated from the following method:</p>
+
+<pre><code class="language-ruby">def skewed_distr_of_queues(queues)  
+  skewed_queue_distr = []
+  while queues.length &gt; 0
+    queues.each do |q|
+      skewed_queue_distr &lt;&lt; q
+    end
+    queues.pop
+  end
+  skewed_queue_distr
+end  
+</code></pre>
+
+<p>This above loop maps the number of references to the priority level e.g. 3 would be scraped 3 times, 2 two times, etc.  </p>
+
+<p>Now there is a circular queue of queues! To retrieve the next repository, we rely on the each circular queue object to know which repository to return:  </p>
+
+<pre><code class="language-ruby">def next  
+  # get leftmost queue and push to the end
+  queue = @queues.shift
+  @queues.push(queue)
+  # return the next repository
+  queue.next
+end  
+</code></pre>
+
+<h3 id="frequencydistributionofscraping">Frequency Distribution of Scraping</h3>
+
+<p>The code you saw previously gives us a distribution like this:  </p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/56_untuned_freq.png" alt width="600" height="371" layout="responsive"></amp-img></p>
+
+<p>If we tune it further by modifying the population of queue references we achieve a distribution that more closely matches the activity of repositories.</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/57_tuned_freq.png" alt width="600" height="371" layout="responsive"></amp-img></p>
+
+<p>The Staggered Round-Robin Queue-of-Queues is simple, as fast as possible (zero sorting), and gives precise control over the scraping distribution. </p>
+
+<h2 id="thefutureandbeyond">The Future and Beyond</h2>
+
+<p>What does the future hold for OSW? Let's take a look...</p>
+
+<h3 id="reaching5thgear">Reaching 5th Gear</h3>
+
+<p>To start off, all top 100,000 repositories are scraped within a 5.5 hour time frame. We would like to push that to under an hour.  </p>
+
+<p>Right now, even though our queries are efficient enough, the scrapers still have to wait on them. Here is a diagram that represents the current state:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/58_sleepy_scraper.png" alt width="893" height="268" layout="responsive"></amp-img></p>
+
+<p>Instead of waiting on queries at all, we can maximize server resources if we git rid of the wait time altogether:</p>
+
+<p><amp-img src="http://localhost:2368/content/images/2017/02/59_bg_workers-1.png" alt width="893" height="514" layout="responsive"></amp-img></p>
+
+<p>Here we decouple the scrapers from the PG database by using background jobs to extract all record interaction into an asynchronous job that handles CRUD actions for the records. This way our scraper can be dedicated just to pulling data down as fast as possible. Altogether this should boost capacity to the maximum possible on each machine. </p>
+
+<p>The other benefit is that the scrapers will use less memory because they wont' need to know about the ORM. The extra memory that normally would have been loaded with each scraper can be used to for extra processes to ensure we are getting the most out of each server.   </p>
+
+<h3 id="forthefunofit">For the Fun of It</h3>
+
+<ul>
+<li>Commit/comment message sentiment analysis</li>
+<li>Tracking trending repositories</li>
+<li>Tracking the top 1 million repositories</li>
+</ul>
+
+<h2 id="intheend">In the End</h2>
+
+<p>We learned quite a few things over the course of this project, but there are a few we especially wanted to highlight:</p>
+
+<ol>
+<li><p>Questions drive acquisition and acquisition drives infrastructure. In other words: spend time on things that solve the problem at hand.</p></li>
+<li><p>Identifying bottlenecks and solving them are more often than not the highest leverage areas and have the biggest ROI on time invested.</p></li>
+<li><p>Teamwork is an amazing thing.</p></li>
+<li><p>Keep a journal! Daily journals are incredibly useful for reviewing your workflows, identifying project bottlenecks (human deficiencies), and realizing where you made made bad assumptions</p></li>
+<li><p>Brain synchronization. One of the greatest challenges of working with another person is getting <em>and staying</em> in sync. Once you have both established a common vision and are working on the same code base it is much easier to move forward. However, diverging ideas occur all the time where you talk about the same thing, but you both have very different mental images of what it looks like. Mockups, diagrams, and representational documentation of some kind are priceless when it comes to eliminating confusion over abstract concepts that are poorly represented verbally.</p></li>
+<li><p>Psychological safety is paramount. It's good for ideas to bump together; it gets rid of the chaff. Discussing decisions creates a kind of idea evolution where the idea grows, shrinks, and becomes something altogether you never would have guessed; it's better. Being detached from ideas helps with this process and always making sure that the idea is critiqued-not the person! This is something I believe Michael and I handled superbly and I couldn't be more thankful for it.  </p></li>
+</ol>
+
+<p>If you followed along to the bottom, thank you! </p>
+
+<p>Hiring? I'm <a href="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/link%20to%20resume">looking</a>!</p>
+
+<p><strong>And don't forget to visit <a href="http://opensourcewatch.io">Open Source Watch</a></strong>!</p>
+
+<div class="footnotes"><ol><li class="footnote" id="fn:1"><p>Check <a href="http://www.brianstorti.com/implementing-a-priority-queue-in-ruby/">here</a> for more <a href="../index.html#fnref:1" title="return to article">↩</a></p></li></ol></div>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="site-footer clearfix">
+        <section class="copyright"><a href="../../../../../">Lukas Nimmo</a> © 2017</section>
+        <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+    </footer>
+</body>
