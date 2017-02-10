@@ -1,18 +1,24 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Lukas Nimmo</title><description>I tell stories about things that interest me.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Fri, 10 Feb 2017 19:30:49 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</title><description>&lt;p&gt;&lt;a href="http://www.opensourcewatch.io"&gt; &lt;br&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Lukas Nimmo</title><description>I tell stories about things that interest me.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Fri, 10 Feb 2017 21:44:40 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</title><description>&lt;p&gt;&lt;a href="http://www.opensourcewatch.io"&gt; &lt;br&gt;
   &lt;img style="max-width: 30%;" src="http://localhost:2368/content/images/2017/02/01_osw_logo.png" alt="opensourcewatch logo" id="osw_logo"&gt;
 &lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;This is the story of how two developers set out to discover the top contributors to open-source. We do this by tracking the top 100,000 most starred repositories on Github. Some stats about the project: &lt;br&gt;
-* 1,200,000+ Requests Per Day (RPD)
-* 20,000,000+ Records (and counting)&lt;/p&gt;
+&lt;p&gt;This is the story of how two developers set out to discover the top contributors to open-source. We do this by tracking the top 100,000 most starred repositories on Github. Some stats about the project:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1,200,000+ Requests Per Day (RPD)  &lt;/li&gt;
+&lt;li&gt;20,000,000+ Records (and counting)&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;We&lt;/p&gt;</description><link>http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/</link><guid isPermaLink="false">eb8b7d1b-aa1c-4c6f-ac64-f18da07a172f</guid><dc:creator>Lukas Nimmo</dc:creator><pubDate>Thu, 09 Feb 2017 22:54:29 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href="http://www.opensourcewatch.io"&gt; &lt;br&gt;
   &lt;img style="max-width: 30%;" src="http://localhost:2368/content/images/2017/02/01_osw_logo.png" alt="opensourcewatch logo" id="osw_logo"&gt;
 &lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;This is the story of how two developers set out to discover the top contributors to open-source. We do this by tracking the top 100,000 most starred repositories on Github. Some stats about the project: &lt;br&gt;
-* 1,200,000+ Requests Per Day (RPD)
-* 20,000,000+ Records (and counting)&lt;/p&gt;
+&lt;p&gt;This is the story of how two developers set out to discover the top contributors to open-source. We do this by tracking the top 100,000 most starred repositories on Github. Some stats about the project:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1,200,000+ Requests Per Day (RPD)  &lt;/li&gt;
+&lt;li&gt;20,000,000+ Records (and counting)&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;We are going to walk you through the major struggles we faced and lessons learned along the way.&lt;/p&gt;
 
