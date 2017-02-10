@@ -26,6 +26,14 @@
    0. normalize.css v3.0.3 | MIT License | git.io/normalize | (minified)
    ========================================================================== */
 #osw_logo { max-width: 50%; }
+div.gravitar-container { text-align: center; }
+div .gravitar { 
+    display: inline-block;
+    margin-bottom: 6px;
+}
+div .gravitar:first-child {
+    margin-right: 15px;
+}
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
