@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Lukas Nimmo</title><description>I tell stories about things that interest me.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Fri, 10 Feb 2017 21:44:40 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</title><description>&lt;p&gt;&lt;a href="http://www.opensourcewatch.io"&gt; &lt;br&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Lukas Nimmo</title><description>I tell stories about things that interest me.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Mon, 13 Feb 2017 18:59:45 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</title><description>&lt;p&gt;&lt;a href="http://www.opensourcewatch.io"&gt; &lt;br&gt;
   &lt;img style="max-width: 30%;" src="http://localhost:2368/content/images/2017/02/01_osw_logo.png" alt="opensourcewatch logo" id="osw_logo"&gt;
 &lt;/a&gt;&lt;/p&gt;
 
@@ -41,12 +41,12 @@
 &lt;h2 id="tableofcontents"&gt;Table of Contents&lt;/h2&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Getting Started:&lt;/strong&gt; &lt;em&gt;Capacity and Cost per Request&lt;/em&gt;  &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Can't Work, Too Busy:&lt;/strong&gt; &lt;em&gt;Robust Processes and Centralized Control&lt;/em&gt;  &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Growing Pains:&lt;/strong&gt; &lt;em&gt;System Bottlenecks &amp;amp; System Tuning&lt;/em&gt;  &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Exploring the Data:&lt;/strong&gt; &lt;em&gt;50 second Page Load Time!?&lt;/em&gt;  &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Making Requests Count:&lt;/strong&gt; &lt;em&gt;SRRPQQ for Tuning the Distribution of Repeat Jobs&lt;/em&gt;  &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Future Work and Lessons Learned&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/#getting-started"&gt;&lt;strong&gt;Getting Started: Developing the Data Acquisition Process&lt;/strong&gt;&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/#ensuring-uptime"&gt;&lt;strong&gt;Ensuring Uptime of Data Acquisition&lt;/strong&gt;&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/#growing-pains"&gt;&lt;strong&gt;Growing Pains: Improving the Rate of Data Acquisition&lt;/strong&gt;&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/#rendering-the-data"&gt;&lt;strong&gt;Rendering the Data&lt;/strong&gt;&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/#making-requests-count"&gt;&lt;strong&gt;Making Requests Count&lt;/strong&gt;&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/#future-work"&gt;&lt;strong&gt;Future Work and Lessons Learned&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id="howitallbegan"&gt;How it all Began&lt;/h2&gt;
@@ -73,7 +73,7 @@
 
 &lt;p&gt;The focus of OSW is answering questions and to answer questions, we need to focus on data. The rest of the conversation will center on acquiring data, setting up infrastructure, and tuning our system.&lt;/p&gt;
 
-&lt;h2 id="infrastructurecapacityandcostperrequest"&gt;Infrastructure: Capacity and Cost per Request&lt;/h2&gt;
+&lt;h2 id="getting-started"&gt;Getting Started: Developing the Data Acquisition Process&lt;/h2&gt;
 
 &lt;p&gt;We believe that developers should be able to see updated information from when they begin their work day to when they finish. For that reason we initially selected an &lt;strong&gt;8 hour window&lt;/strong&gt; as our target.&lt;/p&gt;
 
@@ -95,13 +95,7 @@
 
 &lt;p&gt;One process can achieve 8,500 requests on our Digital Ocean server. We did some extrapolation and estimated it would take 36 hours to scrape all 100,000 repositories one time through (with an average of 2.8 requests needed per repository)!&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Capacity: 200,000 Requests Per Day &lt;br&gt;
-  Time Through Repositories: 36 Hours &lt;br&gt;
-  Capacity Needed: 1 Million Requests Per Day &lt;br&gt;
-  Processes: 1 &lt;br&gt;
-  Servers: 1 &lt;br&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/acquisition_1-3.png" alt=""&gt;&lt;/p&gt;
 
 &lt;p&gt;This is 4.5x slower than our target. So, what to do? Scale up! More scrapers means more capacity and with 6 processes we can get within the 8 hour window.&lt;/p&gt;
 
@@ -153,7 +147,7 @@
 
 &lt;p&gt;There is a queue object that is a layer on top of Redis which manages the queue. The dispatcher, the interface between the scrapers and the queue, then requests the next repository from the queue object. The queue object shifts a repository from the front of the Redis queue, copies it, and immediately pushes it to the back of the queue. The dispatcher gets a clone and passes the data from the queue to its collaborating scraper agents.&lt;/p&gt;
 
-&lt;h3 id="scaleup"&gt;Scale Up?&lt;/h3&gt;
+&lt;h3 id="costbenefitscaleuporscaleout"&gt;Cost-Benefit: Scale Up or Scale Out?&lt;/h3&gt;
 
 &lt;p&gt;Now that the scrapers can coordinate via the Redis queue, the next question is whether to scale up or scale out. We could scale up and stack concurrent on one high memory server.&lt;/p&gt;
 
@@ -171,24 +165,13 @@
 
 &lt;p&gt;We spin up a second process on our server...&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Capacity: 400,000 Requests Per Day &lt;br&gt;
-  Time Through Repositories: 18 Hours &lt;br&gt;
-  Capacity Needed: 1 Million Requests Per Day &lt;br&gt;
-  Processes: 2 &lt;br&gt;
-  Servers: 1  &lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/acquisition_2-1.png" alt=""&gt;&lt;/p&gt;
 
 &lt;h3 id="scalingout"&gt;Scaling Out&lt;/h3&gt;
 
 &lt;p&gt;We are doing a decent job of maximizing our machines so we spun up two more servers with two processes each.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Capacity: 1,200,000 Requests Per Day &lt;br&gt;
-  Time Through Repositories: &lt;strong&gt;6 Hours&lt;/strong&gt; &lt;br&gt;
-  Processes: 6 &lt;br&gt;
-  Servers: 3   &lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/acquisition_3.png" alt=""&gt;&lt;/p&gt;
 
 &lt;p&gt;Now, four times a day (every 6 hours) we scrape the top 100,000 repositories on Github using 3 servers (represented by the dispatcher objects) which are coordinated by a Redis queue. This is well within our 8 hour window!&lt;/p&gt;
 
@@ -208,7 +191,7 @@
 
 &lt;hr&gt;
 
-&lt;h2 id="cantworktoobusyrobustprocessesandcentralizedcontrol"&gt;Can't Work, Too Busy: Robust Processes and Centralized Control&lt;/h2&gt;
+&lt;h2 id="ensuring-uptime"&gt;Ensuring Uptime of Data Acquistion&lt;/h2&gt;
 
 &lt;h3 id="moreserversmoreheadaches"&gt;More Servers, More Headaches&lt;/h3&gt;
 
@@ -272,7 +255,7 @@ done
 
 &lt;p&gt;From our one console, with a few keyboard strokes, we can check on all of our scrapers. Centralized control makes deployment simple, monitoring a joy (if that's a thing), and restarting painless. No longer do the processes have to be micromanaged.&lt;/p&gt;
 
-&lt;h2 id="growingpainssystembottlenecksandsystemtuning"&gt;Growing Pains: System Bottlenecks and System Tuning&lt;/h2&gt;
+&lt;h2 id="growing-pains"&gt;Growing Pains: Improving the Rate of Data Acquisition&lt;/h2&gt;
 
 &lt;p&gt;We've been acquiring data during the 7 days that we've been working on the project and the database has reached a few hundred-thousand records.&lt;/p&gt;
 
@@ -288,17 +271,9 @@ done
 
 &lt;p&gt;Only scraping daily data brought in around 25,000 new records a day, but we were now getting hundreds of thousands to millions of records a day. Our request capacity quickly plummeted to 30% of what we expected.&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Capacity: ~300,000 Requests Per Day &lt;br&gt;
-  Time Through Repositories: 24 Hours
-  Capacity Needed: 1 Million Requests Per Day &lt;br&gt;
-  Processes: 6 &lt;br&gt;
-  Servers: 3 &lt;br&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
 &lt;p&gt;We've been downshifted...&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/19_downshifted.jpg" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/growing_pains_1.png" alt=""&gt;&lt;/p&gt;
 
 &lt;p&gt;At 30% capacity (of 1.2 Million requests), it will take 10 days to retrieve all the data needed. That's far too long.&lt;/p&gt;
 
@@ -340,7 +315,7 @@ done
 
 &lt;p&gt;With the current rate &amp;lt; 1% of capacity, insertions are not the problem. We will have to keep sleuthing...&lt;/p&gt;
 
-&lt;h2 id="isitslowreads"&gt;Is it Slow Reads?&lt;/h2&gt;
+&lt;h3 id="isitslowreads"&gt;Is it Slow Reads?&lt;/h3&gt;
 
 &lt;p&gt;If the problem isn't insertions, what about reads? Here is an example of attempting to find an issue if it exists, else make a new one:&lt;/p&gt;
 
@@ -383,13 +358,7 @@ end
 
 &lt;h3 id="gainingspeed"&gt;Gaining Speed...&lt;/h3&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Capacity: ~700,000 Requests Per Day &lt;br&gt;
-  Time Through Repositories: 12 Hours &lt;br&gt;
-  Capacity Needed: 1 Million Requests Per Day &lt;br&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/27_gaining_speed.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/growing_pains_2.png" alt=""&gt;&lt;/p&gt;
 
 &lt;p&gt;We picked up a great deal of speed with the index. At this moment in time, the system was running around 60% capacity.&lt;/p&gt;
 
@@ -455,15 +424,9 @@ end
 
 &lt;p&gt;This is just a visualization. The latency between the scraper server and database server is extremely fast, less than a millisecond, but if latency exists for every single query, and a large number of them are made, then the latency starts to add up. In this case, it meant around 30 less round trips to for each bulk import.&lt;/p&gt;
 
-&lt;h3 id="vrrrr"&gt;Vrrrr...&lt;/h3&gt;
+&lt;h3 id="gettingfaster"&gt;Getting Faster...&lt;/h3&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Capacity: ~900,000 Requests Per Day &lt;br&gt;
-  Time Through Repositories: 8 Hours &lt;br&gt;
-  Capacity Needed: 1 Million Requests Per Day &lt;br&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/30_vrrr.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/growing_pains_3.png" alt=""&gt;&lt;/p&gt;
 
 &lt;p&gt;At this point, we are somewhere near 80% capacity, but we didn't give up the pursuit of optimization quite yet...&lt;/p&gt;
 
@@ -497,27 +460,21 @@ end
 
 &lt;p&gt;As you can see, no more extra queries! We have successfully reduced the number of queries from around 60 to 1!&lt;/p&gt;
 
-&lt;h3 id="vrroom"&gt;Vrr-OOM!&lt;/h3&gt;
+&lt;h3 id="backuptospeed"&gt;Back up to Speed&lt;/h3&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Capacity: ~1,000,000 Requests Per Day &lt;br&gt;
-  Time Through Repositories: ~7 Hours &lt;br&gt;
-  Capacity Needed: 1 Million Requests Per Day &lt;br&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/34_vrroooom.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/growing_pains_4.png" alt=""&gt;&lt;/p&gt;
 
 &lt;p&gt;At this point, we are now back to the capacity that we had originally anticipated. You'll notice that 5th gear was never reached! That is not a mistake. Our acquisition could still be further tuned, but we'll get to that later.&lt;/p&gt;
 
-&lt;h2 id="exploringthedata"&gt;Exploring the Data&lt;/h2&gt;
+&lt;h2 id="rendering-the-data"&gt;Rendering the Data&lt;/h2&gt;
 
 &lt;p&gt;After all of that hard work, how about we take a look at some of the data we've collected? by going back back to the webpage:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/35_explore_data.png" alt=""&gt;&lt;/p&gt;
 
-&lt;p&gt;Initially, it took about a minute to load. That is about as fast as this stone turtle:&lt;/p&gt;
+&lt;p&gt;We need to make 16 queries in total (4 questions and 4 time ranges). In total, that takes approximately &lt;strong&gt;50 seconds&lt;/strong&gt; to load...&lt;/p&gt;
 
-&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/36_stone_turtle.jpg" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/render_status_1.png" alt=""&gt;&lt;/p&gt;
 
 &lt;p&gt;No one wants to see OSW that bad!&lt;/p&gt;
 
@@ -620,9 +577,11 @@ REFRESH MATERIALIZED VIEW my_cached_query;
 
 &lt;p&gt;The impact of using materialized views is huge...&lt;/p&gt;
 
-&lt;h4 id="queriesare5000timesfaster"&gt;Queries are 5,000 times faster!&lt;/h4&gt;
+&lt;h4 id="queriesare250timesfaster"&gt;Queries are 250 times faster!&lt;/h4&gt;
 
 &lt;p&gt;That is almost as fast as the round trip to our server and back! Awesome!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/render_status_2.png" alt=""&gt;&lt;/p&gt;
 
 &lt;h3 id="untilweaddedthatn1query"&gt;Until We Added that N+1 Query...&lt;/h3&gt;
 
@@ -656,6 +615,8 @@ INNER JOIN repositories ON repositories.id = tmp.repository;
 
 &lt;p&gt;No more N+1!&lt;/p&gt;
 
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2017/02/render_status_3.png" alt=""&gt;&lt;/p&gt;
+
 &lt;h3 id="impactofserversiderenderingperformancetuning"&gt;Impact of Server-Side Rendering Performance Tuning&lt;/h3&gt;
 
 &lt;p&gt;After all of this, it helped us achieve the following:&lt;/p&gt;
@@ -668,7 +629,7 @@ INNER JOIN repositories ON repositories.id = tmp.repository;
 
 &lt;p&gt;Huge improvement!&lt;/p&gt;
 
-&lt;h2 id="makingrequestscount"&gt;Making Requests Count&lt;/h2&gt;
+&lt;h2 id="making-requests-count"&gt;Making Requests Count&lt;/h2&gt;
 
 &lt;p&gt;If you remember, we were handling our repositories like this:&lt;/p&gt;
 
@@ -861,7 +822,7 @@ end
 
 &lt;p&gt;The Staggered Round-Robin Queue-of-Queues is simple, as fast as possible (zero sorting), and gives precise control over the scraping distribution.&lt;/p&gt;
 
-&lt;h2 id="thefutureandbeyond"&gt;The Future and Beyond&lt;/h2&gt;
+&lt;h2 id="future-work"&gt;The Future and What We Learned&lt;/h2&gt;
 
 &lt;p&gt;What does the future hold for OSW? Let's take a look...&lt;/p&gt;
 
@@ -889,7 +850,7 @@ end
 &lt;li&gt;Tracking the top 1 million repositories&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id="intheend"&gt;In the End&lt;/h2&gt;
+&lt;h3 id="whatwelearned"&gt;What We Learned&lt;/h3&gt;
 
 &lt;p&gt;We learned quite a few things over the course of this project, but there are a few we especially wanted to highlight:&lt;/p&gt;
 
