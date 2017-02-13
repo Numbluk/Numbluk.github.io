@@ -19,7 +19,7 @@
     <meta property="og:description" content="This is the story of how two developers set out to discover the top contributors to open-source. We do this by tracking the top 100,000 most starred repositories on Github. Some stats about the project: 1,200,000+ Requests Per Day (RPD)   20,000,000+ Records (and counting) We">
     <meta property="og:url" content="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/">
     <meta property="article:published_time" content="2017-02-09T22:54:29.000Z">
-    <meta property="article:modified_time" content="2017-02-13T19:35:24.000Z">
+    <meta property="article:modified_time" content="2017-02-13T19:57:50.000Z">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month">
     <meta name="twitter:description" content="This is the story of how two developers set out to discover the top contributors to open-source. We do this by tracking the top 100,000 most starred repositories on Github. Some stats about the project: 1,200,000+ Requests Per Day (RPD)   20,000,000+ Records (and counting) We">
@@ -52,7 +52,7 @@
     "headline": "How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month",
     "url": "http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/",
     "datePublished": "2017-02-09T22:54:29.000Z",
-    "dateModified": "2017-02-13T19:35:24.000Z",
+    "dateModified": "2017-02-13T19:57:50.000Z",
     "description": "This is the story of how two developers set out to discover the top contributors to open-source. We do this by tracking the top 100,000 most starred repositories on Github. Some stats about the project: 1,200,000+ Requests Per Day (RPD)   20,000,000+ Records (and counting) We",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -1584,7 +1584,7 @@ INNER JOIN repositories ON repositories.id = tmp.repository;
 
 <p>We began by ordering our list of repositories by activity and then range mapping that ordered list into X number of "buckets" where each bucket will get its own Redis queue:</p>
 
-<p><amp-img src="http://localhost:2368/content/images/2017/02/54_range_mapping.png" alt width="404" height="231" layout="responsive"></amp-img></p>
+<p><amp-img src="http://localhost:2368/content/images/2017/02/54_range_mapping-1.png" alt width="370" height="231" layout="responsive"></amp-img></p>
 
 <p>Then when the dispatcher requests a repository, it will actually be interacting with a priority queue object which has a method to draw from each bucket at the frequency we need:</p>
 
