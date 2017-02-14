@@ -2264,3 +2264,6 @@ div .gravitar:first-child {
     min-height: 112px;
     background-color: rgb(19, 152, 138);
 }
+article.post.page {
+    margin-top: 12px;
+}
