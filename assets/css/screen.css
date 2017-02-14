@@ -25,15 +25,6 @@
 /* ==========================================================================
    0. normalize.css v3.0.3 | MIT License | git.io/normalize | (minified)
    ========================================================================== */
-#osw_logo { max-width: 50%; }
-div.gravitar-container { text-align: center; }
-div .gravitar { 
-    display: inline-block;
-    margin-bottom: 6px;
-}
-div .gravitar:first-child {
-    margin-right: 15px;
-}
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
@@ -2259,3 +2250,17 @@ body.page-template .post-title {
    End of file. Animations should be the last thing here. Do not add stuff
    below this point, or it will probably fuck everything up.
    ========================================================================== */
+#osw_logo { max-width: 50%; }
+div.gravitar-container { text-align: center; }
+div .gravitar { 
+    display: inline-block;
+    margin-bottom: 6px;
+}
+div .gravitar:first-child {
+    margin-right: 15px;
+}
+.no-cover.post-head.main-header {
+    height: 11vh;
+    min-height: 112px;
+    background-color: rgb(19, 152, 138);
+}

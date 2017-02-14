@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Lukas Nimmo</title><description>I tell stories about things that interest me.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 14 Feb 2017 00:23:32 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</title><description>&lt;p&gt;&lt;a href="http://www.opensourcewatch.io"&gt; &lt;br&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Lukas Nimmo</title><description>I tell stories about things that interest me.</description><link>http://localhost:2368/</link><generator>Ghost 0.11</generator><lastBuildDate>Tue, 14 Feb 2017 05:34:09 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month</title><description>&lt;p&gt;&lt;a href="http://www.opensourcewatch.io"&gt; &lt;br&gt;
   &lt;img style="max-width: 30%;" src="http://localhost:2368/content/images/2017/02/01_osw_logo.png" alt="opensourcewatch logo" id="osw_logo"&gt;
 &lt;/a&gt;&lt;/p&gt;
 
@@ -25,7 +25,7 @@
 &lt;p&gt;Wait, who are &lt;em&gt;we&lt;/em&gt; you ask?&lt;/p&gt;
 
 &lt;div class="gravitar-container"&gt;  
-  &lt;a href="http://numbluk.com/credentials" class="gravitar"&gt;  
+  &lt;a href="http://numbluk.com/background" class="gravitar"&gt;  
   &lt;img class="gravitar" src="https://www.gravatar.com/avatar/fd080461b35c3dcb5911e38d5f58c5af"&gt;
   Lukas
   &lt;/a&gt;
@@ -36,7 +36,7 @@
   &lt;/p&gt;
 &lt;/div&gt;
 
-&lt;p&gt;We are two full stack developers! Also, I (Lukas) happen to be looking for work! Click on my face to see my credentials.&lt;/p&gt;
+&lt;p&gt;We are two full stack developers! Also, I (Lukas) happen to be looking for work! Click on my face to see my background.&lt;/p&gt;
 
 &lt;h2 id="tableofcontents"&gt;Table of Contents&lt;/h2&gt;
 
@@ -870,13 +870,13 @@ end
 &lt;hr&gt;
 
 &lt;div class="gravitar-container"&gt;  
-  &lt;a href="http://www.numbluk.com/credentials" class="gravitar"&gt;
+  &lt;a href="http://www.numbluk.com/background" class="gravitar"&gt;
     &lt;img class="gravitar" src="https://www.gravatar.com/avatar/fd080461b35c3dcb5911e38d5f58c5af"&gt;
     Lukas
   &lt;/a&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Again, I'm looking for work! If you're interested feel free to click on my face to see my credentials.&lt;/p&gt;
+&lt;p&gt;Again, I'm looking for work! If you're interested feel free to click on my face to see my background.&lt;/p&gt;
 
 &lt;h4 id="footnotes"&gt;Footnotes&lt;/h4&gt;
 
