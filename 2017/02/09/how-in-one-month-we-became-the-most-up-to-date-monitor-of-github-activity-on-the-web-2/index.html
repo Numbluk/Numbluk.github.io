@@ -11,7 +11,7 @@
 
     <link rel="shortcut icon" href="../../../../favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=08595a44e8">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=47d8334707">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
 
     <link rel="canonical" href="index.html">
@@ -24,7 +24,7 @@
     <meta property="og:description" content="This is the story of how two developers set out to discover the top contributors to open-source. We do this by tracking the top 100,000 most starred repositories on Github. Some stats about the project: 1,200,000+ Requests Per Day (RPD)   20,000,000+ Records (and counting) We">
     <meta property="og:url" content="http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/">
     <meta property="article:published_time" content="2017-02-09T22:54:29.000Z">
-    <meta property="article:modified_time" content="2017-02-13T19:57:50.000Z">
+    <meta property="article:modified_time" content="2017-02-14T00:23:02.000Z">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month">
     <meta name="twitter:description" content="This is the story of how two developers set out to discover the top contributors to open-source. We do this by tracking the top 100,000 most starred repositories on Github. Some stats about the project: 1,200,000+ Requests Per Day (RPD)   20,000,000+ Records (and counting) We">
@@ -57,7 +57,7 @@
     "headline": "How We Became the Most Up-To-Date Monitor of Github Activity on the Web in One Month",
     "url": "http://localhost:2368/2017/02/09/how-in-one-month-we-became-the-most-up-to-date-monitor-of-github-activity-on-the-web-2/",
     "datePublished": "2017-02-09T22:54:29.000Z",
-    "dateModified": "2017-02-13T19:57:50.000Z",
+    "dateModified": "2017-02-14T00:23:02.000Z",
     "description": "This is the story of how two developers set out to discover the top contributors to open-source. We do this by tracking the top 100,000 most starred repositories on Github. Some stats about the project: 1,200,000+ Requests Per Day (RPD)   20,000,000+ Records (and counting) We",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -132,27 +132,27 @@
   </a>
 
   <p class="gravitar">
-    <img class="gravitar" src="https://secure.gravatar.com/avatar/6ec313ee09eeb69eddd3789f98a3d2b2">
+  <img class="gravitar" src="https://secure.gravatar.com/avatar/6ec313ee09eeb69eddd3789f98a3d2b2">
   Michael
-  
-</p></div>
+  </p>
+</div>
 
 <p>We are two full stack developers! Also, I (Lukas) happen to be looking for work! Click on my face to see my credentials.</p>
 
 <h2 id="tableofcontents">Table of Contents</h2>
 
 <ol>
-<li><a href="#getting-started"><strong>Getting Started: Developing the Data Acquisition Process</strong></a>  </li>
-<li><a href="#ensuring-uptime"><strong>Ensuring Uptime of Data Acquisition</strong></a>  </li>
-<li><a href="#growing-pains"><strong>Growing Pains: Improving the Rate of Data Acquisition</strong></a>  </li>
-<li><a href="#rendering-the-data"><strong>Rendering the Data</strong></a>  </li>
-<li><a href="#making-requests-count"><strong>Making Requests Count</strong></a>  </li>
-<li><a href="#future-work"><strong>Future Work and Lessons Learned</strong></a></li>
+<li><a href="index.html#getting-started"><strong>Getting Started: Developing the Data Acquisition Process</strong></a>  </li>
+<li><a href="index.html#ensuring-uptime"><strong>Ensuring Uptime of Data Acquisition</strong></a>  </li>
+<li><a href="index.html#growing-pains"><strong>Growing Pains: Improving the Rate of Data Acquisition</strong></a>  </li>
+<li><a href="index.html#rendering-the-data"><strong>Rendering the Data</strong></a>  </li>
+<li><a href="index.html#making-requests-count"><strong>Making Requests Count</strong></a>  </li>
+<li><a href="index.html#future-work"><strong>Future Work and Lessons Learned</strong></a></li>
 </ol>
 
 <h2 id="howitallbegan">How it all Began</h2>
 
-<p>Open Source Watch started as a collaborative idea between me, <a href="http://numbluk.com">Lukas Nimmo</a>, and <a href="http://getmichaelonboard.com">Michael Mentele</a>. We wanted to gauge the activity of open-source projects on Github and find out who the heroes of open-source are.</p>
+<p>Open Source Watch started as a collaborative idea between me, <a href="http://numbluk.com">Lukas Nimmo</a>, and <a href="http://getmichaelonboard.com/blog">Michael Mentele</a>. We wanted to gauge the activity of open-source projects on Github and find out who the heroes of open-source are.</p>
 
 <p>The questions we asked were:</p>
 
@@ -840,7 +840,7 @@ INNER JOIN repositories ON repositories.id = tmp.repository;
 
 <p>We began by ordering our list of repositories by activity and then range mapping that ordered list into X number of "buckets" where each bucket will get its own Redis queue:</p>
 
-<p><img src="../../../../content/images/2017/02/54_range_mapping-1.png" alt=""></p>
+<p><img src="http://localhost:2368/content/images/2017/02/54_range_mapping-1.png" alt=""></p>
 
 <p>Then when the dispatcher requests a repository, it will actually be interacting with a priority queue object which has a method to draw from each bucket at the frequency we need:</p>
 
@@ -1041,7 +1041,7 @@ end
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=08595a44e8"></script>
-    <script type="text/javascript" src="../../../../assets/js/index.js?v=08595a44e8"></script>
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=47d8334707"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=47d8334707"></script>
 
 </body>
