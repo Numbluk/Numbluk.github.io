@@ -2,28 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>A Brand New Nanoc Site - My First Blog Post</title>
+    <title>Lukas + Code - About</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
     <link rel="stylesheet" href="/stylesheet.css">
-
     <!-- you don't need to keep this, but it's cool for stats! -->
     <meta name="generator" content="Nanoc 4.11.16">
+    <script src="https://kit.fontawesome.com/9991bc39d0.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div id="main">
-      <h1>My cute litle "About" page</h1><p>This is the about page for my new Nanoc site.</p><Test></Test>
-    </div>
-    <div id="sidebar">
-      <h2>Documentation</h2>
-      <ul>
-        <li><a href="https://nanoc.ws/doc/">Documentation</a></li>
-        <li><a href="https://nanoc.ws/doc/tutorial/">Tutorial</a></li>
-      </ul>
-      <h2>Community</h2>
-      <ul>
-        <li><a href="http://groups.google.com/group/nanoc/">Discussion group</a></li>
-        <li><a href="https://gitter.im/nanoc/nanoc">Gitter channel</a></li>
-        <li><a href="https://nanoc.ws/contributing/">Contributing</a></li>
-      </ul>
+    <div class="container" id="body-container">
+      <div class="row">
+        <div id="sidebar" class="column column-25">
+          <h1 id="header">
+            <a href=http://localhost:3000>Lukas + Code</a>
+          </h1>
+
+          <p>Engineering @ Deliveroo </br><i class="fas fa-map-marker-alt"></i> London, England</p>
+
+          <ul>
+            <li><a href=http://localhost:3000/recent>Recent Posts:</a></li>
+            
+              <li>
+                <a href=http://localhost:3000/graphql_post/> 
+                  GraphQL Post
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+
+        <div id="main" class="column column-50">
+          <div id="content">
+            <h1>About</h1><p>Engineering @ Deliveroo</p><a class="button" href="#">Default Button</a>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
