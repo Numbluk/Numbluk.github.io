@@ -11,3 +11,20 @@
   width: 100%;
 }
 
+#sidebar {
+  border-right: solid black 1px;
+}
+
+#sidebar h2 {
+  font-size: 3.1rem;
+  border-bottom: 1px lightgray solid;
+  margin-bottom: 1.2rem;
+}
+
+.archive-link {
+  font-size: 2.2rem;
+}
+
+#content h1 {
+  text-align: center;
+}
