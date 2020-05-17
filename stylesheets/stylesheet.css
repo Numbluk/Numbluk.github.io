@@ -1,0 +1,136 @@
+html, body, .row {
+  height: 100vh;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+#content {
+  text-align: left;
+}
+
+#header {
+  text-align: left;
+  width: 100%;
+}
+
+#main {
+  padding-top: 5rem;
+}
+
+#sidebar {
+  padding-top: 5rem;
+  border-right: 1px solid lightgray;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+#sidebar h2 {
+  font-size: 3.1rem;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 1.2rem;
+}
+
+#sidebar div#archive-small {
+  display: none;
+}
+
+#sidebar div#recent-posts-small {
+  display: none;
+}
+#sidebar div#recent-posts-small #recent-posts-list-collapsible {
+  display: none;
+  overflow: hidden;
+}
+
+.archive-link {
+  font-size: 2.2rem;
+}
+
+#article-index a.read-more-link {
+  margin-top: -1.5rem;
+  display: block;
+}
+
+.article-title-link {
+  color: inherit;
+}
+
+.article-title-link:hover, .article-title-link:active {
+  text-decoration: underline;
+}
+
+@media (max-width: 1200px) { 
+  #main {
+    flex: 0 0 60%;
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 850px) { 
+  #main {
+    flex: 0 0 60%;
+    max-width: 60%;
+  }
+
+  #sidebar {
+    max-width: 100%;
+    border-right: none;
+    text-align: center;
+  }
+
+  #sidebar h1#header {
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  #main {
+    flex: 0 0 90%;
+    max-width: 90%;
+    margin-left: 5%;
+  }
+
+  #sidebar h2 {
+    border: none;
+  }
+
+  #sidebar div#archive-wide {
+    display: none;
+  }
+  #sidebar div#archive-small {
+    display: block;
+  }
+
+  #sidebar div#archive-small h2 {
+    display: block;
+    border: none;
+  }
+
+  #sidebar div#recent-posts-wide {
+    display: none;
+  }
+  #sidebar div#recent-posts-small {
+    display: block;
+    border: none;
+  }
+  #sidebar div#recent-posts-small h2 button {
+    border-color: transparent;
+    background-color: transparent;
+    font-size: 3.1rem;
+    color: #9b4dca;
+    font-weight: 300;
+    text-transform: inherit;
+    font-family: unset;
+  }
+}
+
+@media (max-width: 480px) { 
+  #main {
+    margin-left: 5%;
+    max-width: 90%;
+  }
+
+}
