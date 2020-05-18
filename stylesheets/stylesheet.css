@@ -29,6 +29,27 @@ html, body {
   border-right: 1px solid lightgray;
   padding-left: 4rem;
   padding-right: 4rem;
+  background-color: #4EA6A6;
+}
+
+#sidebar *, #sidebar h2 {
+  color: #BAF0F0;
+}
+
+#sidebar a {
+  color: #fff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#content * {
+  color: #071A1A;
+}
+
+#content a {
+  color: #4EA6A6;
 }
 
 #sidebar h2 {
