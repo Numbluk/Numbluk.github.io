@@ -2,7 +2,7 @@ html, body {
   height: 100vh;
 }
 
-.row {
+#body-container, .row {
   height: 100%;
 }
 
