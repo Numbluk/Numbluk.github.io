@@ -1,0 +1,188 @@
+
+
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177825817-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-177825817-1');
+    </script>
+    <meta charset="utf-8">
+    <title>Lukas + Code - ADRs Are Love Letters To Your Co-Workers And Future Self</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+    <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.16">
+    <script src="https://kit.fontawesome.com/9991bc39d0.js" crossorigin="anonymous"></script>
+  
+  
+    <div class="container" id="body-container">
+      <div class="row">
+          <div id="sidebar" class="column column-25">
+            <h1 id="header">
+              <a href="https://numbluk.github.io">Lukas + Code</a>
+            </h1>
+
+            
+            <div id="about-links">
+              <p>Engineering @ Deliveroo</p>
+              <p><a href="https://numbluk.github.io/about">More about...</a></p>
+              <p><i class="fas fa-map-marker-alt"></i> London, England</p>
+            </div>
+
+            <div id="archive-small">
+              <h2>
+                <a href="https://numbluk.github.io/archive">
+                  Archive
+                </a>
+              </h2>
+            </div>
+
+            <div id="archive-wide">
+              <h2>Archive</h2>
+
+              <p>
+                <a href="https://numbluk.github.io/archive">
+                  See all posts
+                </a>
+              </p>
+            </div>
+
+            <div id="recent-posts-wide">
+              <h2>Recent Posts</h2>
+
+              <ul>
+                
+                  <li>
+                    <a href="https://numbluk.github.io/posts/1_adrs_are_love_letters_to_your_coworkers_and_future_self/"> 
+                      ADRs Are Love Letters To Your Co-Workers And Future Self
+                    </a>
+                  </li>
+                
+              </ul>
+            </div>
+
+            <div id="recent-posts-small">
+              <h2>
+                <button type="button" class="collapsible">
+                  Recent Posts
+                </button>
+              </h2>
+
+              <ul id="recent-posts-list-collapsible">
+                
+                  <li>
+                    <a href="https://numbluk.github.io/posts/1_adrs_are_love_letters_to_your_coworkers_and_future_self/"> 
+                      ADRs Are Love Letters To Your Co-Workers And Future Self
+                    </a>
+                  </li>
+                
+              </ul>
+            </div>
+          </div>
+
+        <div id="main" class="column column-70 column-offset-10">
+          <div id="content">
+            <header><h1><a class="article-title-link" href="https://numbluk.github.io/posts/1_adrs_are_love_letters_to_your_coworkers_and_future_self/">ADRs Are Love Letters To Your Co-Workers And Future Self</a></h1>
+<p class="subtitle">May 12, 2020</p></header><p>Brief mention: this article primarily covers <i>why</i> Architecture Decision Records (ADRs) are so wonderful, but if you are more interested in the <i>how</i> and <i>when</i> then I suggest reading my follow-up post (soon to come) which contains many of the best practices I've discovered while writing them.</p>
+<h2>The State Of The World</h2>
+<p>Long-form writing, and particularly writing that requires undisturbed thought, often takes a back seat in the workplace and even for personal projects. When was the last time you read an article that was over fifteen minutes long and wasn't news? If you are someone who writes, this should come as no surprise. The time, the diligence, the rewrites, and after sinking hours into writing you're left with no guarantee of anything, not even quality, only half-finished arguments and unpublished essays. It's a true slog for an author to take on a written burden, maybe even vainly heroic, but one thing is for sure, authoring something significantly beyond 280 characters is certainly not flashy.</p>
+<p>Compare this to the current state of the world.</p>
+<p>It's been roughly six months since much of the world has, with varying degrees of openness, taken to remote working. Zoom, Teams, Slack, many things once considered secondary are now indispensable. These tools have replaced high-bandwidth, ephemeral conversation once held in an office, but all of the problems associated with this type of communication remains. Entire companies would find it impossible to be as productive without these novel technologies and yet, people haven't changed and there are those who would argue that these technologies have only made things worse. By serving as tools which only replace and sometimes reinforce bad habits, physical or virtual office, what have these platforms really given us?</p>
+<p>It is this mirage of productivity which has led us to neglect the question that should be considered the most: how and why should we write our large decisions?</p>
+<p>ADRs, short for Architecture Decision Records, are brief historical records of thought processes. These small, written documents have improved my productivity and communication so much more than anything else in the past few years that, should I be given sole responsibility over one decision to be made of any team I work with, it would be to ensure that everyone writes them.</p>
+<p>In my heart of hearts, I believe the answer to this question will pay off more than any instant messaging platform or SAAS organization tool ever could and it is something these tools will not encourage because they can never solve it.</p>
+<h2>Brief Preface</h2>
+<p>I have had the privilege of belonging to a team with remote-first work practices over the past two and a half years even though a majority of the team comes into the office every workday. We take a hybrid approach to working remotely, so solving for the most difficult case also solves, and even improves, the easiest case (in person). </p>
+<p>My opinions around ADRs have been shaped by a team that continually struggled to strike a communication balance between those working in the office and those working from home and these opinions eventually cemented when being fully remote became the norm. So while the contents of this article are clearly opinions, they are backed by first-hand experience of seeing reluctance turn into embracement and all of the benefits that came with ADRs.</p>
+<h2>A Definition To Build From</h2>
+<p>The simplest definition of an Architectural Decision Record takes the following form:</p>
+<blockquote><em>Architectural Decision Records (ADRs) explain the why, what, where, and when of architectural decisions.</em></blockquote>
+<p>While a simple definition works well as an introduction, a more formal definition really lays the foundation from which the rest of this article builds: </p>
+<blockquote><em>Architectural Decision Records (ADRs) set out to describe and solve a particular architectural or business problem with a specific technical decision while weighing it against alternatives at a given moment in time.</em></blockquote>
+<p>There are only two things needed to begin ADRs immediately: a filesystem (preferably version-controlled) and a consistent structure. The first point is self-explanatory, but the second deserves a little attention. </p>
+<h3>ADR Structure</h3>
+<p>The structure of ADRs are not rigid; there is no right or wrong, so long as every ADR follows the same format. I find that the following sections are enough to get an idea across: </p>
+<ol>
+<li>
+<strong>Title</strong>: A less than 10 word description of the problem or decision you intend to make</li>
+<li>
+<strong>Timestamp</strong>: Especially necessary if your WTDs are not version controlled and essential for historical reference</li>
+<li>
+<strong>Status</strong>: In Progress/Completed/Changed + Reference To More Recent WTDs</li>
+<li>
+<strong>Background</strong>: Context to the problem. Why are you writing this?</li>
+<li>
+<strong>Decision</strong>: The meat of the decision along with an outlined section of counterpoints to ensure all possible alternatives are addressed.</li>
+<li>
+<strong>Impact</strong>: This should be brief. What needs to change? What are the pros and cons of the changes? Is there something that needs to be noted so that it gets addressed in the future?</li>
+</ol>
+<h3>ADRs Apply To Any System</h3>
+<p>Although the term ADR comes with software engineering baggage, ADR could easily be rewritten as "written technical decision". It's worth emphasizing that ADRs can, and should, be applied to any complex system which evolves over time.</p>
+<p>If you <em>do</em> happen to write software for a living, I encourage you to test out <a href="https://github.com/npryce/adr-tools">adr-tools </a>, but you could just as well roll your own.<code>adr-tools</code>allows you to get started quickly by providing several nice-to-haves like generators with generic, ready-made outlines along with ways to easily reference past ADRs in new ones. </p>
+<p>Overall, use what suits you best, as the doing is far more important than the tooling. Everything else is mere convenience.</p>
+<h2>Why You Should Bother</h2>
+<p>I want to start off with benefits unique to ADRs before moving on to other benefits that share similarities with other forms of written communication while highlighting where ADRs really shine when it comes to complex decisions.</p>
+<h3>Asynchronous Communication</h3>
+<p>Software engineers, or anyone who requires deep thought for that matter, should value long stretches of time. Complex thoughts take time to sink in, so there is great value in an undisturbed schedule. ADRs will free up your schedule in ways never thought possible.</p>
+<p>Imagine having a detailed conversation with a coworker where, through the power of a thought tug-of-war, you both come up with a grand idea. After a few days, you begin work on this special idea, but the specifics are forgotten. Even worse, your coworker hasn't remembered either, so you both jump on <em>another</em> video call to dredge through lost memories and find the forgotten solution.</p>
+<p>Consider a different idea where you actually took notes. Unfortunately, notes are what they are: just notes, a brain dump. This means that even if you can decipher your previous thoughts, it doesn't mean your coworkers, or even future you, can. This poses a very real problem come review time when your implementation is alive, but you are the one with all of the context and your context is in an unorganized manner and in no state for anyone else to understand.</p>
+<p><strong>ADRs serve as a way to comfortably describe ideas for posterity, every single one of your teammates (even those not in the discussion), and yourself, all while respecting everyone's schedules.</strong> They are the precursor to any implementation and provide a fully weighed and measured decision for others to use as reference to any changes you could possibly make. The added benefit is that people can review your work without worrying about stale thoughts since they always have reviewed context, à la version control, to revert back to. Additionally, people can speed through implementation reviews without having to ask context-specific questions which have already been answered in the ADR. Lastly, there is an even further reduction in off-the-cuff discussion as thoughts can be ironed out and sealed in the ADR instead of chatting to constantly re-figure something out which has already been discussed.</p>
+<h3>Time Travel To A State Of Mind</h3>
+<p>There are always different phases of work: pre-planning, exploration, design, implementation, the list goes on, but different parts of these will always be in your mind, but more so at certain times than others. Urgent projects call your name, bugs appear, a system unexpectedly breaks, life happens. </p>
+<p>Deep thought is one thing, but being deeply involved with an idea within a world of complicated unknowns is another. It's very important to capture the output from the time periods where your mind was closest to the problem and to always have a place which can easily transport you back to this frame of mind.</p>
+<p>Now think about the day-to-day. No day is perfect, but some days you are not on the top of your game. The existence of WTDs helps alleviate these worst case scenarios when thinking is harder than doing. WTDs capture a concentrated period of focus and the artifacts which we inevitably forget without a trace of history. Whenever terrible groggy days come, we can look back on these documents for a clear outline and indication of where to go and why.</p>
+<h3>Thought Trails Are History</h3>
+<p>Looking back at the formal ADR definition, there is a part which often goes unnoticed:</p>
+<blockquote><em>Architecture Decision Records (ADRs) set out to describe and solve a particular architectural or business problem with a specific technical decision while weighing it against alternatives <strong>at a given moment in time</strong>.</em></blockquote>
+<p>That last part of the definition, <em>"at a given moment in time"</em>, is something that is usually not emphasized in formal definitions, but I've done so to highlight a very important aspect of ADRs which becomes invaluable as time moves on. To illustrate, think about the following questions we often ask ourselves:</p>
+<p><i>"Why did my new team do this?"</i></p>
+<p>The quickest improvement I've seen with the historical aspect of ADRs is onboarding new people. The entire list of ADRs provides an easy way to onboard new members to large design decisions which dramatically reduces onboarding time by offering up explanations in greater detail and language than is possible otherwise. Even if your list of ADRs is a small novel, a quick read will at least serve as a reference to answer any future questions.</p>
+<p><i>"Why did we do this?"</i></p>
+<p>There have been many times where a group of us forgot why we came to a decision. Oftentimes this question comes from someone outside the group and the team made the decision long enough ago that the specifics disappeared. Luckily, no longer is a drawn out conversation needed as I can simply point the person asking in the direction of the relevant ADR to read to their heart's desire. </p>
+<p><i>"Why did Lukas (or X team member) do this??"</i></p>
+<p>Having a place to examine pros and cons for a given point in time allows teammates and future you to understand the background of a decision in the face of alternatives. As much as I like to think everyone believes their teammates to have the best intentions, ADRs are historical insurance against temporal attacks on your technical character. Neglect them at your own peril :) </p>
+<h3>Decisions Are Wrapped Up With Implementation</h3>
+<p>Explaining thoughts with examples or representations of code or pseudocode is a place where ADRs are far superior than simple conversation. Since ADRs live in the code base, they are forever attached to live or historical code changes. Any developer can look and see living examples, understand their origin, and have a better idea of the design and direction of a service from multiple points of view.</p>
+<h3>Where Does History Go When You Leave?</h3>
+<p>If you like your teammates, then use ADRs to ensure that, even in your own posterity, everything is well-documented and people can change existing design decisions without fear of bringing the whole house down.</p>
+<p>If you don't like your teammates (maybe a healthy dose of competition isn't so bad), then you should actively encourage others on your team to write ADRs to avoid the above problems, but in your own direction.</p>
+<h2>You May Be Thinking...</h2>
+<p>It might seem like ADRs are a difficult sell. After all, what is the value in writing thoughts first in written word and then a second time in code? Or what about those developers who say, "why me?" when swamped with overly-descriptive and poorly organized documents attempting to solve big problems?</p>
+<p>These two questions are the biggest hurdles to writing ADRs. The latter is a process issue which I will address in a follow-up post, but the first is important enough to warrant answering directly:</p>
+<h3>Programming Is Pure Thought-Stuff, So Are Decisions</h3>
+<blockquote>
+<i>The programmer, like the poet, works only slightly removed from pure thought-stuff. He builds his castles in the air, from air, creating by exertion of the imagination. Few media of creation are so flexible, so easy to polish and rework, so readily capable of realizing grand conceptual structures. </i> <br>- Frederick P. Brooks</blockquote>
+<p>Building a castle the first time is difficult, especially without plans. Building a second castle is easier, but if you drastically change the rooms, the hall, or the kitchen then the pattern begins to drift away from the original and the reliability of something which you know works with certainty. The second castle is never the same. And for this reason there always needs to be a written technical decision for a technical solution to a business problem, even if the decision is similar to one made before. ADRs help isolate second project design and avoid unfounded mental and emotional attachments with previously used solutions so commonly associated with second projects.</p>
+<p>In short, words are closer to thoughts than code, so reach for the most malleable thing first as words are far more forgiving. </p>
+<h1>Conclusion</h1>
+<p>Luckily, I started using ADRs just before the COVID-19 disaster, so I've gotten to see the impact of ADRs in both close-up and remote work environments. While ADRs are invaluable to a non-remote team, I believe they will become even more so in this physically distant world we seem to be running headlong into.</p>
+<p>If you are interested in best practices on how and when to write ADRs, I have a follow-up post on the way.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = document.getElementById("recent-posts-list-collapsible");
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    } 
+  </script>

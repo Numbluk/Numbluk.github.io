@@ -2,10 +2,6 @@ html, body {
   height: 100vh;
 }
 
-#body-container, .row {
-  height: 100%;
-}
-
 .container {
   margin: 0;
   padding: 0;
@@ -13,6 +9,7 @@ html, body {
 
 #content {
   text-align: left;
+  padding-bottom: 80px;
 }
 
 #header {
@@ -30,10 +27,19 @@ html, body {
   padding-left: 4rem;
   padding-right: 4rem;
   background-color: #4EA6A6;
+  min-height: 100vh;
 }
 
 #sidebar *, #sidebar h2 {
   color: #BAF0F0;
+}
+
+#sidebar #about-links p {
+  margin-bottom: 0.1rem;
+}
+
+#sidebar #about-links {
+  margin-bottom: 2.5rem;
 }
 
 #sidebar a {
@@ -103,6 +109,7 @@ a:hover {
   #sidebar {
     max-width: 100%;
     text-align: center;
+    min-height: inherit;
   }
 
   #sidebar h1#header {
