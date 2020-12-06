@@ -167,5 +167,17 @@ a:hover {
     margin-left: 5%;
     max-width: 90%;
   }
+  
+  #sidebar {
+    padding-top: 2.9rem;
+  }
 
+  #sidebar div#recent-posts-small h2 button, #sidebar #archive-small h2 {
+    margin-bottom: 0;
+    font-size: 2.5rem;
+  }
+
+  #sidebar #about-links {
+    margin-bottom: 1.2rem;
+  }
 }
