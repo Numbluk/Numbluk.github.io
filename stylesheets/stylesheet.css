@@ -1,5 +1,6 @@
 html, body {
   height: 100vh;
+  color: #071A1A;
 }
 
 .container {
@@ -50,9 +51,9 @@ a:hover {
   text-decoration: underline;
 }
 
-#content * {
+/* #content * {
   color: #071A1A;
-}
+} */
 
 #content a {
   color: #4EA6A6;
@@ -80,6 +81,10 @@ a:hover {
   font-size: 2.2rem;
 }
 
+#article-index div.article-excerpt-container:not(:first-child) {
+  margin-top: 5.0rem;
+}
+
 #article-index a.read-more-link {
   margin-top: -1.5rem;
   display: block;
@@ -91,6 +96,14 @@ a:hover {
 
 .article-title-link:hover, .article-title-link:active {
   text-decoration: underline;
+}
+
+pre, pre code {
+  background-color: #001e27;
+}
+
+pre {
+  border-left-color: #001e27;
 }
 
 @media (max-width: 1200px) { 
