@@ -1,0 +1,361 @@
+
+
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177825817-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-177825817-1');
+    </script>
+    <meta charset="utf-8">
+    <title>Lukas + Code - Please Stop Abusing Ruby Memoization</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+    <link rel="stylesheet" href="/stylesheets/stylesheet.css">
+    <link rel="stylesheet" href="/stylesheets/pygments.css">
+    <!-- you don't need to keep this, but it's cool for stats! -->
+    <meta name="generator" content="Nanoc 4.11.16">
+    <script src="https://kit.fontawesome.com/9991bc39d0.js" crossorigin="anonymous"></script>
+  
+  
+    <div class="container" id="body-container">
+      <div class="row">
+          <div id="sidebar" class="column column-25">
+            <h1 id="header">
+              <a href="https://numbluk.github.io">Lukas + Code</a>
+            </h1>
+
+            
+            <div id="about-links">
+              <p>Engineering @ Deliveroo</p>
+              <p><a href="https://numbluk.github.io/about.html">More about...</a></p>
+              <p><i class="fas fa-map-marker-alt"></i> London, England</p>
+            </div>
+
+            <div id="archive-small">
+              <h2>
+                <a href="https://numbluk.github.io/archive.html">
+                  Archive
+                </a>
+              </h2>
+            </div>
+
+            <div id="archive-wide">
+              <h2>Archive</h2>
+
+              <p>
+                <a href="https://numbluk.github.io/archive.html">
+                  See all posts
+                </a>
+              </p>
+            </div>
+
+            <div id="recent-posts-wide">
+              <h2>Recent Posts</h2>
+
+              <ul>
+                
+                  <li>
+                    <a href="https://numbluk.github.io/posts/3_please_stop_abusing_ruby_memoization.html"> 
+                      Please Stop Abusing Ruby Memoization
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="https://numbluk.github.io/posts/1_adrs_are_love_letters_to_your_coworkers.html"> 
+                      ADRs Are Love Letters To Your Co-Workers
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="https://numbluk.github.io/posts/2_tips_for_writing_adrs_well.html"> 
+                      Tips For Writing ADRs Well
+                    </a>
+                  </li>
+                
+              </ul>
+            </div>
+
+            <div id="recent-posts-small">
+              <h2>
+                <button type="button" class="collapsible">
+                  Recent Posts
+                </button>
+              </h2>
+
+              <ul id="recent-posts-list-collapsible">
+                
+                  <li>
+                    <a href="https://numbluk.github.io/posts/3_please_stop_abusing_ruby_memoization.html"> 
+                      Please Stop Abusing Ruby Memoization
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="https://numbluk.github.io/posts/1_adrs_are_love_letters_to_your_coworkers.html"> 
+                      ADRs Are Love Letters To Your Co-Workers
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="https://numbluk.github.io/posts/2_tips_for_writing_adrs_well.html"> 
+                      Tips For Writing ADRs Well
+                    </a>
+                  </li>
+                
+              </ul>
+            </div>
+          </div>
+
+        <div id="main" class="column column-70 column-offset-10">
+          <div id="content">
+            <header>
+  <h1>
+    <a class="article-title-link" href="https://numbluk.github.io/posts/3_please_stop_abusing_ruby_memoization.html">
+      Please Stop Abusing Ruby Memoization
+    </a>
+  </h1>
+  <p class="subtitle">
+    March 18, 2021
+  </p>
+</header>
+
+
+<p>
+I've seen Ruby's memoization taken a license with many times, I've even done it myself, so it's good to keep ourselves grounded in the right abstractions to help us understand that another tool could be a better fit for use. For the uninitiated, memoization refers to storing a result so that it can be accessed later without recalculation. In other words, memoization is a way to optimize for only calculating a thing once and in Ruby this usually takes the following shape:
+</p>
+
+<pre>
+  <code class="language-ruby">    <span class="k">def</span> <span class="nf">expensive_calculation</span>
+      <span class="vi">@expensive_calculation</span> <span class="o">||=</span> <span class="n">big_number</span> <span class="o">*</span> <span class="n">big_number</span> <span class="o">*</span> <span class="n">big_number</span> <span class="o">*</span> <span class="n">big_number</span> <span class="o">*</span> <span class="n">big_number</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">big_number</span>
+      <span class="nb">puts</span> <span class="s2">"10"</span>
+      <span class="mi">10</span>
+    <span class="k">end</span></code>
+</pre>
+
+<p>
+The <code>var ||= val</code> translates to <code>var = var || val</code> which ensures that if <code>var</code> is ever <code>nil</code>, it can be assigned to <code>val</code>, and then never reassigned again for the same revaluation of the same expression. 
+</p>
+
+<p>
+Further to the point, once we call this method once then no further calculations will be made. As an example:
+</p>
+
+<pre>
+  <code class="language-ruby">    <span class="nb">puts</span> <span class="s2">"Please don't recalculate this value!: </span><span class="si">#{</span><span class="n">expensive_calculation</span><span class="si">}</span><span class="s2">"</span>
+    <span class="c1"># =&gt; 10</span>
+    <span class="c1"># =&gt; 10</span>
+    <span class="c1"># =&gt; 10</span>
+    <span class="c1"># =&gt; 10</span>
+    <span class="c1"># =&gt; 10</span>
+    <span class="c1"># =&gt; Please don't recalculate this value!: 10000</span>
+
+    <span class="nb">puts</span> <span class="s2">"Please don't recalculate this value!: </span><span class="si">#{</span><span class="n">expensive_calculation</span><span class="si">}</span><span class="s2">"</span>
+    <span class="c1"># =&gt; Please don't recalculate this value!: 10000</span></code>
+</pre>
+
+<p>
+Voila! The power of memoization!
+</p>
+
+<h2>The Confusion Sets In</h2>
+
+<p>
+Let's look at a formal definition of memoization borrowed from a popular wiki(pedia):
+</p>
+
+<blockquote>
+Memoization is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+</blockquote>
+
+<p>
+This sounds strangely familiar to things like key:value stores, like Redis, which we use for caching. In fact, I've even seen people conflate "temporary"  writes into persistent data stores (like Postgres) with memoization; confusing! The misunderstanding is worsened by the language so easily allowing you to seemingly replace an external cache:
+</p>
+
+<pre>
+  <code class="language-ruby">  <span class="k">class</span> <span class="nc">TempCache</span>
+    <span class="k">def</span> <span class="nf">costly_value1</span>
+      <span class="vi">@costly_value1</span> <span class="o">||=</span> <span class="mi">11111111</span> <span class="o">*</span> <span class="mi">11111111</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">costly_value2</span>
+      <span class="vi">@costly_value2</span> <span class="o">||=</span> <span class="mi">22222222</span> <span class="o">*</span> <span class="mi">22222222</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">costly_value3</span>
+      <span class="vi">@costly_value3</span> <span class="o">||=</span> <span class="mi">33333333</span> <span class="o">*</span> <span class="mi">33333333</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code>
+</pre>
+
+<p>
+With <code>TempCache</code>, I will never have to recalculate any of the <code>costly_values</code>; I have essentially "cached" them. Why add the overhead of Redis when Ruby answers all my hopes and dreams?
+</p>
+
+<p>
+Everything is fine, right? Well, for now it is since every simple calculation is made on my local machine or server.
+</p>
+
+<h2>The Wrong Abstraction</h2>
+
+<p>
+Instead, imagine that we need to make several external requests:
+</p>
+
+<pre>
+  <code class="language-ruby">  <span class="k">class</span> <span class="nc">Pricing</span>
+    <span class="k">def</span> <span class="nf">amazon_pricing</span>
+      <span class="vi">@amazon_pricing</span>  <span class="o">||=</span> <span class="no">HTTPRequest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">walmart_pricing</span>
+      <span class="vi">@walmart_pricing</span>  <span class="o">||=</span> <span class="no">HTTPRequest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">tesco_pricing</span>
+      <span class="vi">@tesco_pricing</span>  <span class="o">||=</span> <span class="no">HTTPRequest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code>
+</pre>
+
+<p>
+What has changed? Every memoized value is now the result of external HTTP request. Imagine one of these <code>Pricing</code> objects is instantiated to satisfy the request of a web server; you'd better be patient, as these requests (if they are called) would be made on every single request-response cycle. 
+</p>
+
+<p>
+You might think this example is a little silly. After all, who would build a class which only contains these requests? It doesn't look so awkward when your classes begin to age and mature and another person comes into the class looking at the rest of it for a pattern to follow. At that point you've entered the death spiral of bad patterns: people copying bad ones.
+</p>
+
+<p>
+Let's look at another example which I've seen in production:
+</p>
+
+<pre>
+  <code class="language-ruby">  <span class="k">class</span> <span class="nc">Pricing</span>
+    <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+      <span class="k">def</span> <span class="nf">amazon_pricing</span>
+        <span class="vi">@amazon_pricing</span>  <span class="o">||=</span> <span class="n">redis</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'amazon_pricing'</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="k">def</span> <span class="nf">walmart_pricing</span>
+        <span class="vi">@walmart_pricing</span>  <span class="o">||=</span> <span class="n">redis</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'walmart_pricing'</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="k">def</span> <span class="nf">tesco_pricing</span>
+        <span class="vi">@tesco_pricing</span>  <span class="o">||=</span> <span class="n">redis</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s1">'tesco_pricing'</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code>
+</pre>
+
+<p>
+The variables used here are actually class instance variables and won't be gobbled up by the garbage collector in the same way an instance would, so if classes are cached on the server then there won't be a performance cost aside from the first time the "cache" is hit. 
+</p>
+
+<p>
+This is an improvement on the previous example, but also a degradation in some respects. Testing singletons can be tricky since you'll have to manually reset class isntance variables to ensure tests start off from a blank slate.
+</p>
+
+<p>
+There is also the danger of multiple application servers spinning up simultaneously causing them all to re-instantiate their classes, so they all fetch the relevant information at once. This is also know as a "thundering herd of elephants" and can easily lead to rate-limiting and denial-of-service "attacks".
+</p>
+
+<h2>Hijacking The Language</h2>
+
+<p>
+So far, we've seen two options which handle two use cases:
+</p>
+
+<ol>
+  <li>Class instances: Storing expensive calculations for the length of a request-response cycle</li>
+  <li>Class singletons: Storing expensive calculations until the application server is recycled</li>
+</ol>
+
+<p>
+By moving memoized calls into individual method calls, we are abandoning the language constructs that Ruby provides, namely constructors. Instead of memoizing a method result, use what Ruby has blessed us with:
+</p>
+
+<pre>
+  <code class="language-ruby">  <span class="k">class</span> <span class="nc">Pricing</span>
+    <span class="nb">attr_reader</span> <span class="ss">:amazon_pricing</span><span class="p">,</span> <span class="ss">:walmart_pricing</span><span class="p">,</span> <span class="ss">:tesco_pricing</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span>
+      <span class="vi">@amazon_pricing</span> <span class="o">=</span> <span class="no">HTTPRequest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+      <span class="vi">@walmart_pricing</span> <span class="o">=</span> <span class="no">HTTPRequest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+      <span class="vi">@tesco_pricing</span> <span class="o">=</span> <span class="no">HTTPRequest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code>
+</pre>
+
+<p>
+This is much simpler and easier to read! We now also have a guarantee that every method call will take the same length of time. Previously, each first method call would take longer than the first. Now that the requests are grouped together, we can even execute these IO-bound requests concurrently. Wins all around!
+</p>
+
+<p>
+The skeptic might ask, "what if I won't want to execute every request every time I instantiate an object?" If that is the case, and not every request made in the constructor is used throughout the class, then a red flag should immediately be raised. If only one method is called in very special circumstances, we should think about the cost of having such low cohesion in our classes that has led to requiring "smart clients". In such cases, functionality should be extracted and multiple objects composed out of the larger one which has so many unrelated parts.
+</p>
+
+<p>
+Moving next to the singleton usage, we can finally address the real problem: we are abusing Ruby and treating its memoization as a sort of cache for external requests. The easiest solution is to replace the memoized calls on the singleton with external cache fetches on a plain 'ole Ruby objects:
+</p>
+
+<pre>
+  <code class="language-ruby">  <span class="k">class</span> <span class="nc">Pricing</span>
+    <span class="nb">attr_reader</span> <span class="ss">:amazon_pricing</span><span class="p">,</span> <span class="ss">:walmart_pricing</span><span class="p">,</span> <span class="ss">:tesco_pricing</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span>
+      <span class="vi">@amazon_pricing</span> <span class="o">=</span> <span class="n">cache</span><span class="p">.</span><span class="nf">fetch</span> <span class="p">{</span> <span class="no">HTTPRequest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">}</span>
+      <span class="vi">@walmart_pricing</span> <span class="o">=</span> <span class="n">cache</span><span class="p">.</span><span class="nf">fetch</span> <span class="p">{</span> <span class="no">HTTPRequest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">}</span>
+      <span class="vi">@tesco_pricing</span> <span class="o">=</span> <span class="n">cache</span><span class="p">.</span><span class="nf">fetch</span> <span class="p">{</span> <span class="no">HTTPRequest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span></code>
+</pre>
+
+<blockquote>
+"But what about the cost of fetching each value each time we instantiate the Pricing class?"
+</blockquote>
+
+<p>
+A round-trip to a key:value store like Redis within your VPC is <i>extremely</i> fast and very unlikely to cause a significant impact on your response times. Moving the calls to an actual cache removes the thundering herd on server recycling and also makes testing so much easier since we are no longer preserving state on the class' singleton between tests.
+</p>
+
+<h2>In Conclusion</h2>
+
+<p>
+There are potentially times where disregarding these rules is useful, but I would avoid these situations unless it was an absolute necessity.
+</p>
+
+<p>
+I typically treat <strong>memoization for calculations carried across different scopes (e.g. using memoized results within a method, outside of it)</strong> to be a code smell. Using memoization in this way typically means I need to reach for something else (a real cache) or reorganize my code to use what Matz gave us for better code organization and reuse.
+</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = document.getElementById("recent-posts-list-collapsible");
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    } 
+  </script>
